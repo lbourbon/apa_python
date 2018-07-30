@@ -1,0 +1,97 @@
+{% extends "base.html" %}
+{% block title %} A.P.A. {% endblock%}
+{% block main %}
+<style>
+
+#homeback {
+    opacity: .45;
+    object-fit: contain;
+    width:auto;
+    height:auto;
+    max-height:95vh;
+}
+
+.painel{position:relative;}
+
+.center-titulo {
+    width: 100%;
+    position: absolute;
+    top: 18%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    font-family: 'Merienda', cursive;
+    font-size: 7vw;
+    text-shadow: 1px 1px #b71c1c;
+}
+.menor{
+    top: 30%;
+    font-size: 4.5vw;
+    color: rgba(254, 97, 106, 0.8);
+    font-family: 'Playfair Display', serif;
+    text-shadow: 1px 1px #000;
+    letter-spacing: 3px;
+}
+
+.botoes-titulo{
+    position: absolute;
+    top: 65%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60%;
+}
+#b1{top: 50%;}
+
+@media only screen and (min-width: 768px) {
+    #homeback {
+        width: 100%;
+        object-fit: fill;
+        height: auto;
+    }
+    .center-titulo {
+        top: 22%;
+        font-size: 5.5vw;
+    }
+    .menor{
+        top: 40%;
+        font-size: 2.7vw;
+        }
+    .botoes-titulo{
+        top: 60%;
+        left: 70%;
+        transform: translate(-50%, -50%);
+        width: auto;
+    }
+        #b1{
+        top: 60%;
+        left:30%;
+    }
+}
+
+</style>
+
+{% include 'navbar.html' %}
+
+<div class="painel">
+    <img src="../static/homeback.jpg" alt="background" id="homeback">
+    <div class="center-titulo flow-text"><p>Avaliação Pré-Anestésica</p></div>
+    <div class="center-titulo menor flow-text"><p>Rápida - Grátis - Na Nuvem</p></div>
+    <a href="{% url 'teste' %}" id="b1" class="waves-effect waves-light btn-large red darken-4 botoes-titulo">Quero testar</a>
+    <a href="{ url 'cadastro' %}" class="waves-effect waves-light btn-large red darken-4 botoes-titulo">Cadastre-se</a>
+</div>
+
+{% endblock%}
+{% block js %}
+
+<script>
+$(document).ready(function(){
+    $('.sidenav').sidenav();
+  });
+
+
+</script>
+{% endblock%}
+
+
+
+

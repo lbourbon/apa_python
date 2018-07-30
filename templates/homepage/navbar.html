@@ -1,0 +1,39 @@
+<nav>
+    <div class="nav-wrapper">
+        <a href="{% url 'home' %}" class="brand-logo" id="div-logo"><i class="material-icons">
+            <img src="../static/logo.svg" id="logo" alt="logo"></i>A. P. A.</a>
+        <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+        <ul class="right hide-on-med-and-down">
+            <li><a href="{% url 'home' %}">Home</a></li>
+            <li><a href="{% url 'teste' %}">Teste</a></li>
+            <li><a href="{% url 'precos' %}">Preços</a></li>
+            <li><a href="{% url 'about' %}">About</a></li>
+            <li><a href="{ url 'login' %}">Login</a></li>
+            <li><a href="{ url 'cadastro' %}" class="btn red darken-4" >Cadastre-se</a></li>
+        </ul>
+    </div>
+</nav>
+
+<ul class="sidenav" id="mobile-demo">
+    <li><a href="{% url 'home' %}">Home</a></li>
+    <li><a href="{% url 'teste' %}">Teste Grátis</a></li>
+    <li><a href="{% url 'precos' %}">Preços</a></li>
+    <li><a href="{% url 'about' %}">About</a></li>
+    <li><a href="Login">Login</a></li>
+    <li><a href="cadastro">Cadastre-se</a></li>
+</ul>
+
+
+<style>
+#logo {
+    width: 40px;
+    height: 40px;
+    margin: 10px 5px 5px 5px;
+}
+#div-logo{
+    text-shadow: 2px 2px #b71c1c;
+    color: black;
+    font-family: 'Kaushan Script', cursive;
+    font-size:  2.2em;
+}
+</style>
