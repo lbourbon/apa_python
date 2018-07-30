@@ -3,8 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="e71619dc-cdde-4d65-bf05-1b378c92d5e8" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/apa/settings.py" afterPath="$PROJECT_DIR$/apa/settings.py" />
-      <change beforePath="$PROJECT_DIR$/apa/wsgi.py" afterPath="$PROJECT_DIR$/apa/wsgi.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
