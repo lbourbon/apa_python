@@ -1,16 +1,56 @@
 {% extends "base.html" %}
-
 {% block title %} About - A.P.A. {% endblock%}
 {% block main %}
-{% include 'navbar.html' %}
-about
+<style>
 
+img{
+    float: left;
+    margin: 8px 8px 1px 0px;
+    width: 120px;
+}
+blockquote{
+    margin-top: 50px;
+    text-align: justify;
+}
+@media only screen and (min-width: 768px) {
+    img {
+        width: 200px;
+        margin: 8px;
+        }
+}
+
+
+</style>
+{% include 'navbar.html' %}
+
+<div class="container">
+
+    <blockquote>
+
+    <img width="200" src="../static/eu.jpg" alt="foto-pessoal" id="eu">
+        <p class="flow-text"> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam animi asperiores beatae
+            cum cumque debitis dicta dolorem eligendi excepturi harum id itaque libero magni maxime modi molestiae
+            neque, nobis perspiciatis, provident quae </p>
+        <p class="flow-text">quasi quos repellat repudiandae tempora voluptas. Ad amet autem
+            blanditiis corporis deserunt eius eveniet excepturi fuga id itaque magni mollitia neque nostrum odit officia
+            repellendus, sed, suscipit velit voluptas voluptatibus? Aliquid aspernatur consequuntur dicta exercitationem
+            expedita in iusto libero pariatur quis, soluta. At dolor ducimus quam sequi voluptates! </p>
+        <p class="flow-text">quasi quos repellat repudiandae tempora voluptas. Ad amet autem
+            blanditiis corporis deserunt eius eveniet excepturi fuga id itaque magni mollitia neque nostrum odit officia
+            repellendus, sed, suscipit velit voluptas voluptatibus? Aliquid aspernatur consequuntur dicta exercitationem
+            expedita in iusto libero pariatur quis, soluta. At dolor ducimus quam sequi voluptates! </p>
+
+    </blockquote>
+</div>
 
 {% block js %}
 <script>
 $(document).ready(function(){
     $('.sidenav').sidenav();
   });
+
+
+
 
 
 </script>
