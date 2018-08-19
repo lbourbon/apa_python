@@ -1,53 +1,35 @@
-APA
-
-MOBILE FIRST!!!
+APA - MOBILE FIRST!!!
 
 TODO:
-
-Planejar features
-Wireframing - falta ficha
-Fazer projeto - sitemap (terminar)
-about.html
-precos.html
-teste.html
 restrita
 login
-salvar inputs para autocomplete?
-maxlength (model ou template?) - tem que limitar caracteres nos inputs
 Colocar termo escondido na msm página da ficha - necessário para imprimir?
 Redirecionar para area restrita se logado
-ver senha
+senha: hide/show
+max characters (nome: 50)
 
+texto about/preços
 
 TODO 1:
-
-dominio.com
-
-
+www.dominio.com
+DRF?
 
 FEATURES:
 
-
-
-DIRETRIZES:CARDIO/PULMONAR/SAOS/RESP/NEURO/TABAGISTMO/ETILISMO
+BOTOÕES: editar, tcle, orçamento, novo atend, excluir  (editar? ou apenas novo at?)
 Peso: ideal, esperado, predito
 IMC, SC
 ASA 1 ou 2? se anemia, IMC>30 ou comorbidades
-se idade < 12 anos, ficha específica para pediatria
-não aparecer todos os campos (ex: se Masc ou cça, não perguntar gravidez)
-SE NÃO PREENCHER DETERMINADO CAMPO, NÃO APARECER NA IMPRESSÃO
+Tipos de ficha: básica, completa, pediátrica, gestante
+Diretrizes: CARDIO/PULMONAR/SAOS/RESP/NEURO/TBG/ETILISMO
 CARIMBO VIRTUAL
-ARRASTAR PARA EXCLUIR DO MODELO
 COMPARTILHAR
 GRUPOS/HOSPITAIS: acesso a todos os apas dos usuários inscritos
 RESUMO DO CASO NO FIM
 
-
-
-Cores:  paletton.com    mac digital color meter
-Imagens:  unsplash   pixabay
+Cores:  paletton.com digital color meter  Imagens:  unsplash   pixabay
 
 
 APA - pro
 django como API?
-React?
+React? Angular?
