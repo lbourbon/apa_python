@@ -1,3 +1,4 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render
 from django.views.generic import TemplateView
 
@@ -13,3 +14,5 @@ class Precos(TemplateView):
 class About(TemplateView):
     template_name='about.html'
 
+class Restrita(LoginRequiredMixin, TemplateView):
+    template_name='restrita.html'
