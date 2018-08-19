@@ -1,6 +1,6 @@
 from django.contrib import admin
-from django.urls import path
-from homepage.views import Home, Teste, Precos, About
+from django.urls import path, include
+from homepage.views import Home, Teste, Precos, About, Restrita
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -8,5 +8,6 @@ urlpatterns = [
     path('teste/', Teste.as_view(), name='teste'),
     path('precos/', Precos.as_view(), name='precos'),
     path('about/', About.as_view(), name='about'),
-    path('about/', About.as_view(), name='about'),
+    path('restrita/', Restrita.as_view(), name='restrita'),
+    path('', include('django.contrib.auth.urls')),
 ]
