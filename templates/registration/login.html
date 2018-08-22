@@ -9,7 +9,7 @@
 #logo {
     width: 60px;
     height: 60px;
-    margin: 30px 5px 0px 5px;
+    margin: 35px 5px 0px 5px;
 }
 .textonormal{
     font-family: 'Playfair Display', serif;
@@ -24,13 +24,16 @@
 .caixa{
     border: 2px solid rgb(254, 97, 106);
     border-radius: 5px;
-    margin-top: 10px;
+    margin-top: 15px;
+    max-width: 100%;
     padding: 15px;
     background: white;
 }
-body {background: rgb(249, 249, 249);}
+body {background: rgb(235, 235, 235);}
 input[type=submit] {margin-top: 10px;}
-
+input:not([type=submit]):focus{
+    border-bottom: 2px solid rgb(254, 97, 106) !important;
+}
 </style>
 
 <div class="container">
@@ -65,7 +68,7 @@ input[type=submit] {margin-top: 10px;}
                             </td>
                         </tr>
                     </table>
-                    <input type="submit" value="login" class="btn red darken-3">
+                    <input type="submit" value="Entrar" class="btn red darken-3">
                     <input type="hidden" name="next" value="{{ next }}">
                 </form>
             </div>

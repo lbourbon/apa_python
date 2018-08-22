@@ -7,8 +7,8 @@ Colocar termo escondido na msm página da ficha - necessário para imprimir?
 Redirecionar para area restrita se logado
 senha: hide/show
 max characters (nome: 50)
-
 texto about/preços
+ficha: tabindex= -1 nos elementos não digitaveis
 
 TODO 1:
 www.dominio.com
@@ -16,7 +16,7 @@ DRF?
 
 FEATURES:
 
-BOTOÕES: editar, tcle, orçamento, novo atend, excluir  (editar? ou apenas novo at?)
+BOTOÕES: editar, tcle, orçamento, novo atend, excluir, imprimir, diretrizes, compartilhar  (editar? ou apenas novo at?)
 Peso: ideal, esperado, predito
 IMC, SC
 ASA 1 ou 2? se anemia, IMC>30 ou comorbidades
