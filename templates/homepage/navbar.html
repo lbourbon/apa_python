@@ -2,7 +2,7 @@
     <div class="nav-wrapper">
         <a href="{% url 'home' %}" class="brand-logo" id="div-logo"><i class="material-icons">
             <img src="../static/logo.svg" id="logo" alt="logo"></i>A. P. A.</a>
-        <a href="#" data-target="mobile-menu" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+        <a href="#" data-target="mobile-home-menu" class="sidenav-trigger"><i class="material-icons">menu</i></a>
         <ul class="right hide-on-med-and-down">
             <li><a href="{% url 'home' %}">Home</a></li>
             <li><a href="{% url 'teste' %}">Teste</a></li>
@@ -14,7 +14,7 @@
     </div>
 </nav>
 
-<ul class="sidenav" id="mobile-menu">
+<ul class="sidenav" id="mobile-home-menu">
     <li><a href="{% url 'home' %}">Home</a></li>
     <li><a href="{% url 'teste' %}">Teste Grátis</a></li>
     <li><a href="{% url 'precos' %}">Preços</a></li>

@@ -14,9 +14,9 @@
                     class="material-icons">menu</i></a>
             <ul class="right">
                 <li><a class='dropdown-trigger' href='#' data-target='dropdownclas'>
-                    <i class="material-icons left">autorenew</i></a></li>
+                    <i class="material-icons left">import_export</i></a></li>
                 <ul id='dropdownclas' class='dropdown-content'>
-                    <li><a href="#!" class="black-text"><b>Ordenar:</b></a></li>
+                    <li><a href="#!" class="black-text"><b>ORDENAR:</b></a></li>
                     <li class="divider" tabindex="-1"></li>
                     <li><a href="#!" class="black-text">Nome</a></li>
                     <li><a href="#!" class="black-text">Recentes</a></li>
@@ -36,7 +36,7 @@
             <li><a href="#!">Usuário</a></li>
             <li><a href="#!">Grupo</a></li>
         </ul>
-        <li><a href="sass.html"><i class="material-icons left black-text">settings</i>Configurações</a></li>
+        <li><a href="configuracoes.html"><i class="material-icons left black-text">settings</i>Configurações</a></li>
 
         <li class="divider" tabindex="-1"></li>
         <li><a href="sass.html"><i class="material-icons left black-text">help</i>Ajuda</a></li>
@@ -50,7 +50,9 @@
 <div class="navbar-fixed hide-on-med-and-down">
     <nav>
         <div class="nav-wrapper">
-            <i class="brand-logo"> <img id="logo" src="../static/logo.svg" alt="logo">A.P.A.</i>
+            <a href="{% url 'restrita' %}" class="brand-logo" id="div-logo-rest"><i class="material-icons">
+                <img src="../static/logo.svg" id="logo-rest" alt="logo"></i>A. P. A.</a>
+
             <ul class="right hide-on-med-and-down">
                 <li>
                     <form>
@@ -67,8 +69,32 @@
                     </form>
 
                 </li>
-                <li><a href="sass.html">grande</a></li>
-                <li><a href="badges.html">grande</a></li>
+                <li><a class='dropdown-trigger' href='#' data-target='dropdownclasg' id='dropdownclasgic'>
+                    <i class="material-icons left">import_export</i></a></li>
+                <ul id="dropdownclasg" class='dropdown-content'>
+                    <li><a href="#!" class="black-text"><b>ORDENAR POR:</b></a></li>
+                    <li class="divider" tabindex="-1"></li>
+                    <li><a href="#!" class="black-text">- Nome</a></li>
+                    <li><a href="#!" class="black-text">- Recentes</a></li>
+                    <li><a href="#!" class="black-text">- Antigas</a></li>
+                </ul>
+                <li><a href="configuracoes.html"><i class="material-icons left black-text">settings</i></a></li>
+                <li><a class='dropdown-trigger' href='#' data-target='dropdownperfilg' id="perfil-grande">
+                    <i class="large material-icons left black-text">account_circle</i></a></li>
+                <ul id='dropdownperfilg' class='dropdown-content'>
+                    <li><a href="#!">logado como... NOME</a></li>
+                    <li class="divider" tabindex="-1"></li>
+                    <li><a href="#!">Usuário</a></li>
+                    <li><a href="#!">Grupo</a></li>
+                    <li class="divider" tabindex="-1"></li>
+                    <li><a href="#!">Grupo</a></li>
+                    <li><a href="#!">Grupo</a></li>
+                    <li class="divider" tabindex="-1"></li>
+                    <li><a href="{% url 'logout' %}"><i class="material-icons left black-text">arrow_back</i>Sair</a>
+                    </li>
+
+
+                </ul>
             </ul>
         </div>
     </nav>
@@ -76,17 +102,33 @@
 <!------ NAVEGACAO  GRANDE FIM------>
 
 <div class="row">
-    <div class="col s12 m4 l4 painel-lat-restrita hide-on-small-only">
-        <p>fdsfsdf<br>aaaaaaaa<br>fsdfsdfsdsf</p>
-        <p>fdsfsdf<br>fsfsfsdfsfd<br>fsdfsdfsdsf</p>
-        <p>fdsfsdf<br>fsfsfsdfsfd<br>fsdfsdfsdsf</p>
+    <div class="col l3 painel-lat-restrita hide-on-med-and-down">
+                <a href="{% url 'fichosa'%}" class="btn-large waves-effect waves-light red darken-4 z-depth-3"
+           id="btn-nova-grande"><span>+&nbsp&nbspNova</span></a>
     </div>
-    <div class="col s12 m8 l8 main-restrita">
-        <p>fdsfsdf<br>fsfsfsdfsfd<br>fsdfsdfsdsf</p>
+    <div class="main-restrita col s12 m12 l9">
+
+        <a href="{% url 'fichosa'%}" class="btn-floating btn-large waves-effect waves-light red darken-4 hide-on-large-only"
+           id="btn-nova"><i class="large material-icons black-text" id="add-icon">add</i></a>
+        <div id="lista-pacientes valign-wrapper">
+            <ul>
+                <div class="titulo-lista center-align">MEUS PACIENTES:</div>
+                {% for ficha in object_list%}
+                <div class="z-depth-2" id="item-paciente">
+                    <li><a href="{% url 'logout' %}">
+                        <div class="item-nome truncate">{{ficha.nome|upper}}</div>
+                        <div class="item-data">{{ficha.data}}</div></a>
+                        <div class="item-opcoes"><a href="{% url 'logout' %}"><i
+                                class="material-icons">more_vert</i></a></div>
+                    </li>
+                </div>
+                {% endfor %}
+            </ul>
+        </div>
     </div>
     <div class="row">
-        <div class="col s12 paginador">
-            <p>mostrando 20 de 50 apa's</p>
+        <div class="col s12 paginador center-align">
+            <span class="texto-paginador">mostrando {{object_list.count}} apa's</span>
         </div>
     </div>
 </div>

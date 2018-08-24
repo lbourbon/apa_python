@@ -1,6 +1,7 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.shortcuts import render
-from django.views.generic import TemplateView
+from fichateste.models import Fichateste
+from django.views.generic import TemplateView, ListView
+
 
 class Home(TemplateView):
     template_name='home.html'
@@ -14,5 +15,7 @@ class Precos(TemplateView):
 class About(TemplateView):
     template_name='about.html'
 
-class Restrita(LoginRequiredMixin, TemplateView):
+class Restrita(LoginRequiredMixin, ListView):
     template_name='restrita.html'
+    model = Fichateste
+    ordering = ['nome']
