@@ -13,14 +13,15 @@
             <a href="#" data-target="mobile-menu-restrita" class="sidenav-trigger"><i
                     class="material-icons">menu</i></a>
             <ul class="right">
-                <li><a class='dropdown-trigger' href='#' data-target='dropdownclas'>
+                <li><a class='dropdown-trigger' href='#' data-target='dropdownclas' data-hover='true' data-constrainWidth='false'>
                     <i class="material-icons left">import_export</i></a></li>
                 <ul id='dropdownclas' class='dropdown-content'>
                     <li><a href="#!" class="black-text"><b>ORDENAR:</b></a></li>
                     <li class="divider" tabindex="-1"></li>
-                    <li><a href="#!" class="black-text">Nome</a></li>
-                    <li><a href="#!" class="black-text">Recentes</a></li>
-                    <li><a href="#!" class="black-text">Antigas</a></li>
+                    <li><a href="{% url 'restrita'%}?ordem=nome" class="black-text">Nome (A-Z)</a></li>
+                    <li><a href="{% url 'restrita'%}?ordem=-nome" class="black-text">Nome (Z-A)</a></li>
+                    <li><a href="{% url 'restrita'%}?ordem=-data" class="black-text">Recentes</a></li>
+                    <li><a href="{% url 'restrita'%}?ordem=data" class="black-text">Antigas</a></li>
                 </ul>
                 <li><a href="pesquisar.html"><i class="material-icons">search</i></a></li>
 
@@ -84,13 +85,13 @@
                 <ul id='dropdownperfilg' class='dropdown-content'>
                     <li><a href="#!">logado como... NOME</a></li>
                     <li class="divider" tabindex="-1"></li>
-                    <li><a href="#!">Usuário</a></li>
-                    <li><a href="#!">Grupo</a></li>
+                    <li><a href="#!" class="black-text">Usuário</a></li>
+                    <li><a href="#!" class="black-text">Grupo</a></li>
                     <li class="divider" tabindex="-1"></li>
-                    <li><a href="#!">Grupo</a></li>
-                    <li><a href="#!">Grupo</a></li>
+                    <li><a href="#!" class="black-text">Grupo</a></li>
+                    <li><a href="#!" class="black-text">Grupo</a></li>
                     <li class="divider" tabindex="-1"></li>
-                    <li><a href="{% url 'logout' %}"><i class="material-icons left black-text">arrow_back</i>Sair</a>
+                    <li><a href="{% url 'logout' %}" class="black-text"><i class="material-icons left black-text">arrow_back</i>Sair</a>
                     </li>
 
 
@@ -108,7 +109,7 @@
     </div>
     <div class="main-restrita col s12 m12 l9">
 
-        <a href="{% url 'fichosa'%}" class="btn-floating btn-large waves-effect waves-light red darken-4 hide-on-large-only"
+        <a href="{% url 'fichosa' %}" class="btn-floating btn-large waves-effect waves-light red darken-4 hide-on-large-only z-depth-3"
            id="btn-nova"><i class="large material-icons black-text" id="add-icon">add</i></a>
         <div id="lista-pacientes valign-wrapper">
             <ul>
