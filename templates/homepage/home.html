@@ -3,12 +3,14 @@
 {% block main %}
 <style>
 
+html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+}
 #homeback {
     opacity: .45;
-    object-fit: contain;
-    width:auto;
-    height:auto;
-    max-height:91.4vh;
+    max-height:92vh;
+    width: auto;
 }
 
 .painel{position:relative;}
@@ -42,11 +44,10 @@
 }
 #b1{top: 50%;}
 
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 860px) {
     #homeback {
         width: 100%;
         object-fit: fill;
-        height: auto;
     }
     .center-titulo {
         top: 22%;

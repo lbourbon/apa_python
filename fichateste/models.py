@@ -9,3 +9,11 @@ class Fichateste(models.Model):
 
     def __str__(self):
         return self.nome
+
+
+    '''
+   width:auto;
+    height:auto;
+    max-height:91.4vh;
+
+    '''
