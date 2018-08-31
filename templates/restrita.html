@@ -85,7 +85,7 @@
                 <li><a class='dropdown-trigger' href='#' data-target='dropdownperfilg' id="perfil-grande">
                     <i class="large material-icons left black-text">account_circle</i></a></li>
                 <ul id='dropdownperfilg' class='dropdown-content'>
-                    <li><a href="#!">logado como... NOME</a></li>
+                    <li><a href="#!">Usuário: {{ user.username }} </a></li>
                     <li class="divider" tabindex="-1"></li>
                     <li><a href="#!" class="black-text">Usuário</a></li>
                     <li><a href="#!" class="black-text">Grupo</a></li>
@@ -129,10 +129,7 @@
                     </li>
                 </div>
                 <ul id='moredropdown' class='dropdown-content'>
-                    <li><a href="#!"><i class="material-icons">assignment</i>tcle</a></li>
                     <li><a href="#!"><i class="material-icons">description</i>tcle</a></li>
-                    <li><a href="#!"><i class="material-icons">event_note</i>tcle</a></li>
-                    <li><a href="#!"><i class="material-icons">view_module</i>tcle</a></li>
                     <li><a href="{% url 'ficha_delete' ficha.id %}"><i class="material-icons">delete</i>delete</a></li>
                 </ul>
                 {% endfor %}

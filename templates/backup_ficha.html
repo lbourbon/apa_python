@@ -15,7 +15,7 @@
 </head>
 
 <body>
-<form method="post">
+<form action="{% url 'ficha' %}" method="post">
 		{% csrf_token %}
 	<div class="container">
 		<div id="titulo">
@@ -50,7 +50,7 @@
 			</fieldset>
 		</section>
 		<section id="antrop" class="grid-item">
-			<fieldset class="circular-label  input-pequeno">
+						<fieldset class="circular-label  input-pequeno">
 				<legend>DADOS ANTROPOMÉTRICOS</legend>
 				<label>Peso: </label><input id="peso" name="peso" type="number" step="0.1"
 			{% if form.peso.value != None %}value="{{ form.peso.value|stringformat:'s' }}"{% endif %}>(kg)<br>
@@ -328,7 +328,7 @@
 					{% if form.ht.value != None %}value="{{ form.ht.value|stringformat:'s' }}"{% endif %}></label>
 					<label>Leuco<input class="lab" type="number" id="leuco" name="leuco"
 					{% if form.leuco.value != None %}value="{{ form.leuco.value|stringformat:'s'}}"{% endif %}></label>
-					<label>Plt<input class="lab" type="number" id="plt" name="plt"
+					<label>Plaq<input class="lab" type="number" id="plt" name="plt"
 					{% if form.plt.value != None %}value="{{ form.plt.value|stringformat:'s'}}"{% endif %}></label>
 					<label>Glicemia<input class="lab" type="number" step="0.1" id="gli" name="gli"
 					{% if form.gli.value != None %}value="{{ form.gli.value|stringformat:'s'}}"{% endif %}></label>
@@ -410,10 +410,11 @@
 		<section id="botoes" class="grid-item">
 			<fieldset>
 				<input class="btn-save" name="fim" type="submit" value="SALVAR">
-				<input class="btn-save" name="fim" type="submit" value="IMPRIMIR"  onClick="javascript:window.print()">
+				<input class="btn-save" name="fim" type="submit" value="IMPRIMIR" onClick="javascript:window.print()">
 			</fieldset>
 		</section>
 	</div>
 </form>
+<script src="{% static 'ficha.js' %}"></script>
 </body>
 </html>

@@ -54,6 +54,10 @@ nav {
     position: relative;
     top: .5em;
 }
+#moredropdown{
+    width: 150px !important;
+    background: rgb(255, 255, 255);
+}
 #btn-nova{
     position: fixed;
     bottom: 5vh;
@@ -86,10 +90,7 @@ nav .button-collapse i, nav .brand-logo, nav i{
 i {
     font-size: 35px !important;
 }
-#moredropdown{
-    width: 400px !important;
-    border: 2px solid red;
-}
+
 #perfil-grande, #dropdownclasgic{
     width: 150px;
     padding-left: 70px;
