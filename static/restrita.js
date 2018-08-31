@@ -1,5 +1,8 @@
 $(document).ready(function(){
     $('.sidenav').sidenav();
-    $('.dropdown-trigger').dropdown();
-    $(".dropdown-button").dropdown({ hover: true, constrainWidth: false });
+    if ( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+        $('.dropdown-trigger').dropdown({ hover: true, constrainWidth: false });
+    } else {
+        $('.dropdown-trigger').dropdown();
+    }
 });

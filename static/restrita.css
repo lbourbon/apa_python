@@ -86,8 +86,8 @@ nav .button-collapse i, nav .brand-logo, nav i{
 i {
     font-size: 35px !important;
 }
-.dropdowncontent{
-    width: 300px !important;
+#moredropdown{
+    width: 400px !important;
     border: 2px solid red;
 }
 #perfil-grande, #dropdownclasgic{

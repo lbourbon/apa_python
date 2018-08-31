@@ -13,7 +13,8 @@
             <a href="#" data-target="mobile-menu-restrita" class="sidenav-trigger"><i
                     class="material-icons">menu</i></a>
             <ul class="right">
-                <li><a class='dropdown-trigger' href='#' data-target='dropdownclas' data-hover='true' data-constrainWidth='false'>
+                <li><a class='dropdown-trigger' href='#' data-target='dropdownclas' data-hover='true'
+                       data-constrainWidth='false'>
                     <i class="material-icons left">import_export</i></a></li>
                 <ul id='dropdownclas' class='dropdown-content'>
                     <li><a href="#!" class="black-text"><b>ORDENAR:</b></a></li>
@@ -75,9 +76,10 @@
                 <ul id="dropdownclasg" class='dropdown-content'>
                     <li><a href="#!" class="black-text"><b>ORDENAR POR:</b></a></li>
                     <li class="divider" tabindex="-1"></li>
-                    <li><a href="#!" class="black-text">- Nome</a></li>
-                    <li><a href="#!" class="black-text">- Recentes</a></li>
-                    <li><a href="#!" class="black-text">- Antigas</a></li>
+                    <li><a href="{% url 'restrita'%}?ordem=nome" class="black-text">Nome (A-Z)</a></li>
+                    <li><a href="{% url 'restrita'%}?ordem=-nome" class="black-text">Nome (Z-A)</a></li>
+                    <li><a href="{% url 'restrita'%}?ordem=-data" class="black-text">Recentes</a></li>
+                    <li><a href="{% url 'restrita'%}?ordem=data" class="black-text">Antigas</a></li>
                 </ul>
                 <li><a href="configuracoes.html"><i class="material-icons left black-text">settings</i></a></li>
                 <li><a class='dropdown-trigger' href='#' data-target='dropdownperfilg' id="perfil-grande">
@@ -104,32 +106,42 @@
 
 <div class="row">
     <div class="col l3 painel-lat-restrita hide-on-med-and-down">
-                <a href="{% url 'fichosa'%}" class="btn-large waves-effect waves-light red darken-4 z-depth-3"
+        <a href="{% url 'ficha'%}" class="btn-large waves-effect waves-light red darken-4 z-depth-3"
            id="btn-nova-grande"><span>+&nbsp&nbspNova</span></a>
     </div>
     <div class="main-restrita col s12 m12 l9">
 
-        <a href="{% url 'fichosa' %}" class="btn-floating btn-large waves-effect waves-light red darken-4 hide-on-large-only z-depth-3"
+        <a href="{% url 'ficha' %}"
+           class="btn-floating btn-large waves-effect waves-light red darken-4 hide-on-large-only z-depth-3"
            id="btn-nova"><i class="large material-icons black-text" id="add-icon">add</i></a>
         <div id="lista-pacientes valign-wrapper">
             <ul>
                 <div class="titulo-lista center-align">MEUS PACIENTES:</div>
+
                 {% for ficha in object_list%}
                 <div class="z-depth-2" id="item-paciente">
-                    <li><a href="{% url 'logout' %}">
+                    <li><a href="{% url 'ficha_update' ficha.id %}">
                         <div class="item-nome truncate">{{ficha.nome|upper}}</div>
-                        <div class="item-data">{{ficha.data}}</div></a>
-                        <div class="item-opcoes"><a href="{% url 'logout' %}"><i
+                        <div class="item-data">{{ficha.data|default:"data desconhecida"}}</div>
+                    </a>
+                        <div class="item-opcoes"><a class='dropdown-trigger' href='#' data-target='moredropdown'><i
                                 class="material-icons">more_vert</i></a></div>
                     </li>
                 </div>
+                <ul id='moredropdown' class='dropdown-content'>
+                    <li><a href="#!"><i class="material-icons">assignment</i>tcle</a></li>
+                    <li><a href="#!"><i class="material-icons">description</i>tcle</a></li>
+                    <li><a href="#!"><i class="material-icons">event_note</i>tcle</a></li>
+                    <li><a href="#!"><i class="material-icons">view_module</i>tcle</a></li>
+                    <li><a href="{% url 'ficha_delete' ficha.id %}"><i class="material-icons">delete</i>delete</a></li>
+                </ul>
                 {% endfor %}
             </ul>
         </div>
     </div>
     <div class="row">
         <div class="col s12 paginador center-align">
-            <span class="texto-paginador">mostrando {{object_list.count}} apa's</span>
+            <span class="texto-paginador">mostrando {{object_list.count}} apa{{object_list.count|pluralize:"'s"}}</span>
         </div>
     </div>
 </div>

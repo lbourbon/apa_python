@@ -1,14 +1,15 @@
 APA - MOBILE FIRST!!!
 
 TODO:
-restrita
-login
-Colocar termo escondido na msm página da ficha - necessário para imprimir?
+ficha
+cadastro
 Redirecionar para area restrita se logado
 senha: hide/show
+Colocar termo escondido na msm página da ficha - necessário para imprimir?
 max characters (nome: 50)
 texto about/preços
 ficha: tabindex= -1 nos elementos não digitaveis
+ficha_delete (fake delete?) on.cascade?
 
 TODO 1:
 www.dominio.com
@@ -16,15 +17,14 @@ DRF?
 
 FEATURES:
 
-BOTOÕES: editar, tcle, orçamento, novo atend, excluir, imprimir, diretrizes, compartilhar  (editar? ou apenas novo at?)
+BOTÕES: editar, tcle, orçamento, novo atend, excluir, imprimir, diretrizes, compartilhar  (editar? ou apenas novo at?)
 Peso: ideal, esperado, predito
 IMC, SC
 ASA 1 ou 2? se anemia, IMC>30 ou comorbidades
+COMPARTILHAR -> GRUPOS/HOSPITAIS: acesso a todos os apas dos usuários inscritos
 Tipos de ficha: básica, completa, pediátrica, gestante
 Diretrizes: CARDIO/PULMONAR/SAOS/RESP/NEURO/TBG/ETILISMO
 CARIMBO VIRTUAL
-COMPARTILHAR
-GRUPOS/HOSPITAIS: acesso a todos os apas dos usuários inscritos
 RESUMO DO CASO NO FIM
 
 Cores:  paletton.com digital color meter  Imagens:  unsplash   pixabay

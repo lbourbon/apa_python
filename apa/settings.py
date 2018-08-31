@@ -29,6 +29,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'homepage',
+    'ficha',
     'fichateste',
 ]
 
@@ -47,7 +48,7 @@ ROOT_URLCONF = 'apa.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['templates', 'templates/homepage',],
+        'DIRS': ['templates', 'templates/homepage', 'templates/registration'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

@@ -1,0 +1,4 @@
+<form method="post">{% csrf_token %}
+    <p>Você tem certeze de deseja apagar a ficha de "{{ object.nome }}", criada em {{ object.data }}?</p>
+    <input type="submit" value="Confirm">
+</form>

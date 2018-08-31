@@ -1,0 +1,11 @@
+<form method="post">{% csrf_token %}
+    <input type="text" name="nome" value="{{form.nome.value|default:""}}">
+    <input type="text" name="data" value={{form.data.value|date:'d/m/Y'|default:""}}>
+    <textarea name="bio">{{ form.bio.value|default_if_none:"" }}</textarea>
+    <input type="submit" value="Update">
+</form>
+
+<form method="post">{% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Send message">
+</form>
