@@ -112,3 +112,5 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 LOGIN_REDIRECT_URL = 'restrita'
 LOGOUT_REDIRECT_URL = 'home'
+
+LOGIN_URL = 'login'

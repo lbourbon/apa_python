@@ -40,8 +40,10 @@ class Restrita(LoginRequiredMixin, ListView):
     template_name = 'restrita.html'
     model = Ficha
 
+    def get_queryset(self):
+        return Ficha.objects.filter(user=self.request.user)
+
     def get_ordering(self):
         if self.request.GET.get('ordem'):
             return self.request.GET.get('ordem')
         return '-data'
-
