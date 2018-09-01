@@ -62,7 +62,6 @@ input:not([type=submit]):focus{
                         <tr>
                             <td>Usuário ou e-mail
                                 {{ form.username }}
-        {# -->> TODO: Configurar o reset do password #}
                                 Senha <a class="right" href="{% url 'password_reset' %}">Esqueceu a senha?</a>
                                 {{ form.password }}
                             </td>
