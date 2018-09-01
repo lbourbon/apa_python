@@ -17,7 +17,7 @@ class FichaNew(LoginRequiredMixin, CreateView):
         form = FichaForm(request.POST or None)
         if form.is_valid():
             form = form.save(commit=False)
-            form.autor = request.user  # adiciona o autor da ficha antes de salvar
+            form.user = request.user  # adiciona o autor da ficha antes de salvar
             form.save()
             return redirect('restrita')
 
