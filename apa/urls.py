@@ -17,3 +17,7 @@ urlpatterns = [
     path('ficha/', FichaNew.as_view(), name='ficha'),
     path('', include('django.contrib.auth.urls')),
 ]
+
+admin.site.site_header = "Avaliação Pré-Anestésica"
+admin.site.index_title = "Meu Site - admin"
+admin.site.site_title = "admin"

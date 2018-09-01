@@ -3,3 +3,4 @@ from .models import Ficha
 # Register your models here.
 
 admin.site.register(Ficha)
+
