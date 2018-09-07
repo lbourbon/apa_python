@@ -81,3 +81,9 @@ class Restrita(LoginRequiredMixin, ListView):
         if self.request.GET.get('ordem'):
             return self.request.GET.get('ordem')
         return '-data'
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context =  super().get_context_data(object_list=object_list, **kwargs)
+        context['busca'] = str(self.request.GET.get('q'))
+        print(self.request.GET.get('q'))
+        return context

@@ -24,7 +24,6 @@
                     <li><a href="{% url 'restrita'%}?ordem=-data" class="black-text">Recentes</a></li>
                     <li><a href="{% url 'restrita'%}?ordem=data" class="black-text">Antigas</a></li>
                 </ul>
-
             </ul>
         </div>
     </nav>
@@ -88,14 +87,12 @@
     </nav>
 </div>
 <!------ NAVEGACAO  GRANDE FIM------>
-
 <div class="row">
     <div class="col l3 painel-lat-restrita hide-on-med-and-down">
         <a href="{% url 'ficha'%}" class="btn-large waves-effect waves-light red darken-4 z-depth-3"
            id="btn-nova-grande"><span>+&nbsp&nbspNova</span></a>
     </div>
     <div class="main-restrita col s12 m12 l9">
-
         <a href="{% url 'ficha' %}"
            class="btn-floating btn-large waves-effect waves-light red darken-4 hide-on-large-only z-depth-3"
            id="btn-nova"><i class="large material-icons black-text" id="add-icon">add</i></a>
@@ -104,16 +101,15 @@
                 <div class="titulo-lista center-align hide-on-med-and-down">MEUS PACIENTES:</div>
                 <div class="titulo-lista center-align hide-on-large-only">
                     <li>
-                    <form method="get" action="{% url 'restrita' %}">
-                        <div class="input-field">
-                            <input id="search-mob" name="q" type="search" required>
-                            <label class="label-icon" for="search"><i class="material-icons">search</i></label>
-                            <i class="material-icons">close</i>
-                        </div>
-                    </form>
-                </li>
+                        <form method="get" action="{% url 'restrita' %}">
+                            <div class="input-field">
+                                <input id="search-mob" name="q" type="search" required>
+                                <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+                                <i class="material-icons">close</i>
+                            </div>
+                        </form>
+                    </li>
                 </div>
-
                 {% for ficha in object_list%}
                 <div class="z-depth-2" id="item-paciente">
                     <li><a href="{% url 'ficha_update' ficha.id %}">
@@ -134,11 +130,14 @@
     </div>
     <div class="row">
         <div class="col s12 paginador center-align">
+                {% if busca != "None" %}
+            <span class="texto-paginador">mostrando {{object_list.count}} resultado{{object_list.count|pluralize:"s"}} da busca por:  {{ busca }} </span>
+                {% else %}
             <span class="texto-paginador">mostrando {{object_list.count}} apa{{object_list.count|pluralize:"'s"}}</span>
+                {% endif %}
         </div>
     </div>
 </div>
-
 {% block js %}
 <script src="../static/restrita.js"></script>
 {% endblock%}

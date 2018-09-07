@@ -11,6 +11,7 @@ nav {
 }
 #search-mob{
     display: inline;
+    max-width: 80%;
     padding: 10px 0px 10px 45px;
     max-height: 10px;
     margin: 0;
