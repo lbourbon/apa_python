@@ -1,6 +1,7 @@
 from django import forms
 from ficha.models import Ficha
 from django.forms import ModelForm
+from customauth.choices import ESTADOS_CHOICES
 from customauth.models import MyUser, Profile
 from django.contrib.auth.forms import UserCreationForm
 
@@ -21,7 +22,7 @@ class SignUpForm(UserCreationForm):
 
 class ProfileForm(forms.ModelForm):
     nome = forms.CharField(label="Nome Completo")
-    telefone = forms.IntegerField(widget=forms.NumberInput(attrs={'placeholder': 'DDD + Número'}))
+    telefone = forms.CharField(widget=forms.NumberInput(attrs={'placeholder': 'DDD + Número. Apenas dígitos.'}))
     class Meta:
         model = Profile
         fields = ('nome', 'crm', 'estado', 'telefone')

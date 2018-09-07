@@ -9,7 +9,7 @@ from django.contrib.auth.forms import ReadOnlyPasswordHashField
 class ProfileInline(admin.StackedInline):
     model = Profile
     can_delete = False
-    verbose_name_plural = 'perfis'
+    verbose_name_plural = 'perfil'
 
 
 class UserCreationForm(forms.ModelForm):

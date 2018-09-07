@@ -73,14 +73,8 @@ class Profile(models.Model):
     nome = models.CharField(max_length=255)
     crm = models.IntegerField()
     estado = models.CharField(choices=ESTADOS_CHOICES, blank=True, max_length=20)
-    telefone = models.IntegerField()
+    telefone = models.CharField(max_length=15)
+
 
     def __str__(self):
         return str(self.nome)
-
-    # @receiver(post_save, sender=MyUser)
-    # def create_or_update_user_profile(sender, instance, created, **kwargs):
-    #     if created:
-    #         Profile.objects.create(user=instance)
-    #     instance.profile.save()
-    #
