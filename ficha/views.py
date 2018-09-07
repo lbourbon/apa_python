@@ -13,13 +13,11 @@ class FichaNew(LoginRequiredMixin, CreateView):
     fields = '__all__'
     success_url = '/'
 
-    def post(self, request, *args, **kwargs):
-        form = FichaForm(request.POST or None)
-        if form.is_valid():
-            form = form.save(commit=False)
-            form.user = request.user  # adiciona o autor da ficha antes de salvar
-            form.save()
-            return redirect('restrita')
+    def form_valid(self, form):
+        form = form.save(commit=False)
+        form.user = self.request.user
+        form.save()
+        return redirect('restrita')
 
 
 class FichaUpdate(LoginRequiredMixin, PermissionRequiredMixin, UpdateView):
@@ -30,6 +28,12 @@ class FichaUpdate(LoginRequiredMixin, PermissionRequiredMixin, UpdateView):
 
     def has_permission(self):
         return self.request.user == Ficha.objects.get(pk=self.kwargs['pk']).user
+
+    def form_valid(self, form):
+        form = form.save(commit=False)
+        form.user = self.request.user
+        form.save()
+        return redirect('restrita')
 
 
 class FichaDelete(LoginRequiredMixin, PermissionRequiredMixin, DeleteView):

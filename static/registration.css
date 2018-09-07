@@ -1,0 +1,30 @@
+body {background: rgb(235, 235, 235);}
+#logo {
+    width: 60px;
+    height: 60px;
+    margin: 35px 5px 0px 5px;
+}
+.textonormal{
+    font-family: 'Playfair Display', serif;
+    text-shadow: 0px 0px;
+}
+#div-logo{
+    text-shadow: 1px 1px #b71c1c;
+    color: black;
+    font-family: 'Kaushan Script', cursive;
+    font-size:  2.2em;
+}
+.caixa{
+    margin: 0 auto;
+    width: 300px;
+    border: 2px solid rgb(254, 97, 106);
+    border-radius: 5px;
+    margin-top: 15px;
+    max-width: 100%;
+    padding: 15px;
+    background: white;
+}
+input[type=submit] {margin-top: 10px;}
+input:not([type=submit]):focus{
+    border-bottom: 2px solid rgb(254, 97, 106) !important;
+}

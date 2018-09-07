@@ -1,20 +1,15 @@
 APA - MOBILE FIRST!!!
 
 TODO:
-cadastro
-ficha
-Redirecionar para area restrita se logado
 home background(mobile)
+ficha
+ - max characters (nome: 50)
+ - tabindex= -1 nos elementos não digitaveis
 senha: hide/show
-Colocar termo escondido na msm página da ficha - necessário para imprimir?
-max characters (nome: 50)
 texto about/preços
-ficha: tabindex= -1 nos elementos não digitaveis
+Colocar termo escondido na msm página da ficha - necessário para imprimir?
 ficha_delete (fake delete?) on.cascade?
 
-TODO 1:
-www.dominio.com
-DRF?
 
 FEATURES:
 

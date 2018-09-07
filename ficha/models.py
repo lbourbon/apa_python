@@ -1,11 +1,10 @@
 from django.db import models
 from .choices import *
-from django.contrib.auth.models import User
-#import forms
-# Create your models here.
+from customauth.models import MyUser
+
 
 class Ficha(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
+    user = models.ForeignKey(MyUser, on_delete=models.CASCADE, null=True, blank=True)
     data = models.DateField(null=True, blank=True)
     nome = models.CharField(max_length=100, blank=True)
     idade = models.IntegerField(null=True, blank=True)
@@ -126,7 +125,5 @@ class Ficha(models.Model):
     prescricao3 = models.CharField(max_length=200, blank=True)
     asa = models.PositiveSmallIntegerField(default=1, blank=True)
 
-
     def __str__(self):
         return self.nome
-

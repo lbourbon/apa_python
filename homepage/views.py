@@ -1,14 +1,21 @@
 from ficha.models import Ficha
+from django.urls import reverse_lazy
 from django.shortcuts import redirect
+from forms import SignUpForm, ProfileForm
 from django.views.generic.edit import FormView
 from django.contrib.auth import login, authenticate
-from django.contrib.auth.forms import UserCreationForm
 from django.views.generic import TemplateView, ListView
 from django.contrib.auth.mixins import LoginRequiredMixin
 
 
 class Home(TemplateView):
     template_name = 'home.html'
+
+    # redirect logged users to 'restrita'
+    def dispatch(self, request, *args, **kwargs):
+        if request.user.is_authenticated:
+            return redirect('restrita')
+        return super().dispatch(request, *args, **kwargs)
 
 
 class Teste(TemplateView):
@@ -24,16 +31,27 @@ class About(TemplateView):
 
 
 class Cadastro(FormView):
-    form_class = UserCreationForm
+    form_class = SignUpForm
     template_name = 'cadastro.html'
 
     def form_valid(self, form):
         form.save()
-        username = form.cleaned_data.get('username')
+        email = form.cleaned_data.get('email')
         raw_password = form.cleaned_data.get('password1')
-        user = authenticate(username=username, password=raw_password)
+        user = authenticate(email=email, password=raw_password)
         login(self.request, user)
-        return redirect('restrita')
+        return redirect('profile')
+
+
+class Profile(LoginRequiredMixin, FormView):
+    form_class = ProfileForm
+    template_name = 'profile.html'
+    success_url = reverse_lazy('restrita')
+
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        form.save()
+        return super().form_valid(form)
 
 
 class Restrita(LoginRequiredMixin, ListView):

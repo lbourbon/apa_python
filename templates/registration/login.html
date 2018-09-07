@@ -1,58 +1,25 @@
 {% extends "base.html" %}
-
+{% load static %}
+{% block meta %}
+<link rel="stylesheet" href="{% static 'registration.css' %}" media="screen">
+{% endblock%}
+{% block title %} Login - A.P.A. {% endblock%}
 {% block main %}
-<style>
-.mycenter {
-    margin: 0 auto;
-    width: 300px;
-}
-#logo {
-    width: 60px;
-    height: 60px;
-    margin: 35px 5px 0px 5px;
-}
-.textonormal{
-    font-family: 'Playfair Display', serif;
-    text-shadow: 0px 0px;
-}
-#div-logo{
-    text-shadow: 1px 1px #b71c1c;
-    color: black;
-    font-family: 'Kaushan Script', cursive;
-    font-size:  2.2em;
-}
-.caixa{
-    border: 2px solid rgb(254, 97, 106);
-    border-radius: 5px;
-    margin-top: 15px;
-    max-width: 100%;
-    padding: 15px;
-    background: white;
-}
-body {background: rgb(235, 235, 235);}
-input[type=submit] {margin-top: 10px;}
-input:not([type=submit]):focus{
-    border-bottom: 2px solid rgb(254, 97, 106) !important;
-}
-</style>
-
 <div class="container">
     <div class="row">
         <div class="col s12 center-align">
             <a href="{% url 'home' %}" class="brand-logo" id="div-logo"><i class="material-icons">
                 <img src="../static/logo.svg" id="logo" alt="logo"></i><br>
                 <span class="textonormal">Login - </span>A. P. A.</a>
-            <div class="mycenter caixa z-depth-4">
+            <div class="caixa z-depth-4">
                 {% if form.errors %}
-                <p>Your username and password didn't match. Please try again.</p>
+                <p class="red-text">E-mail e/ou senha incorretos. Tente novamente. </p>
                 {% endif %}
-
                 {% if next %}
                 {% if user.is_authenticated %}
-                <p>Your account doesn't have access to this page. To proceed,
-                    please login with an account that has access.</p>
+                <p class="red-text">Sua conta não tem acesso a essa página. Favor faça o login com uma conta com acesso.</p>
                 {% else %}
-                <p>Please login to see this page.</p>
+                <p class="red-text">Por favor, faça o login para visualizar a página</p>
                 {% endif %}
                 {% endif %}
 
@@ -60,7 +27,7 @@ input:not([type=submit]):focus{
                     {% csrf_token %}
                     <table class="highlight">
                         <tr>
-                            <td>Usuário ou e-mail
+                            <td>E-mail
                                 {{ form.username }}
                                 Senha <a class="right" href="{% url 'password_reset' %}">Esqueceu a senha?</a>
                                 {{ form.password }}
@@ -71,7 +38,7 @@ input:not([type=submit]):focus{
                     <input type="hidden" name="next" value="{{ next }}">
                 </form>
             </div>
-            <div class="mycenter caixa z-depth-4">
+            <div class="caixa z-depth-4">
                 <div class="textonormal">Ainda não tem conta? &nbsp<a href="{% url 'cadastro' %}"> Cadastre-se</a></div>
 
             </div>

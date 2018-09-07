@@ -5,13 +5,12 @@
 {% endblock%}
 {% block title %} Cadastro - A.P.A. {% endblock%}
 {% block main %}
-
 <div class="container">
     <div class="row">
         <div class="col s12 center-align">
             <a href="{% url 'home' %}" class="brand-logo" id="div-logo"><i class="material-icons">
                 <img src="../static/logo.svg" id="logo" alt="logo"></i><br>
-                <span class="textonormal">CADASTRE-SE</span></a>
+                <span class="textonormal">Quase lá... Último passo</span></a>
             <div class="caixa z-depth-4">
                 {% for field in form %}
                 {% if field.help_text %}
@@ -21,16 +20,20 @@
                 <p style="color: red">{{ error }}</p>
                 {% endfor %}
                 {% endfor %}
-                <form method="post" action="{% url 'cadastro' %}">
+                <form method="post" action="{% url 'profile' %}">
                     {% csrf_token %}
+
                     <table class="highlight">
                         <tr>
-                            <td>E-mail
-                                {{ form.email }}
-                                Senha
-                                {{ form.password1 }}
-                                Confirmação de senha
-                                {{ form.password2 }}
+                            <td>
+                                {{ form.nome.label_tag }}
+                                {{ form.nome }}
+                                {{ form.telefone.label_tag }}
+                                {{ form.telefone }}
+                                {{ form.crm.label_tag }}
+                                {{ form.crm }}
+                                {{ form.estado.label_tag }}
+                                {{ form.estado }}
                             </td>
                         </tr>
                     </table>
@@ -39,10 +42,21 @@
                 </form>
             </div>
             <div class="caixa z-depth-4">
-                <div class="textonormal">Já tem conta? Faça o &nbsp<a href="{% url 'login' %}">Login</a></div>
+                <div class="textonormal">Quero preencher depois... &nbsp<a href="{% url 'restrita' %}">Pular etapa</a></div>
 
             </div>
         </div>
     </div>
+    <div class="row">
+    </div>
 </div>
+
+{% endblock %}
+{% block js %}
+<script>
+$(document).ready(function(){
+    $('select').formSelect();
+  });
+
+</script>
 {% endblock %}
