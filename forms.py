@@ -1,7 +1,6 @@
 from django import forms
 from ficha.models import Ficha
 from django.forms import ModelForm
-from customauth.choices import ESTADOS_CHOICES
 from customauth.models import MyUser, Profile
 from django.contrib.auth.forms import UserCreationForm
 

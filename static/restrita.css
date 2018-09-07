@@ -9,6 +9,12 @@ i {color:black;}
 nav {
     height: 9vh;
 }
+#search-mob{
+    display: inline;
+    padding: 10px 0px 10px 45px;
+    max-height: 10px;
+    margin: 0;
+}
 .col {
     padding: 0 !important;
 }
@@ -68,6 +74,9 @@ nav {
     height: 5vh;
     background: rgb(248, 248, 248);
 }
+
+
+
 @media only screen and (min-width: 993px) {
 nav {
     height: 4.2em;
@@ -90,7 +99,12 @@ nav .button-collapse i, nav .brand-logo, nav i{
 i {
     font-size: 35px !important;
 }
-
+#search{
+    min-width:300px;
+    display: inline;
+    height: 35px;
+    background: transparent;
+}
 #perfil-grande, #dropdownclasgic{
     width: 150px;
     padding-left: 70px;

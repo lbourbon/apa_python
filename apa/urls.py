@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.urls import path, include
-from homepage.views import Home, Teste, Precos, About, Restrita, Cadastro, Profile
+from homepage.views import Home, Teste, Precos, About, Restrita, Cadastro, Profile, Configuracoes, Ajuda, Termos
 from ficha.views import FichaNew, FichaUpdate, FichaDelete
 
 
@@ -13,6 +13,9 @@ urlpatterns = [
     path('precos/', Precos.as_view(), name='precos'),
     path('about/', About.as_view(), name='about'),
     path('restrita/', Restrita.as_view(), name='restrita'),
+    path('configuracoes/', Configuracoes.as_view(), name='configuracoes'),
+    path('ajuda/', Ajuda.as_view(), name='ajuda'),
+    path('termos/', Termos.as_view(), name='termos'),
     path('ficha/', FichaNew.as_view(), name='ficha'),
     path('ficha_update/<int:pk>', FichaUpdate.as_view(), name='ficha_update'),
     path('ficha_delete/<int:pk>', FichaDelete.as_view(), name='ficha_delete'),

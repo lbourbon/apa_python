@@ -30,6 +30,18 @@ class About(TemplateView):
     template_name = 'about.html'
 
 
+class Configuracoes(TemplateView):
+    template_name = 'configuracoes.html'
+
+
+class Ajuda(TemplateView):
+    template_name = 'ajuda.html'
+
+
+class Termos(TemplateView):
+    template_name = 'termos.html'
+
+
 class Cadastro(FormView):
     form_class = SignUpForm
     template_name = 'cadastro.html'
@@ -59,7 +71,11 @@ class Restrita(LoginRequiredMixin, ListView):
     model = Ficha
 
     def get_queryset(self):
-        return Ficha.objects.filter(user=self.request.user)
+        query = Ficha.objects.filter(user=self.request.user)
+        search = self.request.GET.get('q')
+        if search:
+            query = query.filter(nome__contains=search)
+        return query
 
     def get_ordering(self):
         if self.request.GET.get('ordem'):
