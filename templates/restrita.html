@@ -112,29 +112,31 @@
                 </div>
                 {% for ficha in object_list%}
                 <div class="z-depth-2" id="item-paciente">
-                    <li><a href="{% url 'ficha_update' ficha.id %}">
+                    <a href="{% url 'ficha_update' ficha.id %}">
                         <div class="item-nome truncate">{{ficha.nome|upper}}</div>
                         <div class="item-data">{{ficha.data|default:"data desconhecida"}}</div>
                     </a>
-                        <div class="item-opcoes"><a class='dropdown-trigger' href='#' data-target='moredropdown'><i
-                                class="material-icons">more_vert</i></a></div>
-                    </li>
+                    <div class="mydropdown">
+                        <button class="mydropbtn"><i class="material-icons">more_vert</i></button>
+                        <div class="mydropdown-content">
+                            <a href="{% url 'ficha_update' ficha.id %}"><i class="material-icons">edit</i>editar</a>
+                            <a href="{% url 'tcle' ficha.id %}"><i class="material-icons">description</i>TCLE</a>
+                            <a href="{% url 'ficha_delete' ficha.id %}"><i class="material-icons">attach_money</i>orçamento</a>
+                            <a href="{% url 'ficha_delete' ficha.id %}"><i class="material-icons">delete</i>delete</a>
+                        </div>
+                    </div>
                 </div>
-                <ul id='moredropdown' class='dropdown-content'>
-                    <li><a href="#!"><i class="material-icons">description</i>tcle</a></li>
-                    <li><a href="{% url 'ficha_delete' ficha.id %}"><i class="material-icons">delete</i>delete</a></li>
-                </ul>
                 {% endfor %}
             </ul>
         </div>
     </div>
     <div class="row">
         <div class="col s12 paginador center-align">
-                {% if busca != "None" %}
+            {% if busca != "None" %}
             <span class="texto-paginador">mostrando {{object_list.count}} resultado{{object_list.count|pluralize:"s"}} da busca por:  {{ busca }} </span>
-                {% else %}
+            {% else %}
             <span class="texto-paginador">mostrando {{object_list.count}} apa{{object_list.count|pluralize:"'s"}}</span>
-                {% endif %}
+            {% endif %}
         </div>
     </div>
 </div>

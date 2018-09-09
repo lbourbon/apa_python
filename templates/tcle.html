@@ -1,0 +1,63 @@
+{% load static %}
+<!doctype html>
+<html lang="pt-BR">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport"
+	      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<link rel="stylesheet" href="{% static 'tcle.css' %}">
+	<title>TCLE</title>
+</head>
+<body>
+<div id="termo_container">
+	<div id="termo_titulo">
+		<img src="../static/logo.svg" alt="logo" width="70" height="70" class="mt-5">
+		<h2>TERMO DE CONSENTIMENTO LIVRE E
+		ESCLARECIDO PARA PROCEDIMENTO ANESTÉSICO</h2>
+	</div>
+
+	<div id="termo_corpo">
+
+		<p> Considerando o art.59 do Código de Ética Médica e os artigos 6º III e 39º VI da Lei 8.078/90 do Código de
+			Defesa do Consumidor, que garantem ao paciente a plena informação sobre seu estado de saúde, eu,
+			<b>{{ form.nome.value }}</b>, CPF nº <b>{{form.cpf.value}}</b>, em pleno gozo de minhas faculdades mentais,
+			AUTORIZO os médicos anestesiologistas responsáveis pela minha assistência, a efetuar os procedimentos
+			anestésicos
+			necessários para o procedimento cirúrgico: <b>{{ form.cirurgia.value }}</b> , ao qual concordei em ser
+			submetido.
+		</p>
+		<p> Confirmo que recebi, neste momento, todas as informações necessárias sobre o procedimento anestésico e todos
+			os riscos inerentes a esse procedimento além dos possíveis efeitos colaterais e complicações, tais como
+			febre, dor de cabeça, tremores, alterações do comportamento, reações alérgicas e reações anafiláticas,
+			algumas
+			potencialmente fatais. Estou ciente que, caso haja alguma eventual complicação, outros procedimentos médicos
+			poderão ser necessários, inclusive transfusão sanguínea, ficando estes desde já pré-autorizados. Nessa
+			situação, serei avaliado e acompanhado pelo médico, sendo que autorizo a realização de outro procedimento,
+			exame
+			ou tratamento em situações imprevistas que possam ocorrer durante o presente procedimento e que necessitem
+			de
+			cuidados especializados diferentes daqueles inicialmente propostos; tal conduta para afastar os riscos
+			prejudiciais à saúde e à vida.
+		</p>
+		<p> A fim de prevenir e afastar eventuais problemas, declaro também que prestei ao Médico Anestesista todas as
+			informações necessárias ao pleno conhecimento deste acerca de minhas condições físicas e psicológicas, sem
+			ocultar qualquer fato ou elemento. Todavia, em se tratando de procedimento médico, restam presentes os
+			riscos inerentes e naturais ao ato anestésico.
+		</p>
+		<p>Confirmo que todas as minhas dúvidas foram sanadas e compreendo que o médico anestesiologista somente se
+			responsabiliza pelos procedimentos de sua especialidade. A presente declaração foi lida e compreendida em
+			todos os seus termos, inclusive da opção de revogação desta, caso não queira mais autorizar o procedimento.
+		</p>
+
+	</div>
+
+	<div id="termo_assinatura">
+		<div class="traco">ASSINATURA PACIENTE</div>
+		<div class="traco">ASSINATURA ANESTESIOLOGISTA</div>
+	</div>
+
+	<div id="termo_data">ARACAJU, {{ form.data.value }}</div>
+</div>
+</body>
+</html>

@@ -1,4 +1,27 @@
 {% extends "base.html" %}
+{% load static %}
+{% block meta %}
+<link rel="stylesheet" href="{% static 'restrita.css' %}" media="screen">
+{% endblock%}
+{% block title %} Área de Membros - A.P.A. {% endblock%}
 {% block main %}
-Em breve...
-{% endblock %}
+
+{% for ficha in object_list%}
+<div class="z-depth-2" id="item-paciente">
+    <a href="{% url 'ficha_update' ficha.id %}">
+        <div class="item-nome truncate">{{ficha.nome|upper}}</div>
+        <div class="item-data">{{ficha.data|default:"data desconhecida"}}</div></a>
+    <div class="mydropdown">
+        <button class="mydropbtn"><i class="material-icons">more_vert</i></button>
+        <div class="mydropdown-content">
+            <a href="{% url 'ficha_update' ficha.id %}"><i class="material-icons">edit</i>editar</a>
+            <a href="{% url 'tcle' ficha.id %}"><i class="material-icons">description</i>TCLE</a>
+            <a href="{% url 'ficha_delete' ficha.id %}"><i class="material-icons">delete</i>delete</a>
+        </div>
+    </div>
+</div>
+{% endfor %}
+{% block js %}
+<script src="../static/restrita.js"></script>
+{% endblock%}
+{% endblock%}

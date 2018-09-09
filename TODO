@@ -13,7 +13,7 @@ ficha_delete (fake delete?) on.cascade?
 
 FEATURES:
 
-BOTÕES: editar, tcle, orçamento, novo atend, excluir, imprimir, diretrizes, compartilhar  (editar? ou apenas novo at?)
+BOTÕES: orçamento, novo atend, imprimir, diretrizes, compartilhar  (editar? ou apenas novo at?)
 Peso: ideal, esperado, predito
 IMC, SC
 ASA 1 ou 2? se anemia, IMC>30 ou comorbidades

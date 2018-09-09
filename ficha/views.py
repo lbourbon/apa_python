@@ -1,4 +1,3 @@
-from forms import FichaForm
 from ficha.models import Ficha
 from django.urls import reverse_lazy
 from django.shortcuts import redirect
@@ -39,6 +38,16 @@ class FichaUpdate(LoginRequiredMixin, PermissionRequiredMixin, UpdateView):
 class FichaDelete(LoginRequiredMixin, PermissionRequiredMixin, DeleteView):
     template_name = 'ficha_delete.html'
     model = Ficha
+    success_url = reverse_lazy('restrita')
+
+    def has_permission(self):
+        return self.request.user == Ficha.objects.get(pk=self.kwargs['pk']).user
+
+
+class Tcle(LoginRequiredMixin, PermissionRequiredMixin, UpdateView):
+    template_name = 'tcle.html'
+    model = Ficha
+    fields = '__all__'
     success_url = reverse_lazy('restrita')
 
     def has_permission(self):

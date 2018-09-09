@@ -18,8 +18,28 @@ class Home(TemplateView):
         return super().dispatch(request, *args, **kwargs)
 
 
-class Teste(TemplateView):
+
+class Teste(LoginRequiredMixin, ListView):
     template_name = 'teste.html'
+    model = Ficha
+
+    def get_queryset(self):
+        query = Ficha.objects.filter(user=self.request.user)
+        search = self.request.GET.get('q')
+        if search:
+            query = query.filter(nome__contains=search)
+        return query
+
+    def get_ordering(self):
+        if self.request.GET.get('ordem'):
+            print(self.request.GET.get('ordem'))
+            return self.request.GET.get('ordem')
+        return '-data'
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super().get_context_data(object_list=object_list, **kwargs)
+        context['busca'] = str(self.request.GET.get('q'))
+        return context
 
 
 class Precos(TemplateView):
@@ -71,19 +91,21 @@ class Restrita(LoginRequiredMixin, ListView):
     model = Ficha
 
     def get_queryset(self):
+        # só pega as fichas do usuário
         query = Ficha.objects.filter(user=self.request.user)
+        # coloca no ordem solicitada
+        if self.request.GET.get('ordem'):
+            query = query.order_by(str(self.request.GET.get('ordem')))
+        else:
+            query = query.order_by('-data')
+
         search = self.request.GET.get('q')
         if search:
             query = query.filter(nome__contains=search)
         return query
 
-    def get_ordering(self):
-        if self.request.GET.get('ordem'):
-            return self.request.GET.get('ordem')
-        return '-data'
 
-    def get_context_data(self, *, object_list=None, **kwargs):
-        context =  super().get_context_data(object_list=object_list, **kwargs)
-        context['busca'] = str(self.request.GET.get('q'))
-        print(self.request.GET.get('q'))
-        return context
+    # def get_context_data(self, *, object_list=None, **kwargs):
+    #     context = super().get_context_data(object_list=object_list, **kwargs)
+    #     context['busca'] = str(self.request.GET.get('q'))
+    #     return context
