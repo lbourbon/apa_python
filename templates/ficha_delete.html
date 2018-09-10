@@ -1,4 +1,27 @@
-<form method="post">{% csrf_token %}
-    <p>Você tem certeza de deseja apagar a ficha de "{{ object.nome }}", criada em {{ object.data }}?</p>
-    <input type="submit" value="Confirm">
-</form>
+{% extends "base.html" %}
+{% load static %}
+{% block meta %}
+<link rel="stylesheet" href="{% static 'password.css' %}" media="screen">
+{% endblock%}
+{% block title %} Apagar Ficha - A.P.A. {% endblock%}
+{% block main %}
+<div class="container">
+    <div class="row">
+        <div class="col s12 center-align">
+            <br>
+            <div class="caixa z-depth-4">
+                <div class="highlight flow-text">
+                    <form method="post">
+                        {% csrf_token %}
+                        Tem certeza de deseja apagar a ficha de "{{ object.nome }}",
+                        criada em {{ object.data }} ?
+                        <br>
+                        <input class="btn red darken-4" type="submit" value="APAGAR">
+                        <a href="{% url 'restrita' %}" class="btn red darken-4">CANCELAR</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -2,6 +2,7 @@ from ficha.models import Ficha
 from django.urls import reverse_lazy
 from django.shortcuts import redirect
 from forms import SignUpForm, ProfileForm
+from django.db.models.functions import Lower
 from django.views.generic.edit import FormView
 from django.contrib.auth import login, authenticate
 from django.views.generic import TemplateView, ListView
@@ -16,7 +17,6 @@ class Home(TemplateView):
         if request.user.is_authenticated:
             return redirect('restrita')
         return super().dispatch(request, *args, **kwargs)
-
 
 
 class Teste(LoginRequiredMixin, ListView):
@@ -90,22 +90,33 @@ class Restrita(LoginRequiredMixin, ListView):
     template_name = 'restrita.html'
     model = Ficha
 
+    def order_query(self, query):
+        ordem = str(self.request.GET.get('ordem'))
+        if ordem == 'nome':
+            query = query.order_by(Lower('nome'))
+        elif ordem == '-nome':
+            query = query.order_by(Lower('nome')).reverse()
+        elif ordem == 'data':
+            query = query.order_by('data')
+        elif ordem == '-data':
+            query = query.order_by('-data')
+        return query
+
     def get_queryset(self):
-        # só pega as fichas do usuário
+        # pega apenas as fichas do usuário
         query = Ficha.objects.filter(user=self.request.user)
         # coloca no ordem solicitada
         if self.request.GET.get('ordem'):
-            query = query.order_by(str(self.request.GET.get('ordem')))
+            query = self.order_query(query)
         else:
             query = query.order_by('-data')
 
         search = self.request.GET.get('q')
         if search:
-            query = query.filter(nome__contains=search)
+            query = query.filter(nome__unaccent__icontains=search)
         return query
 
-
-    # def get_context_data(self, *, object_list=None, **kwargs):
-    #     context = super().get_context_data(object_list=object_list, **kwargs)
-    #     context['busca'] = str(self.request.GET.get('q'))
-    #     return context
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super().get_context_data(object_list=object_list, **kwargs)
+        context['busca'] = str(self.request.GET.get('q'))
+        return context
