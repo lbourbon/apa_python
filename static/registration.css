@@ -28,3 +28,9 @@ input[type=submit] {margin-top: 10px;}
 input:not([type=submit]):focus{
     border-bottom: 2px solid rgb(254, 97, 106) !important;
 }
+
+
+@media only screen and (min-width: 768px) {
+.flow-text {
+    font-size: 1.3rem;
+}

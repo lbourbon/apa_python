@@ -52,3 +52,12 @@ class Tcle(LoginRequiredMixin, PermissionRequiredMixin, UpdateView):
 
     def has_permission(self):
         return self.request.user == Ficha.objects.get(pk=self.kwargs['pk']).user
+
+class Orcamento(LoginRequiredMixin, PermissionRequiredMixin, UpdateView):
+    template_name = 'orcamento.html'
+    model = Ficha
+    fields = '__all__'
+    success_url = reverse_lazy('restrita')
+
+    def has_permission(self):
+        return self.request.user == Ficha.objects.get(pk=self.kwargs['pk']).user

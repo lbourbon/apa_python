@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% load static %}
+{% block meta %}
+<link rel="stylesheet" href="{% static 'tcle.css' %}">
+{% endblock%}
+{% block title %} TCLE - A.P.A. {% endblock%}
+{% block main %}
+<div id="termo_container">
+    <div id="termo_titulo">
+        <img src="../static/logo.svg" alt="logo" width="70" height="70" class="mt-5">
+        <h5>PREVISÃO ORÇAMENTÁRIA PARA PROCEDIMENTO ANESTÉSICO</h5>
+    </div>
+    <div id="termo_corpo">
+        <p> Fazer texto de orçamento o art.59 do Código de Ética Médica e os artigos 6º III e 39º VI da Lei 8.078/90 do Código de
+            Defesa do Consumidor, que garantem ao paciente a plena informação sobre seu estado de saúde, eu,
+            <b>{{ form.nome.value }}</b>, CPF nº <b>{{form.cpf.value}}</b>, em pleno gozo de minhas faculdades mentais,
+            AUTORIZO os médicos anestesiologistas responsáveis pela minha assistência, a efetuar os procedimentos
+            anestésicos
+            necessários para o procedimento cirúrgico: <b>{{ form.cirurgia.value }}</b> , ao qual concordei em ser
+            submetido.
+        </p>
+
+    </div>
+    <div id="termo_assinatura">
+        <div class="traco">ASSINATURA PACIENTE</div>
+        <div class="traco">ASSINATURA ANESTESIOLOGISTA</div>
+    </div>
+    <div id="termo_data">ARACAJU, {{ form.data.value }}</div>
+</div>
+{% endblock %}

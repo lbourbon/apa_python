@@ -23,24 +23,6 @@ class Teste(LoginRequiredMixin, ListView):
     template_name = 'teste.html'
     model = Ficha
 
-    def get_queryset(self):
-        query = Ficha.objects.filter(user=self.request.user)
-        search = self.request.GET.get('q')
-        if search:
-            query = query.filter(nome__contains=search)
-        return query
-
-    def get_ordering(self):
-        if self.request.GET.get('ordem'):
-            print(self.request.GET.get('ordem'))
-            return self.request.GET.get('ordem')
-        return '-data'
-
-    def get_context_data(self, *, object_list=None, **kwargs):
-        context = super().get_context_data(object_list=object_list, **kwargs)
-        context['busca'] = str(self.request.GET.get('q'))
-        return context
-
 
 class Precos(TemplateView):
     template_name = 'precos.html'
@@ -48,6 +30,10 @@ class Precos(TemplateView):
 
 class About(TemplateView):
     template_name = 'about.html'
+
+
+class Contato(TemplateView):
+    template_name = 'contato.html'
 
 
 class Configuracoes(TemplateView):

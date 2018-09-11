@@ -1,8 +1,7 @@
 from django.contrib import admin
 from django.urls import path, include
-from homepage.views import Home, Teste, Precos, About, Restrita, Cadastro, Profile, Configuracoes, Ajuda, Termos
-from ficha.views import FichaNew, FichaUpdate, FichaDelete, Tcle
-
+from homepage.views import Home, Teste, Precos, About, Contato, Restrita, Cadastro, Profile, Configuracoes, Ajuda, Termos
+from ficha.views import FichaNew, FichaUpdate, FichaDelete, Tcle, Orcamento
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -12,6 +11,7 @@ urlpatterns = [
     path('teste/', Teste.as_view(), name='teste'),
     path('precos/', Precos.as_view(), name='precos'),
     path('about/', About.as_view(), name='about'),
+    path('contato/', Contato.as_view(), name='contato'),
     path('restrita/', Restrita.as_view(), name='restrita'),
     path('configuracoes/', Configuracoes.as_view(), name='configuracoes'),
     path('ajuda/', Ajuda.as_view(), name='ajuda'),
@@ -20,6 +20,7 @@ urlpatterns = [
     path('ficha_update/<int:pk>', FichaUpdate.as_view(), name='ficha_update'),
     path('ficha_delete/<int:pk>', FichaDelete.as_view(), name='ficha_delete'),
     path('tcle/<int:pk>', Tcle.as_view(), name='tcle'),
+    path('orcamento/<int:pk>', Orcamento.as_view(), name='orcamento'),
     path('', include('django.contrib.auth.urls')),
 ]
 

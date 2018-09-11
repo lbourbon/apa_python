@@ -1,11 +1,23 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-Dúvidas ou sugestões: <br>
-avaliacaopreanestesica.contato@gmail.com
-</body>
-</html>
+{% extends "base.html" %}
+{% load static %}
+{% block meta %}
+<link rel="stylesheet" href="{% static 'password.css' %}" media="screen">
+{% endblock%}
+{% block title %} Apagar Ficha - A.P.A. {% endblock%}
+{% block main %}
+<div class="container">
+    <div class="row">
+        <div class="col s12 center-align">
+            <br>
+            <div class="caixa z-depth-4">
+                <div class="highlight flow-text">
+                    <p class="flow-text"> Em caso de dúvidas, críticas ou sugestões, entre em contato pelo email:
+                        <a href="mailto:avaliacaopreanestesica.contato@gmail.com">contato@avaliacaopreanestesica.com</a>
+                    </p>
+                    <a href="{% url 'restrita' %}" class="btn red darken-4">VOLTAR</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

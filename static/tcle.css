@@ -1,6 +1,7 @@
 body {
     width: 100%;
     margin: auto;
+    font-size: 14px;
 }
 
 p {
@@ -9,14 +10,13 @@ text-align: justify;
 
 #termo_container{
     display: grid;
-        background: white;
+    background: white;
     grid-template-columns: 1fr auto 1fr;
     grid-template-rows: 1fr auto 1fr 1fr;
     justify-items: strech;
     align-items: center;
     grid-gap: 3em;
 }
-
 #termo_titulo{
     text-align: center;
     grid-column: 2/3;
@@ -24,16 +24,13 @@ text-align: justify;
     display: flex;
     flex-direction: row;
 }
-
 .mt-5{
     margin-top: 5px;
 }
-
 #termo_corpo{
     grid-column: 2/3;
     grid-row: 2/3;
 }
-
 #termo_assinatura{
     text-align: center;
     grid-column: 2/3;
@@ -42,13 +39,10 @@ text-align: justify;
     justify-content:space-around;
     font-size: .85em;
     letter-spacing: .1em;
-
 }
-
 .traco {
     text-decoration: overline;
 }
-
 #termo_data{
     font-size: .9em;
     letter-spacing: .03em;

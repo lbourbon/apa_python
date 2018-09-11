@@ -33,8 +33,8 @@
         <li><a href="{% url 'configuracoes' %}"><i class="material-icons left black-text">settings</i>Configurações</a>
         </li>
         <li class="divider" tabindex="-1"></li>
-        <li><a href="sass.html"><i class="material-icons left black-text">help</i>Ajuda</a></li>
-        <li><a href="sass.html"><i class="material-icons left black-text">description</i>Termos do Serviço</a></li>
+        <li><a href="{% url 'ajuda' %}"><i class="material-icons left black-text">help</i>Ajuda</a></li>
+        <li><a href="{% url 'termos' %}"><i class="material-icons left black-text">description</i>Termos do Serviço</a></li>
         <li class="divider" tabindex="-1"></li>
         <li><a href="{% url 'logout' %}"><i class="material-icons left black-text">arrow_back</i>Sair</a></li>
     </ul>
@@ -72,12 +72,10 @@
                     <i class="large material-icons left black-text">account_circle</i></a></li>
                 <ul id='dropdownperfilg' class='dropdown-content'>
                     <li><a href="#!">Usuário: {{ user.email }} </a></li>
-                    <li class="divider" tabindex="-1"></li>
                     <li><a href="{% url 'password_change' %}" class="black-text">Alterar senha</a></li>
-                    <li><a href="#!" class="black-text">Grupo</a></li>
                     <li class="divider" tabindex="-1"></li>
-                    <li><a href="#!" class="black-text">Grupo</a></li>
-                    <li><a href="#!" class="black-text">Grupo</a></li>
+                    <li><a href="{% url 'ajuda' %}" class="black-text">Ajuda</a></li>
+                    <li><a href="{% url 'termos' %}" class="black-text">Termos do Serviço</a></li>
                     <li class="divider" tabindex="-1"></li>
                     <li><a href="{% url 'logout' %}" class="black-text"><i class="material-icons left black-text">exit_to_app</i>Sair</a>
                     </li>
@@ -121,7 +119,7 @@
                         <div class="mydropdown-content">
                             <a href="{% url 'ficha_update' ficha.id %}"><i class="material-icons">edit</i>editar</a>
                             <a href="{% url 'tcle' ficha.id %}"><i class="material-icons">description</i>TCLE</a>
-                            <a href="{% url 'ficha_delete' ficha.id %}"><i class="material-icons">attach_money</i>orçamento</a>
+                            <a href="{% url 'orcamento' ficha.id %}"><i class="material-icons">attach_money</i>orçamento</a>
                             <a href="{% url 'ficha_delete' ficha.id %}"><i class="material-icons">delete</i>delete</a>
                         </div>
                     </div>
