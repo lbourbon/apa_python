@@ -1,12 +1,20 @@
 APA - MOBILE FIRST!!!
 
+
 TODO:
+
+-->> para liberar:
+email
 perfil update
-home background(mobile)
 texto orcamento
+termos
+configuracoes: senha e perfil
 ficha
  - max characters (nome: 50)
  - tabindex= -1 nos elementos não digitaveis
+ teste
+<<<-------
+
 Colocar termo escondido na msm página da ficha - necessário para imprimir?
 ficha_delete (fake delete?) on.cascade?
 unaccent
