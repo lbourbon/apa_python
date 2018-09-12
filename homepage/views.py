@@ -49,6 +49,10 @@ class Termos(TemplateView):
     template_name = 'termos.html'
 
 
+class Privacidade(TemplateView):
+    template_name = 'privacidade.html'
+
+
 class Cadastro(FormView):
     form_class = SignUpForm
     template_name = 'cadastro.html'
@@ -60,17 +64,6 @@ class Cadastro(FormView):
         user = authenticate(email=email, password=raw_password)
         login(self.request, user)
         return redirect('profile_update', pk=self.request.user.profile.pk)
-
-
-# class Profile(LoginRequiredMixin, FormView):
-#     form_class = ProfileForm
-#     template_name = 'profile.html'
-#     success_url = reverse_lazy('restrita')
-#
-#     def form_valid(self, form):
-#         form.instance.user = self.request.user
-#         form.save()
-#         return super().form_valid(form)
 
 
 class ProfileUpdate(LoginRequiredMixin, UpdateView):

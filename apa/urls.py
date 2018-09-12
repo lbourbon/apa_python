@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.urls import path, include
-from homepage.views import Home, Teste, Precos, About, Contato, Restrita, Cadastro, Configuracoes, Ajuda, \
+from homepage.views import Home, Teste, Precos, About, Contato, Restrita, Cadastro, Configuracoes, Ajuda, Privacidade, \
     Termos, ProfileUpdate
 from ficha.views import FichaNew, FichaUpdate, FichaDelete, Tcle, Orcamento
 
@@ -8,7 +8,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', Home.as_view(), name='home'),
     path('cadastro/', Cadastro.as_view(), name='cadastro'),
-    # path('profile/', Profile.as_view(), name='profile'),
     path('profile_update/<int:pk>', ProfileUpdate.as_view(), name='profile_update'),
     path('teste/', Teste.as_view(), name='teste'),
     path('precos/', Precos.as_view(), name='precos'),
@@ -18,6 +17,7 @@ urlpatterns = [
     path('configuracoes/', Configuracoes.as_view(), name='configuracoes'),
     path('ajuda/', Ajuda.as_view(), name='ajuda'),
     path('termos/', Termos.as_view(), name='termos'),
+    path('privacidade/', Privacidade.as_view(), name='privacidade'),
     path('ficha/', FichaNew.as_view(), name='ficha'),
     path('ficha_update/<int:pk>', FichaUpdate.as_view(), name='ficha_update'),
     path('ficha_delete/<int:pk>', FichaDelete.as_view(), name='ficha_delete'),
