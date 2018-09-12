@@ -28,7 +28,7 @@
         </div>
     </nav>
     <ul class="sidenav" id="mobile-menu-restrita">
-        <li><a href='#'><i class="material-icons left black-text">account_circle</i>
+        <li><a href='{% url 'profile_update' user.profile.id %}'><i class="material-icons left black-text">account_circle</i>
             <p class="truncate">{{ user.email }}</p></a></li>
         <li><a href="{% url 'configuracoes' %}"><i class="material-icons left black-text">settings</i>Configurações</a>
         </li>
@@ -71,7 +71,7 @@
                 <li><a class='dropdown-trigger' href='#' data-target='dropdownperfilg' id="perfil-grande">
                     <i class="large material-icons left black-text">account_circle</i></a></li>
                 <ul id='dropdownperfilg' class='dropdown-content'>
-                    <li><a href="#!">Usuário: {{ user.email }} </a></li>
+                    <li><a href="{% url 'profile_update' user.profile.id %}">Usuário: {{ user.email }} </a></li>
                     <li><a href="{% url 'password_change' %}" class="black-text">Alterar senha</a></li>
                     <li class="divider" tabindex="-1"></li>
                     <li><a href="{% url 'ajuda' %}" class="black-text">Ajuda</a></li>

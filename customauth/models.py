@@ -5,6 +5,7 @@ from django.db.models.signals import post_save
 from django.contrib.auth.models import BaseUserManager, AbstractBaseUser
 from django import forms
 
+
 class MyUserManager(BaseUserManager):
     def create_user(self, email, password=None):
         """
@@ -75,6 +76,14 @@ class Profile(models.Model):
     estado = models.CharField(choices=ESTADOS_CHOICES, blank=True, max_length=20)
     telefone = models.CharField(max_length=15)
 
-
     def __str__(self):
-        return str(self.nome)
+        return str(self.pk) + str(self.nome) + str(self.user.pk)
+
+    @receiver(post_save, sender=MyUser)
+    def create_user_profile(sender, instance, created, **kwargs):
+        if created:
+            Profile.objects.create(user=instance, crm=0, nome=" ", estado=" ", telefone=" ")
+
+    @receiver(post_save, sender=MyUser)
+    def save_user_profile(sender, instance, **kwargs):
+        instance.profile.save()

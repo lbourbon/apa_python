@@ -1,12 +1,13 @@
+import customauth
 from ficha.models import Ficha
 from django.urls import reverse_lazy
 from django.shortcuts import redirect
 from forms import SignUpForm, ProfileForm
 from django.db.models.functions import Lower
-from django.views.generic.edit import FormView
 from django.contrib.auth import login, authenticate
 from django.views.generic import TemplateView, ListView
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.views.generic.edit import FormView, UpdateView
 
 
 class Home(TemplateView):
@@ -58,18 +59,32 @@ class Cadastro(FormView):
         raw_password = form.cleaned_data.get('password1')
         user = authenticate(email=email, password=raw_password)
         login(self.request, user)
-        return redirect('profile')
+        return redirect('profile_update', pk=self.request.user.profile.pk)
 
 
-class Profile(LoginRequiredMixin, FormView):
-    form_class = ProfileForm
-    template_name = 'profile.html'
+# class Profile(LoginRequiredMixin, FormView):
+#     form_class = ProfileForm
+#     template_name = 'profile.html'
+#     success_url = reverse_lazy('restrita')
+#
+#     def form_valid(self, form):
+#         form.instance.user = self.request.user
+#         form.save()
+#         return super().form_valid(form)
+
+
+class ProfileUpdate(LoginRequiredMixin, UpdateView):
+    template_name = 'profile_update.html'
+    model = customauth.models.Profile
+    fields = ['nome', 'crm', 'estado', 'telefone']
     success_url = reverse_lazy('restrita')
 
-    def form_valid(self, form):
-        form.instance.user = self.request.user
-        form.save()
-        return super().form_valid(form)
+    def get_template_names(self):
+        template_name = 'profile_update.html'
+        referrer = str(self.request.META.get('HTTP_REFERER'))
+        if (referrer.endswith('cadastro/')):
+            template_name = 'profile.html'
+        return template_name
 
 
 class Restrita(LoginRequiredMixin, ListView):

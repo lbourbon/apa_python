@@ -28,7 +28,7 @@ body {background: rgb(235, 235, 235);}
     width: 100%;
 }
 p {text-align: justify;}
-input[type=submit] {margin-top: 10px;}
+input[type=submit], #btn-cancelar {margin-top: 10px;}
 input:not([type=submit]):focus{
     border-bottom: 2px solid rgb(254, 97, 106) !important;
 }

@@ -1,6 +1,7 @@
 from django.contrib import admin
 from django.urls import path, include
-from homepage.views import Home, Teste, Precos, About, Contato, Restrita, Cadastro, Profile, Configuracoes, Ajuda, Termos
+from homepage.views import Home, Teste, Precos, About, Contato, Restrita, Cadastro, Profile, Configuracoes, Ajuda, \
+    Termos, ProfileUpdate
 from ficha.views import FichaNew, FichaUpdate, FichaDelete, Tcle, Orcamento
 
 urlpatterns = [
@@ -8,6 +9,7 @@ urlpatterns = [
     path('', Home.as_view(), name='home'),
     path('cadastro/', Cadastro.as_view(), name='cadastro'),
     path('profile/', Profile.as_view(), name='profile'),
+    path('profile_update/<int:pk>', ProfileUpdate.as_view(), name='profile_update'),
     path('teste/', Teste.as_view(), name='teste'),
     path('precos/', Precos.as_view(), name='precos'),
     path('about/', About.as_view(), name='about'),
