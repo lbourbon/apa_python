@@ -1,27 +1,56 @@
 {% extends "base.html" %}
 {% load static %}
 {% block meta %}
-<link rel="stylesheet" href="{% static 'restrita.css' %}" media="screen">
+<link rel="stylesheet" href="{% static 'restrta.css' %}" media="screen">
 {% endblock%}
 {% block title %} Área de Membros - A.P.A. {% endblock%}
 {% block main %}
 
-{% for ficha in object_list%}
-<div class="z-depth-2" id="item-paciente">
-    <a href="{% url 'ficha_update' ficha.id %}">
-        <div class="item-nome truncate">{{ficha.nome|upper}}</div>
-        <div class="item-data">{{ficha.data|default:"data desconhecida"}}</div></a>
-    <div class="mydropdown">
-        <button class="mydropbtn"><i class="material-icons">more_vert</i></button>
-        <div class="mydropdown-content">
-            <a href="{% url 'ficha_update' ficha.id %}"><i class="material-icons">edit</i>editar</a>
-            <a href="{% url 'tcle' ficha.id %}"><i class="material-icons">description</i>TCLE</a>
-            <a href="{% url 'ficha_delete' ficha.id %}"><i class="material-icons">delete</i>delete</a>
-        </div>
-    </div>
-</div>
-{% endfor %}
+<table class="highlight responsive-table black-text">
+    <tbody>
+    <tr>
+        <td><input type="text" value="Procedimentos:"></td>
+        <td><input type="text" value="%"></td>
+        <td><input type="text" value="Valor (R$):"></td>
+    </tr>
+    <tr>
+        <td>{{ form.cirurgia}}</td>
+        <td><input type="number" value="100"></td>
+        <td><input type="number" class="valor" onChange="somarTotal()"></td>
+    </tr>
+    <tr>
+        <td><input type="text"></td>
+        <td><input type="number"></td>
+        <td><input type="number" class="valor" onChange="somarTotal()"></td>
+    </tr>
+    <tr>
+        <td><input type="text"></td>
+        <td><input type="number"></td>
+        <td><input type="number" class="valor" onChange="somarTotal()"></td>
+    </tr>
+    <tr>
+        <td><input type="text"></td>
+        <td><input type="number"></td>
+        <td><input type="number" class="valor" onChange="somarTotal()"></td>
+    </tr>
+    </tbody>
+</table>
+<button onclick="somarTotal()">Try it</button>
+Total: <input type="number" id="total">
+
 {% block js %}
-<script src="../static/restrita.js"></script>
+<script>
+    function somarTotal() {
+        var valores = document.getElementsByClassName("valor");
+        var sum = 0;
+        for (var i=0; i<valores.length; i++){
+            sum += parseInt(valores[i].value) || 0;
+        };
+        console.log(sum);
+        document.getElementById("total").value = sum;
+
+    }
+
+</script>
 {% endblock%}
 {% endblock%}
