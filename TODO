@@ -5,14 +5,15 @@ TODO:
 
 -->> para liberar:
 email?
-configuracoes: senha e perfil
 ficha
  - max characters (nome: 50)
  - tabindex= -1 nos elementos não digitaveis
  teste
 <<<-------
+
 css tcle
 css orçamento imprimir
+configuracoes
 Colocar termo escondido na msm página da ficha - necessário para imprimir?
 ficha_delete (fake delete?) on.cascade?
 unaccent

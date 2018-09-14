@@ -8,6 +8,7 @@ body{margin:0;}
 i {color:black;}
 nav {
     height: 9vh;
+    min-height: 50px;
 }
 #search-mob{
     display: inline;
