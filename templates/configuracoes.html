@@ -1,10 +1,20 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-Em breve...
-</body>
-</html>
+{% extends "base.html" %}
+{% load static %}
+{% block meta %}
+<link rel="stylesheet" href="{% static 'restrita.css' %}" media="screen">
+{% endblock%}
+{% block title %} Área de Membros - A.P.A. {% endblock%}
+{% block main %}
+{% include 'navbar-restrita.html' %}
+
+<div class="container flow-text">
+    <br><br>
+    <div class="collection">
+        <a href="{% url 'profile_update' user.profile.id %}" class="collection-item">ATUALIZAR CADASTRO</a>
+        <a href="{% url 'password_change' %}" class="collection-item">ALTERAR SENHA</a>
+    </div>
+</div>
+{% block js %}
+<script src="../static/restrita.js"></script>
+{% endblock%}
+{% endblock%}
