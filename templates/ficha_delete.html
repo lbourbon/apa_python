@@ -14,7 +14,7 @@
                     <form method="post">
                         {% csrf_token %}
                         Tem certeza de deseja apagar a ficha de "{{ object.nome }}",
-                        criada em {{ object.data }} ?
+                        criada em {{ object.data|default:"uma data desconhecida" }} ?
                         <br>
                         <input class="btn red darken-4" type="submit" value="APAGAR">
                         <a href="{% url 'restrita' %}" class="btn red darken-4">CANCELAR</a>

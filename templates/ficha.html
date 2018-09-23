@@ -1,36 +1,38 @@
+{% extends "base.html" %}
 {% load static %}
-<html lang="pt-BR">
-<head>
-	<title>Ficha de Avaliação Pré-Anestésica</title>
-	<meta charset="UTF-8">
-	<meta name="author" content="Lécio dos Anjos Bourbon Filho">
-	<meta name="keywords" content="anestesia, avaliação pré-anestésica, ficha, anestesiologia">
-	<meta name="description" content="Rascunho do projeto de uma ficha de avaliação pré-Anestésica">
-	<meta name="application-name" content="Avaliação Pré-Anestésica">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" href="{% static 'ficha.css' %}" media="screen">
-	<link rel="stylesheet" href="{% static 'imprimir_ficha.css' %}" media="print">
-	<!-- FONTES: -->
-	<link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
-</head>
+{% block meta %}
+<link rel="stylesheet" href="{% static 'ficha.css' %}" media="screen">
+<link rel="stylesheet" href="{% static 'imprimir_ficha.css' %}" media="print">
+{% endblock%}
+{% block title %} Área de Membros - A.P.A. {% endblock%}
+{% block main %}
 
-<body>
 <form action="{% url 'ficha' %}" method="post">
 		{% csrf_token %}
 	<div class="container">
 		<div id="titulo">
-			<h1 align="center">AVALIAÇÃO PRÉ-ANESTÉSICA</h1>
+			<h2 class="center-align">AVALIAÇÃO PRÉ-ANESTÉSICA</h2>
 		</div>
 	<section id="date-field" class="grid-item">
-			<fieldset><label>Data: </label><input id="data" name="data" type="date"
-			{% if form.data.value != None %}value="{{ form.data.value|stringformat:'s' }}"{% endif %}></fieldset>
+			<div><label>Data: </label><input id="data" name="data" type="date"
+			{% if form.data.value != None %}value="{{ form.data.value|stringformat:'s' }}"{% endif %}></div>
 		</section>
 		<section id="ident" class="grid-item">
-			<fieldset>
+			<div>
 				<legend>IDENTIFICAÇÃO</legend>
+                <label>
+        <input name="group1" type="radio" checked />
+        <span>Red</span>
+      </label>
+    </p>
+    <p>
+      <label>
+        <input name="group1" type="radio" />
+        <span>Yellow</span>
+      </label>
 				<label>Nome: </label><input autofocus required name="nome" id="nome" type="text"
 				                            placeholder="Nome Completo"
-				                            maxlength="100" {% if form.nome.value != None %}value="{{ form.nome.value|stringformat:'s' }}"{% endif %}>
+				                            maxlength="100" value="{{form.nome.value|default:''}}">
 				<label>Idade:<input name="idade" id="idade" type="number"
 				{% if form.idade.value != None %}value="{{ form.idade.value|stringformat:'s' }}"{% endif %}></label>
 				<label>Sexo:<input name="sexo" type="radio" value="1"
@@ -47,10 +49,10 @@
 				{% if form.cirurgia.value != None %}value="{{ form.cirurgia.value|stringformat:'s' }}"{% endif %}></label>
 				<label>Cirurgião:<input id="cirurgiao" name="cirurgiao" type="text" maxlength="60"
 				{% if form.cirurgiao.value != None %}value="{{ form.cirurgiao.value|stringformat:'s' }}"{% endif %}></label>
-			</fieldset>
+			</div>
 		</section>
 		<section id="antrop" class="grid-item">
-						<fieldset class="circular-label  input-pequeno">
+						<div class="circular-label  input-pequeno">
 				<legend>DADOS ANTROPOMÉTRICOS</legend>
 				<label>Peso: </label><input id="peso" name="peso" type="number" step="0.1"
 			{% if form.peso.value != None %}value="{{ form.peso.value|stringformat:'s' }}"{% endif %}>(kg)<br>
@@ -58,40 +60,40 @@
 			{% if form.altura.value != None %}value="{{ form.altura.value|stringformat:'s' }}"{% endif %}>(cm)<br>
 				<label>IMC:</label><input id="imc" name="imc" type="number" step="0.01"
 			{% if form.imc.value != None %}value="{{ form.imc.value|stringformat:'s' }}"{% endif %}>(kg/m²)
-			</fieldset>
+			</div>
 		</section>
 
 		<section id="previas" class="grid-item">
-			<fieldset>
+			<div>
 				<legend>CIRURGIAS / ANESTESIAS PRÉVIAS</legend>
 				<input name="n_previa" type="checkbox" value="True" {% if form.n_previa.value %} checked {% endif %}><label>Nenhuma</label><br>
 				<input name="c_previa" type="text" placeholder="Cirurgia" maxlength="100"
 				{% if form.c_previa.value != None %}value="{{ form.c_previa.value|stringformat:'s' }}"{% endif %}>
 				<input name="a_previa" type="text" placeholder="Anestesia" maxlength="100"
 				{% if form.a_previa.value != None %}value="{{ form.a_previa.value|stringformat:'s' }}"{% endif %}><br>
-			</fieldset>
+			</div>
 		</section>
 		<section id="adversos" class="grid-item">
-			<fieldset>
+			<div>
 				<legend>EVENTOS ADVERSOS</legend>
 				<input name="n_adversos" type="checkbox" value="True" {% if form.n_adversos.value %} checked {% endif %}><label>Nenhum</label><br>
 				<input name="adversos" type="text"
 				       placeholder="Eventos Adversos em anestesias prévias"
 				       {% if form.adversos.value != None %}value="{{ form.adversos.value|stringformat:'s' }}"{% endif %}><label> </label><br>
-			</fieldset>
+			</div>
 		</section>
 		<section id="av-clinica" class="grid-item">
-			<fieldset>
+			<div>
 				<legend>AVALIAÇÃO CLÍNICA</legend>
 				<div class="container-clinica">
-					<fieldset class="clinica" id="cap-funcional">
+					<div class="clinica" id="cap-funcional">
 						<legend>Capacidade Funcional</legend>
 						<input name="mets" type="radio" value="1" {% ifequal form.mets.value "1" %}checked{% endifequal %}><label> > 4 METs</label><br>
 						<input name="mets" type="radio" value="2" {% ifequal form.mets.value "2" %}checked{% endifequal %}><label> < 4 METs</label><br>
 						<input name="mets" type="radio" value="0" {% ifequal form.mets.value "0" %}checked{% endifequal %}><label> Impossível avaliar</label><br>
-					</fieldset>
+					</div>
 
-					<fieldset class="clinica" id="cardio">
+					<div class="clinica" id="cardio">
 						<legend>Cardio Circulatório</legend>
 						<input name="cardio_neg" value="True" {% if form.cardio_neg.value %} checked {% endif %}
 						       type="checkbox"><label>Negativo </label><br>
@@ -105,8 +107,8 @@
 						       type="checkbox"><label>Insuficiência Cardíaca </label><br>
 						<input name="cardio_out" value="True" {% if form.cardio_out.value %} checked {% endif %}
 						       type="checkbox"><label>Outras</label><br>
-					</fieldset>
-					<fieldset class="clinica" id="neuro">
+					</div>
+					<div class="clinica" id="neuro">
 						<legend>Neurológico</legend>
 						<input name="neuro_neg" value="True" {% if form.neuro_neg.value %} checked {% endif %}
 						       type="checkbox"><label>Negativo</label><br>
@@ -120,8 +122,8 @@
 						       type="checkbox"><label>Lesão medular</label><br>
 						<input name="neuro_out" value="True" {% if form.neuro_out.value %} checked {% endif %}
 						       type="checkbox"><label>Outras</label><br>
-					</fieldset>
-					<fieldset class="clinica" id="resp">
+					</div>
+					<div class="clinica" id="resp">
 						<legend>Respiratório</legend>
 						<input name="resp_neg" value="True" {% if form.resp_neg.value %} checked {% endif %}
 						       type="checkbox"><label>Negativo</label><br>
@@ -135,8 +137,8 @@
 						       type="checkbox"><label>IVAS Recente</label><br>
 						<input name="resp_out" value="True" {% if form.resp_out.value %} checked {% endif %}
 						       type="checkbox"><label>Outras</label><br>
-					</fieldset>
-					<fieldset class="clinica" id="gastro">
+					</div>
+					<div class="clinica" id="gastro">
 						<legend>Gastrointestinal</legend>
 						<input name="gastro_neg" value="True" {% if form.gastro_neg.value %} checked {% endif %}
 						       type="checkbox"><label>Negativo</label><br>
@@ -150,8 +152,8 @@
 						       type="checkbox"><label>Obstrução Intestinal</label><br>
 						<input name="gastro_out" value="True" {% if form.gastro_out.value %} checked {% endif %}
 						       type="checkbox"><label>Outras</label><br>
-					</fieldset>
-					<fieldset class="clinica" id="endocrino">
+					</div>
+					<div class="clinica" id="endocrino">
 						<legend>Endócrino-metabólico</legend>
 						<input name="endocrino_neg" value="True" {% if form.endocrino_neg.value %} checked {% endif %}
 						       type="checkbox"><label>Negativo</label><br>
@@ -163,8 +165,8 @@
 						       type="checkbox"><label>Dislipidemia</label><br>
 						<input name="endocrino_out" value="True" {% if form.endocrino_out.value %} checked {% endif %}
 						       type="checkbox"><label>Outras</label><br>
-					</fieldset>
-					<fieldset class="clinica" id="renal">
+					</div>
+					<div class="clinica" id="renal">
 						<legend>Renal</legend>
 						<input name="renal_neg" value="True" {% if form.renal_neg.value %} checked {% endif %}
 						       type="checkbox"><label> Negativo</label><br>
@@ -176,8 +178,8 @@
 						       type="checkbox"><label>Diálise </label><br>
 						<input name="renal_out" value="True" {% if form.renal_out.value %} checked {% endif %}
 						       type="checkbox"><label>Outras </label><br>
-					</fieldset>
-					<fieldset class="clinica" id="hem">
+					</div>
+					<div class="clinica" id="hem">
 						<legend>Hematológico-Infeccioso</legend>
 						<input name="hem_neg" value="True" {% if form.hem_neg.value %} checked {% endif %}
 						       type="checkbox"><label>Negativo</label><br>
@@ -193,8 +195,8 @@
 						       type="checkbox"><label>HIV </label><br>
 						<input name="hem_out" value="True" {% if form.hem_out.value %} checked {% endif %}
 						       type="checkbox"><label>Outras</label><br>
-					</fieldset>
-					<fieldset class="clinica" id="musc">
+					</div>
+					<div class="clinica" id="musc">
 						<legend>Músculo-Esquelético</legend>
 						<input name="musc_neg" value="True" {% if form.musc_neg.value %} checked {% endif %}
 						       type="checkbox"><label>Negativo</label><br>
@@ -210,28 +212,28 @@
 						       type="checkbox"><label>Distrofia Muscular</label><br>
 						<input name="musc_out" value="True" {% if form.musc_out.value %} checked {% endif %}
 						       type="checkbox"><label>Outras</label><br>
-					</fieldset>
+					</div>
 				</div>
-			</fieldset>
+			</div>
 		</section>
 		<section id="medic" class="grid-item">
-			<fieldset id="medi">
+			<div id="medi">
 				<legend>MEDICAÇÕES EM USO</legend>
 				<input name="medicacoes" id="medicacoes" type="text" placeholder="Medicações de uso contínuo..."
 				{% if form.medicacoes.value != None %}value="{{ form.medicacoes.value|stringformat:'s' }}"{% endif %}>
 				<input name="medicacoes2" id="medicacoes2" type="text"
 				{% if form.medicacoes2.value != None %}value="{{ form.medicacoes2.value|stringformat:'s' }}"{% endif %}>
-			</fieldset>
+			</div>
 		</section>
 		<section id="alergias" class="grid-item">
-			<fieldset id="alerg">
+			<div id="alerg">
 				<legend>ALERGIAS</legend>
 				<input name="alergias" type="text" placeholder="Alergias conhecidas a medicações ou alimentos..."
 				{% if form.alergias.value != None %}value="{{ form.alergias.value|stringformat:'s' }}"{% endif %}>
-			</fieldset>
+			</div>
 		</section>
 		<section id="fisico" class="grid-item">
-			<fieldset class="circular-label">
+			<div class="circular-label">
 				<legend>EXAME FÍSICO</legend>
 				<label>Geral:</label><input type="text" id="geral" name="geral"
 			{% if form.geral.value != None %}value="{{ form.geral.value|stringformat:'s' }}"{% endif %}><br>
@@ -243,10 +245,10 @@
 			{% if form.abd.value != None %}value="{{ form.abd.value|stringformat:'s' }}"{% endif %}><br>
 				<label>Ext:</label> <input type="text" id="ext" name="ext"
 			{% if form.ext.value != None %}value="{{ form.ext.value|stringformat:'s' }}"{% endif %}><br>
-			</fieldset>
+			</div>
 		</section>
 		<section id="sinais-vitais" class="grid-item">
-			<fieldset class="circular-label  input-pequeno">
+			<div class="circular-label  input-pequeno">
 				<legend>SINAIS VITAIS</legend>
 				<label>P.A.=</label> <input type="number" id="pas" name="pas"
 			{% if form.pas.value != None %}value="{{ form.pas.value|stringformat:'s' }}"{% endif %}>
@@ -258,13 +260,13 @@
 			{% if form.fr.value != None %}value="{{ form.fr.value|stringformat:'s' }}"{% endif %}><br>
 				<label>T º =</label> <input type="text" id="temp" name="temp"
 			{% if form.temp.value != None %}value="{{ form.temp.value|stringformat:'s' }}"{% endif %}>
-			</fieldset>
+			</div>
 		</section>
 		<section id="va" class="grid-item">
-			<fieldset>
+			<div>
 				<legend>VIAS AÉREAS</legend>
 				<div class="container-va">
-					<fieldset class="vias-aereas">
+					<div class="vias-aereas">
 						<legend>Mallampati</legend>
 						<input name="mallampati" type="radio" value="1"
 						{% ifequal form.mallampati.value "1" %}checked{% endifequal %}> <label>I</label>
@@ -274,52 +276,52 @@
 						{% ifequal form.mallampati.value "3" %}checked{% endifequal %}> <label>III</label>
 						<input name="mallampati" type="radio" value="4"
 						{% ifequal form.mallampati.value "4" %}checked{% endifequal %}> <label>IV</label>
-					</fieldset>
+					</div>
 
-					<fieldset class="vias-aereas">
+					<div class="vias-aereas">
 						<legend>Distância Esterno-Mento</legend>
 						<input name="distem" type="radio" value="1"
 						{% ifequal form.distem.value "1" %}checked{% endifequal %}> <label>> 12cm</label>
 						<input name="distem" type="radio" value="2"
 						{% ifequal form.distem.value "2" %}checked{% endifequal %}> <label>< 12cm</label>
-					</fieldset>
+					</div>
 
-					<fieldset class="vias-aereas">
+					<div class="vias-aereas">
 						<legend>Mobilidade Cervical</legend>
 						<input name="mobcer" type="radio" value="1"
 						{% ifequal form.mobcer.value "1" %}checked{% endifequal %}> <label>Boa</label>
 						<input name="mobcer" type="radio" value="2"
 						{% ifequal form.mobcer.value "2" %}checked{% endifequal %}> <label>Limitada</label>
-					</fieldset>
+					</div>
 
-					<fieldset class="vias-aereas">
+					<div class="vias-aereas">
 						<legend>Abertura Oral</legend>
 						<input name="aboral" type="radio" value="1"
 						{% ifequal form.aboral.value "1" %}checked{% endifequal %}>> 4cm <label></label>
 						<input name="aboral" type="radio" value="2"
 						{% ifequal form.aboral.value "2" %}checked{% endifequal %}>< 4cm <label></label>
-					</fieldset>
+					</div>
 
-					<fieldset class="vias-aereas">
+					<div class="vias-aereas">
 						<legend>Prótese Dentária</legend>
 						<input name="protese" type="radio" value="1"
 						{% ifequal form.protese.value "1" %}checked{% endifequal %}>Não <label></label>
 						<input name="protese" type="radio" value="2"
 						{% ifequal form.protese.value "2" %}checked{% endifequal %}>Sim <label></label>
-					</fieldset>
+					</div>
 
-					<fieldset class="vias-aereas" id="vad">
+					<div class="vias-aereas" id="vad">
 						<legend>Via Aérea Difícil</legend>
 						<input name="vad" type="radio" value="1"
 						{% ifequal form.vad.value "1" %}checked{% endifequal %}>Não <label></label>
 						<input name="vad" type="radio" value="2"
 						{% ifequal form.vad.value "2" %}checked{% endifequal %}>Sim <label></label>
-					</fieldset>
+					</div>
 				</div>
-			</fieldset>
+			</div>
 		</section>
 		<section id="lab" class="grid-item">
-			<fieldset class="circular-label input-pequeno">
+			<div class="circular-label input-pequeno">
 				<legend>EXAMES LABORATORIAIS</legend>
 				<div class="container-lab">
 					<label>Hb<input class="lab" type="number" step="0.1" id="hb" name="hb"
@@ -352,10 +354,10 @@
 					{% if form.ttpa.value != None %}value="{{ form.ttpa.value|stringformat:'s'}}"{% endif %}></label>
 					<!--<label><input type="number" id=""></label>-->
 				</div>
-			</fieldset>
+			</div>
 		</section>
 		<section id="exames" class="grid-item">
-			<fieldset class="circular-label">
+			<div class="circular-label">
 				<legend>EXAMES COMPLEMENTARES</legend>
 				<label>ECG</label><input type="text" id="ecg" name="ecg"
 			{% if form.ecg.value != None %}value="{{ form.ecg.value|stringformat:'s' }}"{% endif %}><br>
@@ -367,27 +369,27 @@
 			{% if form.ergo.value != None %}value="{{ form.ergo.value|stringformat:'s' }}"{% endif %}><br>
 				<label>Outros</label><input type="text" id="outroex" name="outroex"
 			{% if form.outroex.value != None %}value="{{ form.outroex.value|stringformat:'s' }}"{% endif %}><br>
-			</fieldset>
+			</div>
 		</section>
 		<section id="anotacoes" class="grid-item">
-			<fieldset>
+			<div>
 				<legend>ANOTAÇÕES</legend>
 				<input name="anotacoes" id="anot" type="text" placeholder="Outras observações importantes..."
 				{% if form.anotacoes.value != None %}value="{{ form.anotacoes.value|stringformat:'s' }}"{% endif %}>
 				<input name="anotacoes2" id="anotacoes2" type="text"
 				{% if form.anotacoes2.value != None %}value="{{ form.anotacoes2.value|stringformat:'s' }}"{% endif %}>
-			</fieldset>
+			</div>
 		</section>
 		<section id="proposta" class="grid-item">
-			<fieldset>
+			<div>
 				<label>Anestesia Proposta:<input type="text" name="proposta"
 			{% if form.proposta.value != None %}value="{{ form.proposta.value|stringformat:'s' }}"{% endif %}></label>
 				<label>Jejum Pré-operatório:<input type="text" name="jejum"
 			{% if form.jejum.value != None %}value="{{ form.jejum.value|stringformat:'s' }}"{% endif %}></label>
-			</fieldset>
+			</div>
 		</section>
 		<section id="prescricao" class="grid-item">
-			<fieldset id="lista-prescricao">
+			<div id="lista-prescricao">
 				<legend>PRESCRIÇÃO PRÉ-ANESTÉSICA</legend>
 				<label>1.</label><input type="text" name="prescricao"
 			{% if form.prescricao.value != None %}value="{{ form.prescricao.value|stringformat:'s' }}"{% endif %}><br>
@@ -395,26 +397,28 @@
 			{% if form.prescricao2.value != None %}value="{{ form.prescricao2.value|stringformat:'s' }}"{% endif %}><br>
 				<label>3.</label><input type="text" name="prescricao3"
 			{% if form.prescricao3.value != None %}value="{{ form.prescricao3.value|stringformat:'s' }}"{% endif %}><br>
-			</fieldset>
+			</div>
 		</section>
 		<section id="carimbo" class="grid-item">
 			CARIMBO E ASSINATURA
 		</section>
 		<section id="asa" class="grid-item">
-			<fieldset>
+			<div>
 				ASA:
 				<input name="asa" type="number" min="1" max="5"
 				{% if form.asa.value != None %}value="{{ form.asa.value|floatformat }}"{% endif %}>
-			</fieldset>
+			</div>
 		</section>
 		<section id="botoes" class="grid-item">
-			<fieldset>
+			<div>
 				<input class="btn-save" name="fim" type="submit" value="SALVAR">
 				<input class="btn-save" name="fim" type="submit" value="IMPRIMIR" onClick="javascript:window.print()">
-			</fieldset>
+			</div>
 		</section>
 	</div>
 </form>
+
+{% block js %}
 <script src="{% static 'ficha.js' %}"></script>
-</body>
-</html>
+{% endblock%}
+{% endblock%}

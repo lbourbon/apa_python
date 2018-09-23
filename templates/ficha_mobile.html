@@ -4,142 +4,85 @@
 <link rel="stylesheet" href="{% static 'ficha_mobile.css' %}" media="screen">
 <link rel="stylesheet" href="{% static 'imprimir_ficha.css' %}" media="print">
 {% endblock%}
-{% block title %} Ficha de Avaliação Pré-Anestésica {% endblock%}
+{% block title %} Área de Membros - A.P.A. {% endblock%}
 {% block main %}
-<div class="navbar-fixed">
 <nav>
     <div class="nav-wrapper">
-      <a href="#" class="left brand-logo">A.P.A.</a>
-      <ul id="nav-mobile" class="right">
-        <li><a href="sass.html"><i class="material-icons black-text">save</i></a></li>
-        <li><a href="#" onClick="javascript:window.print()"><i class="material-icons black-text">print</i></a></li>
-        <li><a href="collapsible.html"><i class="material-icons black-text">help</i></a></li>
+      <a href="#" class="brand-logo">Logo</a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li><a href="sass.html">Sass</a></li>
+        <li><a href="badges.html">Components</a></li>
+        <li><a href="collapsible.html">JavaScript</a></li>
       </ul>
     </div>
   </nav>
-    </div>
-<form method="post" action="{% url 'ficha_update' ficha.pk %}">
+<form action="{% url 'ficha' %}" method="post">
 		{% csrf_token %}
-    <ul class="collapsible">
-    <li class="active!!!!!!!!">
-      <div class="collapsible-header"><i class="material-icons">person</i>IDENTIFICAÇÃO</div>
-      <div class="collapsible-body">
-<!------!!!!!------------ IDENTIFICAÇÃO ------------->
-            <div><label>Data</label><input id="data" name="data" type="date"
-                                     value={{form.data.value|date:'Y-m-d'|default:""}}></div>
-
-                <label>Nome</label><input required name="nome" id="nome" type="text" placeholder="Nome Completo"
+	<div class="container">
+		<div id="titulo">
+			<h2 class="center-align">AVALIAÇÃO PRÉ-ANESTÉSICA</h2>
+		</div>
+	<section id="date-field" class="grid-item">
+			<div><label>Data: </label><input id="data" name="data" type="date"
+			{% if form.data.value != None %}value="{{ form.data.value|stringformat:'s' }}"{% endif %}></div>
+		</section>
+		<section id="ident" class="grid-item">
+			<div>
+				<legend>IDENTIFICAÇÃO</legend>
+				<label>Nome: </label><input autofocus required name="nome" id="nome" type="text"
+				                            placeholder="Nome Completo"
 				                            maxlength="100" value="{{form.nome.value|default:''}}">
-          <div class="row">
-              <div class="col s6">
-				<label>Idade<input class="meiatela" name="idade" id="idade" type="number" value="{{form.idade.value|default:''}}"></label>
-            </div>
-            <div class="col s6">
-                <label><input name="sexo" id="masc" type="radio" class="with-gap" value="1" {% ifequal form.sexo.value "1" %}checked{% endifequal %}>
+				<label>Idade:<input name="idade" id="idade" type="number"
+
+				{% if form.idade.value != None %}value="{{ form.idade.value|stringformat:'s' }}"{% endif %}></label>
+				<label><input name="sexo" type="radio" value="1" {% ifequal form.sexo.value "1" %}checked{% endifequal %}>
 					<span>M</span></label>
-				<label><input name="sexo" id="fem" type="radio" class="with-gap" value="2" {% ifequal form.sexo.value "2" %}checked{% endifequal %}>
+				<label><input name="sexo" type="radio" value="2" {% ifequal form.sexo.value "2" %}checked{% endifequal %}>
 					<span>F</span></label>
-            </div>
-          </div>
-
-				<label>CPF<input id="cpf" name="cpf" type="text" maxlength="14" value="{{form.cpf.value|default:''}}"></label>
-				<label>Hospital<input id="hosp" name="hosp" type="text" maxlength="25" value="{{form.hosp.value|default:''}}"></label>
-				<label>Convênio<input id="convenio" name="convenio" type="text" maxlength="25" value="{{form.convenio.value|default:''}}"></label>
-				<label>Cirurgia<input id="cirurgia" name="cirurgia" type="text" maxlength="100" value="{{form.cirurgia.value|default:''}}"></label>
-				<label>Cirurgião<input id="cirurgiao" name="cirurgiao" type="text" maxlength="60" value="{{form.cirurgiao.value|default:''}}"></label>
-      </div>
-    </li>
-    <li class="active">
-      <div class="collapsible-header"><i class="material-icons">local_hospital</i>AVALIAÇÃO CLÍNICA</div>
-      <div class="collapsible-body">
-<!------!!!!!------------ AVALIAÇÃO CLÍNICA ------------->
-<!------!!!!!------------ PESOS ------------ ------------->
-		<div class="row">
-			<div class="col s6">
-						<label>Peso(kg)</label><input class="meiatela" id="peso" name="peso" type="number" step="0.1" value="{{form.peso.value|stringformat:'s'|default:''}}">
+				<label>CPF:<input id="cpf" name="cpf" type="text" maxlength="14"
+				{% if form.cpf.value != None %}value="{{ form.cpf.value|stringformat:'s' }}"{% endif %}></label>
+				<label>Hospital:<input id="hosp" name="hosp" type="text" maxlength="25"
+				{% if form.hosp.value != None %}value="{{ form.hosp.value|stringformat:'s' }}"{% endif %}></label>
+				<label>Convênio:<input id="convenio" name="convenio" type="text" maxlength="25"
+				{% if form.convenio.value != None %}value="{{ form.convenio.value|stringformat:'s' }}"{% endif %}></label>
+				<label>Cirurgia:<input id="cirurgia" name="cirurgia" type="text" maxlength="100"
+				{% if form.cirurgia.value != None %}value="{{ form.cirurgia.value|stringformat:'s' }}"{% endif %}></label>
+				<label>Cirurgião:<input id="cirurgiao" name="cirurgiao" type="text" maxlength="60"
+				{% if form.cirurgiao.value != None %}value="{{ form.cirurgiao.value|stringformat:'s' }}"{% endif %}></label>
 			</div>
-			<div class="col s6">
-						<label>Altura (cm)</label><input class="meiatela" id="altura" name="altura" type="number" value="{{form.altura.value|default:''}}">
+		</section>
+		<section id="antrop" class="grid-item">
+						<div class="circular-label  input-pequeno">
+				<legend>DADOS ANTROPOMÉTRICOS</legend>
+				<label>Peso: </label><input id="peso" name="peso" type="number" step="0.1"
+			{% if form.peso.value != None %}value="{{ form.peso.value|stringformat:'s' }}"{% endif %}>(kg)<br>
+				<label>Altura: </label><input id="altura" name="altura" type="number" step="0.1"
+			{% if form.altura.value != None %}value="{{ form.altura.value|stringformat:'s' }}"{% endif %}>(cm)<br>
+				<label>IMC:</label><input id="imc" name="imc" type="number" step="0.01"
+			{% if form.imc.value != None %}value="{{ form.imc.value|stringformat:'s' }}"{% endif %}>(kg/m²)
 			</div>
-		</div>
+		</section>
 
-          <div class="row">
-            <div class="col s3">
-                  <label>IMC</label><input id="imc" name="imc" type="number" step="0.1" value="{{form.imc.value|stringformat:'s'|default:''}}">
-            </div>
-		  	<div class="col s3">
-              <label>P. ideal</label><input id="ideal" name="ideal" type="number" step="0.1" value="{{form.ideal.value|stringformat:'s'|default:''}}">
-            </div>
-              <div class="col s3">
-                  <label>Ajustado</label><input id="ajustado" name="ajustado" type="number" step="0.1" value="{{form.ajustado.value|stringformat:'s'|default:''}}">
-			  </div>
-            <div class="col s3">
-              <label>Predito</label><input id="predito" name="predito" type="number" step="0.1" value="{{form.predito.value|stringformat:'s'|default:''}}">
-            </div>
-          </div>
-
-<!------!!!!!------------ PROCEDIMENTO ------------ ------------->
-          <div class="row">
-			  <div class="col s2">
-                  <img class="questionmark" src="../static/img/questionmark.svg">
-			  </div>
-                  <div class="col s10 pergunta">Já foi submetido a algum procedimento com anestesia?</div>
-                  <div class="switch center">
-						<label>
-						  Não
-                            <input id="bool_previo" name="bool_previo" type="checkbox" value="True" {% if form.bool_previo.value %} checked {% endif %}>
-						  <span class="lever"></span>
-						  Sim
-						</label>
-  					</div>
-		  </div>
-		<div id="proc_previo" class="row hide">
-            <label>Procedimentos prévios:<input id="c_previa" name="c_previa" type="text" maxlength="100"
-                                                  value="{{form.c_previa.value|default:''}}"></label>
-			<label>Anestesias prévias:<input id="a_previa" name="a_previa" type="text" maxlength="100"
-                                                  value="{{form.a_previa.value|default:''}}"></label>
-		</div>
-<!------!!!!!------------ ADVERSOS ------------ ------------->
-          <div id="adverso_b" class="row hide">
-			  <div class="col s2">
-                  <img src="../static/img/questionmark.svg" class="questionmark">
-			  </div>
-                  <div class="col s10 pergunta">Apresentou evento adverso causado pela anestesia?</div>
-                  <div class="switch center">
-						<label>
-						  Não
-                            <input id="bool_adverso" name="bool_adverso" type="checkbox" value="True" {% if form.bool_adverso.value %} checked {% endif %}>
-						  <span class="lever"></span>
-						  Sim
-						</label>
-  					</div>
-		  </div>
-		<div id="adverso_i" class="row hide">
-            <label>Eventos adversos:<input id="e_adversos" name="e_adversos" type="text" maxlength="100"
-                                                  value="{{form.e_adversos.value|default:''}}"></label>
-		</div>
-<!------!!!!!------------ ALERGIAS ------------ ------------->
-        <div id="alergias_b" class="row">
-			  <div class="col s2">
-                  <img src="../static/img/questionmark.svg" class="questionmark">
-			  </div>
-                  <div class="col s10 pergunta">Possui alergia a algum medicamento ou alimento?</div>
-                  <div class="switch center">
-						<label>
-						  Não
-                            <input id="bool_alergias" name="bool_alergias" type="checkbox" value="True" {% if form.bool_alergia.value %} checked {% endif %}>
-						  <span class="lever"></span>
-						  Sim
-						</label>
-  					</div>
-		  </div>
-		<div id="alergias_i" class="row hide">
-            <label>Alergias:<input id="alergias" name="alergias" type="text" maxlength="100"
-                                                  value="{{form.alergias.value|default:''}}"></label>
-		</div>
-<!------!!!!!------------ CLINICA ------------ ------------->
-
-    <section id="av-clinica" class="grid-item">
+		<section id="previas" class="grid-item">
+			<div>
+				<legend>CIRURGIAS / ANESTESIAS PRÉVIAS</legend>
+				<input name="n_previa" type="checkbox" value="True" {% if form.n_previa.value %} checked {% endif %}><label>Nenhuma</label><br>
+				<input name="c_previa" type="text" placeholder="Cirurgia" maxlength="100"
+				{% if form.c_previa.value != None %}value="{{ form.c_previa.value|stringformat:'s' }}"{% endif %}>
+				<input name="a_previa" type="text" placeholder="Anestesia" maxlength="100"
+				{% if form.a_previa.value != None %}value="{{ form.a_previa.value|stringformat:'s' }}"{% endif %}><br>
+			</div>
+		</section>
+		<section id="adversos" class="grid-item">
+			<div>
+				<legend>EVENTOS ADVERSOS</legend>
+				<input name="n_adversos" type="checkbox" value="True" {% if form.n_adversos.value %} checked {% endif %}><label>Nenhum</label><br>
+				<input name="adversos" type="text"
+				       placeholder="Eventos Adversos em anestesias prévias"
+				       {% if form.adversos.value != None %}value="{{ form.adversos.value|stringformat:'s' }}"{% endif %}><label> </label><br>
+			</div>
+		</section>
+		<section id="av-clinica" class="grid-item">
 			<div>
 				<legend>AVALIAÇÃO CLÍNICA</legend>
 				<div class="container-clinica">
@@ -151,19 +94,19 @@
 					</div>
 
 					<div class="clinica" id="cardio">
-						Cardio Circulatório:
-						<label><input name="cardio_neg" value="True" {% if form.cardio_neg.value %} checked {% endif %}
-						       type="checkbox"><span>Negativo </span></label><br>
-						<label><input name="cardio_has" value="True" {% if form.cardio_has.value %} checked {% endif %}
-						       type="checkbox"><span>Hipertensão </span></label><br>
-						<label><input name="cardio_arr" value="True" {% if form.cardio_arr.value %} checked {% endif %}
-						       type="checkbox"><span>Arritmia </span></label><br>
-						<label><input name="cardio_cor" value="True" {% if form.cardio_cor.value %} checked {% endif %}
-						       type="checkbox"><span>Coronariopatia </span></label><br>
-						<label><input name="cardio_icc" value="True" {% if form.cardio_icc.value %} checked {% endif %}
-						       type="checkbox"><span>Insuficiência Cardíaca </span></label><br>
-						<label><input name="cardio_out" value="True" {% if form.cardio_out.value %} checked {% endif %}
-						       type="checkbox"><span>Outras</span></label><br>
+						<legend>Cardio Circulatório</legend>
+						<input name="cardio_neg" value="True" {% if form.cardio_neg.value %} checked {% endif %}
+						       type="checkbox"><label>Negativo </label><br>
+						<input name="cardio_has" value="True" {% if form.cardio_has.value %} checked {% endif %}
+						       type="checkbox"><label>Hipertensão </label><br>
+						<input name="cardio_arr" value="True" {% if form.cardio_arr.value %} checked {% endif %}
+						       type="checkbox"><label>Arritmia </label><br>
+						<input name="cardio_cor" value="True" {% if form.cardio_cor.value %} checked {% endif %}
+						       type="checkbox"><label>Coronariopatia </label><br>
+						<input name="cardio_icc" value="True" {% if form.cardio_icc.value %} checked {% endif %}
+						       type="checkbox"><label>Insuficiência Cardíaca </label><br>
+						<input name="cardio_out" value="True" {% if form.cardio_out.value %} checked {% endif %}
+						       type="checkbox"><label>Outras</label><br>
 					</div>
 					<div class="clinica" id="neuro">
 						<legend>Neurológico</legend>
@@ -282,9 +225,13 @@
 				{% if form.medicacoes2.value != None %}value="{{ form.medicacoes2.value|stringformat:'s' }}"{% endif %}>
 			</div>
 		</section>
-
-
-
+		<section id="alergias" class="grid-item">
+			<div id="alerg">
+				<legend>ALERGIAS</legend>
+				<input name="alergias" type="text" placeholder="Alergias conhecidas a medicações ou alimentos..."
+				{% if form.alergias.value != None %}value="{{ form.alergias.value|stringformat:'s' }}"{% endif %}>
+			</div>
+		</section>
 		<section id="fisico" class="grid-item">
 			<div class="circular-label">
 				<legend>EXAME FÍSICO</legend>
@@ -373,17 +320,7 @@
 				</div>
 			</div>
 		</section>
-
-
-
-      </div>
-    </li>
-    <li>
-      <div class="collapsible-header"><i class="material-icons">colorize</i>EXAMES COMPLEMENTARES</div>
-      <div class="collapsible-body">
-      <!------!!!!!------------ EXAMES COMPLEMENTARES ------------->
-
-          <section id="lab" class="grid-item">
+		<section id="lab" class="grid-item">
 			<div class="circular-label input-pequeno">
 				<legend>EXAMES LABORATORIAIS</legend>
 				<div class="container-lab">
@@ -434,25 +371,15 @@
 			{% if form.outroex.value != None %}value="{{ form.outroex.value|stringformat:'s' }}"{% endif %}><br>
 			</div>
 		</section>
-
-
-
-      </div>
-    </li>
-   <li>
-      <div class="collapsible-header"><i class="material-icons">check_box</i>CONCLUSÃO</div>
-      <div class="collapsible-body">
- <!------!!!!!!------------ CONCLUSÃO ------------->
-
-        <div class="input-field col s12">
-        <textarea id="anotacoes" name="anotacoes" class="materialize-textarea">{{ form.anotacoes.value|default_if_none:"" }}</textarea>
-        <label for="anotacoes">ANOTAÇÕES</label>
-            </div>
-
-            <div class="row">
-
-
-  </div>
+		<section id="anotacoes" class="grid-item">
+			<div>
+				<legend>ANOTAÇÕES</legend>
+				<input name="anotacoes" id="anot" type="text" placeholder="Outras observações importantes..."
+				{% if form.anotacoes.value != None %}value="{{ form.anotacoes.value|stringformat:'s' }}"{% endif %}>
+				<input name="anotacoes2" id="anotacoes2" type="text"
+				{% if form.anotacoes2.value != None %}value="{{ form.anotacoes2.value|stringformat:'s' }}"{% endif %}>
+			</div>
+		</section>
 		<section id="proposta" class="grid-item">
 			<div>
 				<label>Anestesia Proposta:<input type="text" name="proposta"
@@ -489,18 +416,7 @@
 			</div>
 		</section>
 	</div>
-<!--</form>-->
-
-
-
-      </div>
-    </li>
-  </ul>
-            <input class="btn" name="fim" type="submit" value="SALVAR">
-
 </form>
-
-
 
 {% block js %}
 <script src="{% static 'ficha.js' %}"></script>

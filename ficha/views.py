@@ -1,3 +1,4 @@
+import re
 from ficha.models import Ficha
 from django.urls import reverse_lazy
 from django.shortcuts import redirect
@@ -12,12 +13,23 @@ class FichaNew(LoginRequiredMixin, CreateView):
     fields = '__all__'
     success_url = '/'
 
+    def is_mobile(self):
+        """Return True if the request comes from a mobile device."""
+
+        MOBILE_AGENT_RE = re.compile(r".*(iphone|mobile|androidtouch)", re.IGNORECASE)
+        return MOBILE_AGENT_RE.match(self.request.META['HTTP_USER_AGENT'])
+
+    def get_template_names(self):
+        template_name = 'ficha.html'
+        if self.is_mobile():
+            template_name = 'ficha_mobile.html'
+        return template_name
+
     def form_valid(self, form):
         form = form.save(commit=False)
         form.user = self.request.user
         form.save()
         return redirect('restrita')
-
 
 class FichaUpdate(LoginRequiredMixin, PermissionRequiredMixin, UpdateView):
     template_name = 'ficha_update.html'
@@ -25,14 +37,23 @@ class FichaUpdate(LoginRequiredMixin, PermissionRequiredMixin, UpdateView):
     fields = '__all__'
     success_url = reverse_lazy('restrita')
 
+    # from django.forms import formset_factory
+    # from forms import FichaForm
+    # FichaFormSet = formset_factory(FichaForm)
+    #
     def has_permission(self):
         return self.request.user == Ficha.objects.get(pk=self.kwargs['pk']).user
 
     def form_valid(self, form):
+        print('VALID FORM')
         form = form.save(commit=False)
         form.user = self.request.user
         form.save()
         return redirect('restrita')
+
+    def form_invalid(self, form):
+        print('errrrrou', form.errors)
+        return super().form_invalid(form)
 
 
 class FichaDelete(LoginRequiredMixin, PermissionRequiredMixin, DeleteView):
@@ -42,7 +63,6 @@ class FichaDelete(LoginRequiredMixin, PermissionRequiredMixin, DeleteView):
 
     def has_permission(self):
         return self.request.user == Ficha.objects.get(pk=self.kwargs['pk']).user
-
 
 class Tcle(LoginRequiredMixin, PermissionRequiredMixin, UpdateView):
     template_name = 'tcle.html'

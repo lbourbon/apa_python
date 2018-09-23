@@ -1,13 +1,16 @@
 APA - MOBILE FIRST!!!
-
+Lembrar:
+    autofocus -> no nome
+    li class active -> em identificacao
 
 TODO:
 
 -->> para liberar:
 email?
 ficha
- - max characters (nome: 50)
+ - maxlength="14" (escolher tamanho máximo para campos)
  - tabindex= -1 nos elementos não digitaveis
+ - datepicker
  teste
 <<<-------
 
@@ -20,15 +23,15 @@ unaccent
 senha: hide/show
 
 FEATURES:
-
-BOTÕES: novo atend, imprimir, diretrizes, compartilhar  (editar? ou apenas novo at?)
+Modal para ficha_delete, atualizar senha e perfil
 Peso: ideal, esperado, predito
+CARIMBO VIRTUAL
 IMC, SC
 ASA 1 ou 2? se anemia, IMC>30 ou comorbidades
 COMPARTILHAR -> GRUPOS/HOSPITAIS: acesso a todos os apas dos usuários inscritos
+BOTÕES: novo atend, imprimir, diretrizes, compartilhar  (editar? ou apenas novo at?)
 Tipos de ficha: básica, completa, pediátrica, gestante
 Diretrizes: CARDIO/PULMONAR/SAOS/RESP/NEURO/TBG/ETILISMO
-CARIMBO VIRTUAL
 RESUMO DO CASO NO FIM
 
 Cores:  paletton.com digital color meter  Imagens:  unsplash   pixabay
@@ -36,4 +39,3 @@ Cores:  paletton.com digital color meter  Imagens:  unsplash   pixabay
 
 APA - pro
 django como API?
-React? Angular?
