@@ -28,7 +28,6 @@
                 <!------!!!!!------------ IDENTIFICAÇÃO ------------->
                 <div><label>Data</label><input id="data" name="data" type="date"
                                                value={{form.data.value|date:'Y-m-d'|default:""}}></div>
-
                 <label>Nome</label><input required name="nome" id="nome" type="text" placeholder="Nome Completo"
                                           maxlength="100" value="{{form.nome.value|default:''}}">
                 <div class="row">
@@ -45,7 +44,6 @@
                             <span>F</span></label>
                     </div>
                 </div>
-
                 <label>CPF<input id="cpf" name="cpf" type="text" maxlength="14"
                                  value="{{form.cpf.value|default:''}}"></label>
                 <label>Hospital<input id="hosp" name="hosp" type="text" maxlength="25"
@@ -72,7 +70,6 @@
                                                          value="{{form.altura.value|default:''}}">
                     </div>
                 </div>
-
                 <div class="row">
                     <div class="col s3">
                         <label>IMC</label><input id="imc" name="imc" type="number" step="0.1"
@@ -181,7 +178,6 @@
 
                 <div id="clinica" class="row hide">
                     <legend class="enfase">AVALIAÇÃO CLÍNICA:</legend>
-
                     <div class="mydropdown">
                         <button type="button" class="mydropbtn">Cardiovascular</button>
                         <div class="mydropdown-content">
@@ -291,7 +287,6 @@
                             </div>
                         </div>
                     </div>
-
                     <div class="mydropdown">
                         <button type="button" class="mydropbtn">Renal</button>
                         <div class="mydropdown-content">
@@ -311,7 +306,6 @@
                             </div>
                         </div>
                     </div>
-
                     <div class="mydropdown">
                         <button type="button" class="mydropbtn">Hematológico-Infeccioso</button>
                         <div class="mydropdown-content">
@@ -407,7 +401,6 @@
                     <textarea id="exfisico" name="exfisico" class="materialize-textarea">{{form.exfisico.value|default_if_none:""}}</textarea>
                     <label for="exfisico">Exame Físico</label>
                 </div>
-
                 <!----!!!!!------------ SINAIS VITAIS ------------ ----------->
                 <div class="row">
                     <legend class="enfase">SINAIS VITAIS:</legend>
@@ -416,8 +409,8 @@
                                                  value="{{form.pas.value|default:''}}">
                     </div>
                     <div class="col s1 x">
-                        <label class="invisivel">x</label> <input type="text" class="x" value="x" readonly
-                                                                  tabindex="-1">
+                        <label class="invisivel">x</label>
+                        <input type="text" class="x" value="x" readonly tabindex="-1">
                     </div>
                     <div class="col s3">
                         <label class="invisivel">PA</label> <input type="number" id="pad" name="pad"
@@ -431,9 +424,8 @@
                     </div>
                 </div>
                 <!----!!!!!------------ VIAS AÉREAS ------------ ----------->
-
                 <legend class="enfase">VIAS AÉREAS:</legend>
-                <legend>- Mallampati</legend>
+                <legend>Mallampati</legend>
                 <div class="row vias-aereas">
                     <div class="col s3">
                         <label><input name="mallampati" type="radio" value="1" class="with-gap"
@@ -464,7 +456,7 @@
                                   {% ifequal form.aboral.value "2" %}checked{% endifequal %}><span>< 4cm</span></label>
                 </div>
                 <div class="row vias-aereas">
-                    <legend>- Distância Esterno-Mento</legend>
+                    <legend>Distância Esterno-Mento</legend>
                     <label><input name="distem" type="radio" value="1" class="with-gap"
                                   {% ifequal form.distem.value "1" %}checked{% endifequal %}>
                         <span>> 12cm</span></label>
@@ -472,7 +464,6 @@
                                   {% ifequal form.distem.value "2" %}checked{% endifequal %}>
                         <span>< 12cm</span></label>
                 </div>
-
                 <div class="row vias-aereas">
                     <legend>Mobilidade Cervical</legend>
                     <label><input name="mobcer" type="radio" value="1" class="with-gap"
@@ -481,8 +472,6 @@
                                   {% ifequal form.mobcer.value "2" %}checked{% endifequal %}>
                         <span>Limitada</span></label>
                 </div>
-
-
                 <div class="row vias-aereas">
                     <legend>Prótese Dentária</legend>
                     <label><input name="protese" type="radio" value="1" class="with-gap"
@@ -490,7 +479,6 @@
                     <label><input name="protese" type="radio" value="2" class="with-gap"
                                   {% ifequal form.protese.value "2" %}checked{% endifequal %}><span>Sim</span></label>
                 </div>
-
                 <div class="row vias-aereas" id="vad">
                     <legend> - Risco de Via Aérea Difícil -</legend>
                     <label><input name="vad" type="radio" value="1" class="with-gap"
@@ -504,8 +492,6 @@
             <div class="collapsible-header"><i class="material-icons">colorize</i>EXAMES COMPLEMENTARES</div>
             <div class="collapsible-body">
                 <!------!!!!!------------ EXAMES COMPLEMENTARES ------------->
-
-
                 <div class="row">
                     <legend class="enfase">EXAMES LABORATORIAIS:</legend>
                     <div class="col s3">
@@ -525,7 +511,6 @@
                                                           value="{{form.plt.value|default:''}}"></label>
                     </div>
                 </div>
-
                 <div class="row">
                     <div class="col s3">
                         <label>Uréia<input class="lab" type="number" step="any" id="u" name="u"
@@ -545,7 +530,6 @@
                         </label>
                     </div>
                 </div>
-
                 <div class="row">
                     <div class="col s4">
                         <label>Glicemia<input class="lab" type="number" step="0.1" id="gli" name="gli"
@@ -596,42 +580,39 @@
                 <label>Outros</label><input type="text" id="outros_lab" name="outros_lab"
                                             value="{{form.outros_lab.value|default:''}}">
 
-                    <div class="circular-label">
-                        <legend class="enfase">EXAMES COMPLEMENTARES:</legend>
-                        <label>ECG</label><input type="text" id="ecg" name="ecg" value="{{form.ecg.value|default:''}}">
-                        <label>ECO</label><input type="text" id="eco" name="eco" value="{{form.eco.value|default:''}}">
-                        <label>Radiografia</label><input type="text" id="rx" name="rx"
-                                                         value="{{form.rx.value|default:''}}">
-                        <label>T. Ergométrico</label><input type="text" id="ergo" name="ergo"
-                                                            value="{{form.ergo.value|default:''}}">
-                        <label>Outros</label><input type="text" id="outroex" name="outroex"
-                                                    value="{{form.outroex.value|default:''}}">
-                    </div>
+                <div class="circular-label">
+                    <legend class="enfase">EXAMES COMPLEMENTARES:</legend>
+                    <label>ECG</label><input type="text" id="ecg" name="ecg" value="{{form.ecg.value|default:''}}">
+                    <label>ECO</label><input type="text" id="eco" name="eco" value="{{form.eco.value|default:''}}">
+                    <label>Radiografia</label><input type="text" id="rx" name="rx"
+                                                     value="{{form.rx.value|default:''}}">
+                    <label>T. Ergométrico</label><input type="text" id="ergo" name="ergo"
+                                                        value="{{form.ergo.value|default:''}}">
+                    <label>Outros</label><input type="text" id="outroex" name="outroex"
+                                                value="{{form.outroex.value|default:''}}">
+                </div>
             </div>
         </li>
         <li>
             <div class="collapsible-header"><i class="material-icons">check_box</i>CONCLUSÃO</div>
             <div class="collapsible-body">
                 <!------!!!!!!------------ CONCLUSÃO ------------->
-                    <div>
-                        <label>Anestesia Proposta:<input type="text" name="proposta"
-                                                         value="{{form.proposta.value|default:''}}"></label>
-                        <label>Jejum Pré-operatório:<input type="text" name="jejum"
-                                                           value="{{form.jejum.value|default:''}}"></label>
-                    </div>
-                <section id="prescricao" class="grid-item">
-                    <div id="lista-prescricao">
-                        <legend>PRESCRIÇÃO PRÉ-ANESTÉSICA</legend>
-                        <label>1.</label><input type="text" name="prescricao"
-                                                value="{{form.prescricao.value|default:''}}">
-                        <label>2.</label><input type="text" name="prescricao2"
-                                                value="{{form.prescricao2.value|default:''}}">
-                        <label>3.</label><input type="text" name="prescricao3"
-                                                value="{{form.prescricao3.value|default:''}}">
-                    </div>
-                </section>
-                <section id="carimbo" class="grid-item hide">CARIMBO E ASSINATURA</section>
-
+                <div>
+                    <label>Anestesia Proposta:<input type="text" name="proposta"
+                                                     value="{{form.proposta.value|default:''}}"></label>
+                    <label>Jejum Pré-operatório:<input type="text" name="jejum"
+                                                       value="{{form.jejum.value|default:''}}"></label>
+                </div>
+                <div id="prescricao">
+                    <legend>PRESCRIÇÃO PRÉ-ANESTÉSICA</legend>
+                    <label>1.</label><input type="text" name="prescricao"
+                                            value="{{form.prescricao.value|default:''}}">
+                    <label>2.</label><input type="text" name="prescricao2"
+                                            value="{{form.prescricao2.value|default:''}}">
+                    <label>3.</label><input type="text" name="prescricao3"
+                                            value="{{form.prescricao3.value|default:''}}">
+                </div>
+                <div id="carimbo" class="hide">CARIMBO E ASSINATURA</div>
                 <div class="input-field col s12 margint">
                     <textarea name="anotacoes" id="anotacoes" class="materialize-textarea">{{ form.anotacoes.value|default_if_none:"" }}</textarea>
                     <label for="anotacoes">ANOTAÇÕES</label>
@@ -645,7 +626,6 @@
                     </div>
                     <div class="col s4"></div>
                 </div>
-
             </div>
             </div>
         </li>
@@ -656,8 +636,6 @@
                onClick="javascript:window.print()">
     </div>
 </form>
-
-
 {% block js %}
 <script src="{% static 'ficha.js' %}"></script>
 {% endblock%}
