@@ -1,5 +1,6 @@
 APA - MOBILE FIRST!!!
 Lembrar:
+    fazer a parte da clinica que pulei
     autofocus -> no nome
     li class active -> em identificacao
 
@@ -12,6 +13,7 @@ ficha
  - tabindex= -1 nos elementos não digitaveis
  - datepicker
  teste
+ linebreaks no textarea no mobile? (exfisico)
 <<<-------
 
 css tcle

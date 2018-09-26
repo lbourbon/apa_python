@@ -1,11 +1,7 @@
 default = {
-    'temp':'AFEBRIL',
-    'alergias':'DESCONHECE ALERGIAS',
-    'geral': 'BEG, L.O.T.E., EUPNEICO, NORMOCORADO, HIDRATADO',
-    'acv': 'BULHAS RÍTMICAS, NORMOFONÉTICAS, EM DOIS TEMPOS, SEM SOPROS',
-    'ar': 'MURMÚRIOS VESICULARES PRESENTES BILATERALMENTE, SEM RUÍDOS ADVENTÍCIOS',
-    'abd': 'N.D.N.',
-    'ext': 'N.D.N.',
+    'temp': 'AFEBRIL',
+    'alergias': 'DESCONHECE ALERGIAS',
+    'físico': 'Geral: B.E.G., L.O.T.E., eupnéico, normocorado, hidratado\nACV: Bulhas rítmicas, normofonéticas, em dois tempos, sem sopros\nAR: Múrmurios vesiculares presentes bilateralmente, sem ruídos adventícios',
     '': '',
 }
 SEXO_CHOICES = (

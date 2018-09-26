@@ -2,19 +2,18 @@ M.AutoInit();
 
 // PREENCHE A DATA DE HOJE
 
-//window.onload = function() {
-//    var today = new Date();
-//    var dd = today.getDate();
-//    var mm = today.getMonth()+1; //January is 0!
-//    var yyyy = today.getFullYear();
-//
-//    if(dd<10){dd='0'+dd;}
-//    if(mm<10){mm='0'+mm;}
-//    var today = yyyy + '-' + mm + '-' + dd;
-//
-//    document.getElementById("data").value = today;
-//}
+window.onload = function() {
+    var today = new Date();
+    var dd = today.getDate();
+    var mm = today.getMonth()+1; //January is 0!
+    var yyyy = today.getFullYear();
 
+    if(dd<10){dd='0'+dd;}
+    if(mm<10){mm='0'+mm;}
+    var today = yyyy + '-' + mm + '-' + dd;
+
+    document.getElementById("data").value = today;
+}
 // CALCULA OS PESOS
 var pesoInput = document.getElementById('peso');
 var alturaInput = document.getElementById('altura');
@@ -104,3 +103,39 @@ function mostraAlergias(){
     }
 }
 window.onload = mostraAlergias();
+
+// Medicações
+bool_med.addEventListener('change', mostraMedicacoes);
+
+function mostraMedicacoes(){
+    if(bool_med.checked){
+        medicacoes_i.classList.remove('hide');
+    }else{
+        medicacoes_i.classList.add('hide');
+    }
+}
+window.onload = mostraMedicacoes();
+
+// Exame Físico
+bool_exfisico.addEventListener('change', mostraExFisico);
+
+function mostraExFisico(){
+    if(bool_exfisico.checked){
+        exfisico_i.classList.remove('hide');
+    }else{
+        exfisico_i.classList.add('hide');
+    }
+}
+window.onload = mostraExFisico();
+
+// Doenças
+bool_doencas.addEventListener('change', mostraDoencas);
+
+function mostraDoencas(){
+    if(bool_doencas.checked){
+        clinica.classList.remove('hide');
+    }else{
+        clinica.classList.add('hide');
+    }
+}
+window.onload = mostraDoencas();
