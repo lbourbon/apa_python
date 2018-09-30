@@ -8,6 +8,9 @@ html, body {
     font-size:  2.2em;
     margin-left: 25px;
 }
+#main-col{
+    background: rgb(252, 252, 252);
+}
 .material-icons{
     margin-left: 30px;
 }
@@ -15,7 +18,7 @@ html, body {
     background: white;
     padding: 7px;
     margin-bottom: 15px;
-    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2), 0 2px 5px 0 rgba(0, 0, 0, 0.19);
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2), 0 1px 3px 0 rgba(0, 0, 0, 0.19);
     vertical-align: middle;
     line-height: 1.2em;
     font-size: 1.2em;
@@ -25,15 +28,28 @@ html, body {
     top: 4px;
     margin-right: 25px;
 }
-
-
 input[type=text], input[type=number], input[type=date]{
     padding-left: 12px !important;
+}
+#sexo{
+    position: relative;
+    top: 20px;
+    left: 20px;
 }
 #altura{padding-left: 3px !important;}
 input[type=text]:focus, input[type=number]:focus, input[type=date]:focus {
  border-bottom: 1px solid red !important;
 }
+#pesos label{
+    margin: 0;
+    padding: 0;
+    }
+#pesos input{
+    margin: 0;
+    padding: 0;
+    display: inline;
+}
+
 .row{
     margin: 0;
     padding: 0;
@@ -74,13 +90,13 @@ input[type=text]:focus, input[type=number]:focus, input[type=date]:focus {
     border-radius: 5px !important;
 }
 #clinica .row{
-    margin-bottom: 5px;
+    margin-bottom: 15px;
 }
 .mydropbtn {
     background-color: rgb(220, 220, 220);
     border: none;
     padding: 5px;
-    width: 120px;
+    width: 150px;
     height: 42px;
     border-radius: 5px;
     margin: auto 0;
@@ -88,6 +104,7 @@ input[type=text]:focus, input[type=number]:focus, input[type=date]:focus {
 .mydropdown {
     position: relative;
     display: inline-block;
+    top: .3em;
 }
 .mydropdown-content {
     display: none;
@@ -108,16 +125,12 @@ input[type=text]:focus, input[type=number]:focus, input[type=date]:focus {
 .mydropdown-content label:hover {background-color: rgb(220, 220, 220);}
 .mydropdown:hover .mydropdown-content {display: block;}
 .mydropdown:hover .mydropbtn {background-color: rgba(200, 200, 200, 0.1);}
-.mydropdown{
-    display: inline-block;
-    position: relative;
-    top: .3em;
-}
+
 .vias-aereas img{
     width: 30px;
 }
 .vias-aereas{
-    margin-bottom: 10px;
+    margin-bottom: 15px;
 }
 .margint{
     margin-top: 15px;

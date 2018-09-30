@@ -40,7 +40,7 @@
                             <label>Idade<input class="meiatela" name="idade" id="idade" type="number" autocomplete="off"
                                                value="{{form.idade.value|default:''}}"></label>
                         </div>
-                        <div class="col s6">
+                        <div id="sexo" class="col s6">
                             <label><input name="sexo" id="masc" type="radio" class="with-gap" value="1"
                                           {% ifequal form.sexo.value "1" %}checked{% endifequal %}>
                                 <span>M</span></label>
@@ -637,7 +637,7 @@
                         </div>
                     </div>
                     <label>Outros</label><input type="text" id="outros_lab" name="outros_lab" autocomplete="off"
-                                                value="{{form.outros_lab.value|stringformat:'s'|default_if_none:""}}">
+                                                 value="{{form.outros_lab.value|default:''}}">
 
                     <div class="circular-label">
                         <legend class="enfase">EXAMES COMPLEMENTARES:</legend>

@@ -26,9 +26,8 @@
         {% csrf_token %}
         <div class="row">
             <div class="col l2">
-                coluna da Esq
             </div>
-            <div class="col s12 m9 l8">
+            <div id="main-col" class="col s12 m9 l8">
                 <div id="identificacao" class="section scrollspy">
                     <div class="myheader"><i class="material-icons">person</i>IDENTIFICAÇÃO</div>
                     <!------!!!!!------------ IDENTIFICAÇÃO ------------->
@@ -49,7 +48,7 @@
                             <label>Idade<input name="idade" id="idade" type="number" autocomplete="off"
                                                value="{{form.idade.value|default:''}}"></label>
                         </div>
-                        <div class="col s3">
+                        <div id="sexo"  class="col s3">
                             <label><input name="sexo" id="masc" type="radio" class="with-gap" value="1"
                                           {% ifequal form.sexo.value "1" %}checked{% endifequal %}>
                                 <span>M</span></label>
@@ -90,36 +89,31 @@
 
                          <!------!!!!!------------ PESOS ------------ ------------->
                     <div class="row">
-                        <div class="col s6">
+                        <div class="col s1"></div>
+                        <div class="col s3">
                             <label>Peso(kg)</label><input class="meiatela" id="peso" name="peso" type="number" step="0.1"
                                                           autocomplete="off"
                                                           value="{{form.peso.value|stringformat:'s'|default:''}}">
-                        </div>
-                        <div class="col s6">
                             <label>Altura (cm)</label><input class="meiatela" id="altura" name="altura" type="number"
                                                              autocomplete="off"
                                                              value="{{form.altura.value|default:''}}">
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="col s3">
-                            <label>IMC</label><input id="imc" name="imc" type="number" step="0.1" tabindex="-1"
+                        <div class="col s2"></div>
+                        <div id="pesos" class="col s2">
+                            <label>IMC(kg/m<sup>2</sup>)</label><input id="imc" name="imc" type="number" step="0.1" tabindex="-1"
                                                      value="{{form.imc.value|stringformat:'s'|default:''}}">
-                        </div>
-                        <div class="col s3">
-                            <label>P. ideal</label><input id="ideal" name="ideal" type="number" step="0.1" tabindex="-1"
+                            <label>Peso ideal</label><input id="ideal" name="ideal" type="number" step="0.1" tabindex="-1"
                                                           value="{{form.ideal.value|stringformat:'s'|default:''}}">
-                        </div>
-                        <div class="col s3">
-                            <label>Ajustado</label><input id="ajustado" name="ajustado" type="number" step="0.1"
+                             </div>
+                        <div id="pesos" class="col s2">
+                             <label>Peso Ajustado</label><input id="ajustado" name="ajustado" type="number" step="0.1"
                                                           tabindex="-1"
                                                           value="{{form.ajustado.value|stringformat:'s'|default:''}}">
-                        </div>
-                        <div class="col s3">
-                            <label>Predito</label><input id="predito" name="predito" type="number" step="0.1"
+                            <label>Peso Predito</label><input id="predito" name="predito" type="number" step="0.1"
                                                          tabindex="-1"
                                                          value="{{form.predito.value|stringformat:'s'|default:''}}">
                         </div>
+                        <div class="col s1"></div>
                     </div>
 
                     <!------!!!!!------------ PROCEDIMENTO ------------ ------------->
@@ -211,9 +205,8 @@
 
                     <div id="clinica" class="row hide">
                         <legend class="enfase">AVALIAÇÃO CLÍNICA:</legend>
-
                         <div class="row">
-                            <div class="col s6">
+                            <div class="col s4">
                                 <div class="mydropdown">
                                     <button type="button" class="mydropbtn">Cardiovascular</button>
                                     <div class="mydropdown-content">
@@ -236,7 +229,7 @@
                                 </div>
                             </div>
 
-                            <div class="col s6">
+                            <div class="col s4">
                                 <div class="mydropdown">
                                     <button type="button" class="mydropbtn">Capacidade Funcional</button>
                                     <div class="mydropdown-content">
@@ -252,10 +245,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="row">
-                            <div class="col s6">
-
+                            <div class="col s4">
                                 <div class="mydropdown">
                                     <button type="button" class="mydropbtn">Neurológico</button>
                                     <div class="mydropdown-content">
@@ -275,7 +265,10 @@
                                 </div>
 
                             </div>
-                            <div class="col s6">
+
+                        </div>
+                        <div class="row">
+                            <div class="col s4">
                                 <div class="mydropdown">
                                     <button type="button" class="mydropbtn">Respiratório</button>
                                     <div class="mydropdown-content">
@@ -298,10 +291,8 @@
 
 
                             </div>
-                        </div>
 
-                        <div class="row">
-                            <div class="col s6">
+                            <div class="col s4">
                                 <div class="mydropdown">
                                     <button type="button" class="mydropbtn">Gastrointestinal</button>
                                     <div class="mydropdown-content">
@@ -326,7 +317,7 @@
                                 </div>
 
                             </div>
-                            <div class="col s6">
+                            <div class="col s4">
                                 <div class="mydropdown">
                                     <button type="button" class="mydropbtn">Endócrino-metabólico</button>
                                     <div class="mydropdown-content">
@@ -347,9 +338,9 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                                                    </div>
                         <div class="row">
-                            <div class="col s6">
+                            <div class="col s4">
                                 <div class="mydropdown">
                                     <button type="button" class="mydropbtn">Renal</button>
                                     <div class="mydropdown-content">
@@ -371,7 +362,7 @@
                                 </div>
 
                             </div>
-                            <div class="col s6">
+                            <div class="col s4">
                                 <div class="mydropdown">
                                     <button type="button" class="mydropbtn">Hematológico-Infeccioso</button>
                                     <div class="mydropdown-content">
@@ -397,12 +388,8 @@
                                         </div>
                                     </div>
                                 </div>
-
-
                             </div>
-                        </div>
-                        <div class="row">
-                            <div class="col s6">
+                            <div class="col s4">
                                 <div class="mydropdown">
                                     <button type="button" class="mydropbtn">Músculo-Esquelético</button>
                                     <div class="mydropdown-content">
@@ -482,7 +469,8 @@
                     <!----!!!!!------------ SINAIS VITAIS ------------ ----------->
                     <div class="row">
                         <legend class="enfase">SINAIS VITAIS:</legend>
-                        <div class="col s3">
+                        <div class="col s1"></div>
+                        <div class="col s2">
                             <label>PA</label> <input type="number" id="pas" name="pas" autocomplete="off"
                                                      value="{{form.pas.value|default:''}}">
                         </div>
@@ -490,11 +478,11 @@
                             <label class="invisivel">x</label>
                             <input type="text" class="x" value="x" readonly tabindex="-1">
                         </div>
-                        <div class="col s3">
+                        <div class="col s2">
                             <label class="invisivel">PA</label> <input type="number" id="pad" name="pad" autocomplete="off"
                                                                        value="{{form.pad.value|default:''}}">
                         </div>
-                        <div class="col s3">
+                        <div class="col s2">
                             <label>FC</label> <input type="number" id="fc" name="fc" autocomplete="off"
                                                      value="{{form.fc.value|default:''}}">
                         </div>
@@ -502,70 +490,71 @@
                             <label>FR</label> <input type="number" id="fr" name="fr" autocomplete="off"
                                                      value="{{form.fr.value|default:''}}">
                         </div>
+                        <div class="col s1"></div>
                     </div>
+                        <div class="row"><br></div>
                     <!----!!!!!------------ VIAS AÉREAS ------------ ----------->
                     <legend class="enfase">VIAS AÉREAS:</legend>
                     <legend>Mallampati</legend>
                     <div class="row vias-aereas">
-                        <div class="col s3">
+                        <div class="col s2">
                             <label><input name="mallampati" type="radio" value="1" class="with-gap"
                                           {% ifequal form.mallampati.value "1" %}checked{% endifequal %}> <span><img
                                     src="../static/img/mal1.png"></span></label>
                         </div>
-                        <div class="col s3">
+                        <div class="col s2">
                             <label><input name="mallampati" type="radio" value="2" class="with-gap"
                                           {% ifequal form.mallampati.value "2" %}checked{% endifequal %}> <span><img
                                     src="../static/img/mal2.png"></span></span></label>
                         </div>
-                        <div class="col s3">
+                        <div class="col s2">
                             <label> <input name="mallampati" type="radio" value="3" class="with-gap"
                                            {% ifequal form.mallampati.value "3" %}checked{% endifequal %}> <span><img
                                     src="../static/img/mal3.png"></span></span></label>
                         </div>
-                        <div class="col s3">
+                        <div class="col s2">
                             <label><input name="mallampati" type="radio" value="4" class="with-gap"
                                           {% ifequal form.mallampati.value "4" %}checked{% endifequal %}> <span><img
                                     src="../static/img/mal4.png"></span></span></label>
                         </div>
-                    </div>
-                    <div class="row vias-aereas">
-                        <legend>Abertura Oral</legend>
+                        <div class="col s1"></div>
+                        <div class="col s3">
+                               <legend>Abertura Oral</legend>
                         <label><input name="aboral" type="radio" value="1" class="with-gap"
                                       {% ifequal form.aboral.value "1" %}checked{% endifequal %}><span>> 4cm</span></label>
                         <label><input name="aboral" type="radio" value="2" class="with-gap"
                                       {% ifequal form.aboral.value "2" %}checked{% endifequal %}><span>< 4cm</span></label>
+
+                        </div>
                     </div>
                     <div class="row vias-aereas">
-                        <legend>Distância Esterno-Mento</legend>
+                        <div class="col s3"> <legend>Distância Esterno-Mento</legend>
                         <label><input name="distem" type="radio" value="1" class="with-gap"
                                       {% ifequal form.distem.value "1" %}checked{% endifequal %}>
                             <span>> 12cm</span></label>
                         <label><input name="distem" type="radio" value="2" class="with-gap"
                                       {% ifequal form.distem.value "2" %}checked{% endifequal %}>
-                            <span>< 12cm</span></label>
-                    </div>
-                    <div class="row vias-aereas">
-                        <legend>Mobilidade Cervical</legend>
+                            <span>< 12cm</span></label></div>
+                        <div class="col s3"> <legend>Mobilidade Cervical</legend>
                         <label><input name="mobcer" type="radio" value="1" class="with-gap"
                                       {% ifequal form.mobcer.value "1" %}checked{% endifequal %}> <span>Boa</span></label>
                         <label><input name="mobcer" type="radio" value="2" class="with-gap"
                                       {% ifequal form.mobcer.value "2" %}checked{% endifequal %}>
-                            <span>Limitada</span></label>
-                    </div>
-                    <div class="row vias-aereas">
-                        <legend>Prótese Dentária</legend>
+                            <span>Limitada</span></label></div>
+                        <div class="col s3"><legend>Prótese Dentária</legend>
                         <label><input name="protese" type="radio" value="1" class="with-gap"
                                       {% ifequal form.protese.value "1" %}checked{% endifequal %}><span>Não</span></label>
                         <label><input name="protese" type="radio" value="2" class="with-gap"
                                       {% ifequal form.protese.value "2" %}checked{% endifequal %}><span>Sim</span></label>
-                    </div>
-                    <div class="row vias-aereas" id="vad">
-                        <legend> - Risco de Via Aérea Difícil -</legend>
+                   </div>
+                        <div class="col s3"><legend> - Risco de Via Aérea Difícil -</legend>
                         <label><input name="vad" type="radio" value="1" class="with-gap"
                                       {% ifequal form.vad.value "1" %}checked{% endifequal %}><span>Não</span></label>
                         <label><input name="vad" type="radio" value="2" class="with-gap"
                                       {% ifequal form.vad.value "2" %}checked{% endifequal %}><span>Sim</span></label>
-                    </div>
+                   </div>
+                     </div>
+
                 </div>
                 <div id="exames" class="section scrollspy">
                     <div class="myheader"><i class="material-icons">colorize</i>EXAMES COMPLEMENTARES</div>
@@ -573,94 +562,90 @@
                      <!------!!!!!------------ EXAMES COMPLEMENTARES ------------->
                     <div class="row">
                         <legend class="enfase">EXAMES LABORATORIAIS:</legend>
-                        <div class="col s3">
+                        <div class="col s2">
                             <label>Hb<input class="lab" type="number" step="0.1" id="hemo" name="hb" autocomplete="off"
                                             value="{{form.hb.value|stringformat:'s'|default:''}}"></label>
                         </div>
-                        <div class="col s3">
+                        <div class="col s2">
                             <label>Ht<input class="lab" type="number" step="0.1" id="ht" name="ht" autocomplete="off"
                                             value="{{form.ht.value|stringformat:'s'|default:''}}"></label>
                         </div>
-                        <div class="col s3">
+                        <div class="col s2">
                             <label>Leuco<input class="lab" type="number" id="leuco" name="leuco" autocomplete="off"
                                                value="{{form.leuco.value|stringformat:'s'|default:''}}"></label>
                         </div>
-                        <div class="col s3">
-                            <label>Plaq .10<sup>3</sup><input class="lab" type="number" id="plt" name="plt"
+                        <div class="col s2">
+                            <label>Plaq (<sub> x </sub>10<sup>3</sup>)<input class="lab" type="number" id="plt" name="plt"
                                                               autocomplete="off"
                                                               value="{{form.plt.value|stringformat:'s'|default:''}}">
                             </label></div>
-                    </div>
-                    <div class="row">
-                        <div class="col s3">
+                        <div class="col s2">
                             <label>Uréia<input class="lab" type="number" step="any" id="u" name="u" autocomplete="off"
                                                value="{{form.u.value|stringformat:'s'|default:''}}"</label>
                         </div>
-                        <div class="col s3">
+                        <div class="col s2">
                             <label>Cr<input class="lab" type="number" step="any" id="cr" name="cr" autocomplete="off"
                                             value="{{form.cr.value|stringformat:'s'|default:''}}"></label>
                         </div>
-                        <div class="col s3">
+                    </div>
+
+                    <div class="row">
+                        <div class="col s2">
+                            <label>Glicemia<input class="lab" type="number" step="0.1" id="gli" name="gli"
+                                                  autocomplete="off"
+                                                  value="{{form.gli.value|stringformat:'s'|default:''}}"></label></div>
+                        <div class="col s2">
+                            <label>TS<input class="lab" type="number" step="any" id="ts" name="ts" autocomplete="off"
+                                            value="{{form.ts.value|stringformat:'s'|default:''}}"</label></div>
+                        <div class="col s2">
+                            <label>TC<input class="lab" type="number" step="any" id="tc" name="tc" autocomplete="off"
+                                            value="{{form.tc.value|stringformat:'s'|default:''}}"></label></div>
+
+                        <div class="col s2">
+                            <label>INR<input class="lab" type="number" step="any" id="inr" name="inr" autocomplete="off"
+                                             value="{{form.inr.value|stringformat:'s'|default:''}}"></label>
+                        </div>
+                        <div class="col s2">
+                            <label>TP<input class="lab" type="number" step="any" id="tp" name="tp" autocomplete="off"
+                                            value="{{form.tp.value|stringformat:'s'|default:''}}"></label>
+                        </div>
+                        <div class="col s2">
+                            <label>TTPA<input class="lab" type="number" step="any" id="ttpa" name="ttpa"
+                                              autocomplete="off"
+                                              value="{{form.ttpa.value|stringformat:'s'|default:''}}"></label></div>
+                        <div class="col s2">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col s2">
                             <label>Na<input class="lab" type="number" step="any" id="na" name="na" autocomplete="off"
                                             value="{{form.na.value|stringformat:'s'|default:''}}"></label>
                         </div>
-                        <div class="col s3">
+                        <div class="col s2">
                             <label>K<input class="lab" type="number" step="any" id="k" name="k" autocomplete="off"
                                            value="{{form.k.value|stringformat:'s'|default:''}}"
                             </label>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="col s4">
-                            <label>Glicemia<input class="lab" type="number" step="0.1" id="gli" name="gli"
-                                                  autocomplete="off"
-                                                  value="{{form.gli.value|stringformat:'s'|default:''}}"></label></div>
-                        <div class="col s4">
-                            <label>TS<input class="lab" type="number" step="any" id="ts" name="ts" autocomplete="off"
-                                            value="{{form.ts.value|stringformat:'s'|default:''}}"</label></div>
-                        <div class="col s4">
-                            <label>TC<input class="lab" type="number" step="any" id="tc" name="tc" autocomplete="off"
-                                            value="{{form.tc.value|stringformat:'s'|default:''}}"></label></div>
-                        <div class="col s4">
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col s4">
-                            <label>INR<input class="lab" type="number" step="any" id="inr" name="inr" autocomplete="off"
-                                             value="{{form.inr.value|stringformat:'s'|default:''}}"></label>
-                        </div>
-                        <div class="col s4">
-                            <label>TP<input class="lab" type="number" step="any" id="tp" name="tp" autocomplete="off"
-                                            value="{{form.tp.value|stringformat:'s'|default:''}}"></label>
-                        </div>
-                        <div class="col s4">
-                            <label>TTPA<input class="lab" type="number" step="any" id="ttpa" name="ttpa"
-                                              autocomplete="off"
-                                              value="{{form.ttpa.value|stringformat:'s'|default:''}}"></label></div>
-                        <div class="col s4">
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col s3">
+                        <div class="col s2">
                             <label>TGO<input class="lab" type="number" step="any" id="tgo" name="tgo" autocomplete="off"
                                              value="{{form.tgo.value|stringformat:'s'|default:''}}"</label>
                         </div>
-                        <div class="col s3">
+                        <div class="col s2">
                             <label>TGP<input class="lab" type="number" step="any" id="tgp" name="tgp" autocomplete="off"
                                              value="{{form.tgp.value|stringformat:'s'|default:''}}"></label>
                         </div>
-                        <div class="col s3">
+                        <div class="col s2">
                             <label>FA<input class="lab" type="number" step="any" id="fa" name="fa" autocomplete="off"
                                             value="{{form.fa.value|stringformat:'s'|default:''}}"></label>
                         </div>
-                        <div class="col s3">
+                        <div class="col s2">
                             <label>GGT<input class="lab" type="number" step="any" id="ggt" name="ggt" autocomplete="off"
                                              value="{{form.ggt.value|stringformat:'s'|default:''}}"
                             </label>
                         </div>
                     </div>
                     <label>Outros</label><input type="text" id="outros_lab" name="outros_lab" autocomplete="off"
-                                                value="{{form.outros_lab.value|stringformat:'s'|default_if_none:""}}">
+                                                value="{{form.outros_lab.value|default:''}}">
 
                     <div class="circular-label">
                         <legend class="enfase">EXAMES COMPLEMENTARES:</legend>
@@ -695,7 +680,6 @@
                         <label>3.</label><input type="text" name="prescricao3"
                                                 value="{{form.prescricao3.value|default:''}}">
                     </div>
-                    <div id="carimbo" class="hide">CARIMBO E ASSINATURA</div>
                     <div class="input-field col s12 margint">
                         <textarea name="anotacoes" id="anotacoes" class="materialize-textarea">{{ form.anotacoes.value|default_if_none:"" }}</textarea>
                         <label for="anotacoes">ANOTAÇÕES</label>
@@ -707,6 +691,7 @@
                             <input name="asa" class="center" id="asa" type="number" min="1" max="5"
                                    value="{{form.asa.value|floatformat|default:''}}">
                         </div>
+                            <div id="carimbo" class="hide">CARIMBO E ASSINATURA</div>
                         <div class="col s4"></div>
                     </div>
 
@@ -727,13 +712,11 @@
             {% endif %}
         </div>
 
-
                 </div>
             </div>
 
 
             <div class="col hide-on-small-only m3 l2">
-                Coluna da D
                 <ul class="section table-of-contents fixed">
                     <li><a href="#identificacao">Identificação</a></li>
                     <li><a href="#avclinica">Avaliação Clínica</a></li>
@@ -747,7 +730,7 @@
     <script>
 document.addEventListener('DOMContentLoaded', function() {
     var elems = document.querySelectorAll('.scrollspy');
-    var instances = M.ScrollSpy.init(elems, {scrollOffset:50});
+    var instances = M.ScrollSpy.init(elems, {scrollOffset:0});
 });
     </script>
         <script src="{% static 'ficha.js' %}"></script>
