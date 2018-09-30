@@ -29,30 +29,44 @@ class FichaNew(LoginRequiredMixin, CreateView):
         form = form.save(commit=False)
         form.user = self.request.user
         form.save()
+        if self.request.POST['fim'] == 'IMPRIMIR':
+            return redirect('ficha_update', pk=form.pk)
         return redirect('restrita')
 
+    def form_invalid(self, form):
+        print('Errrrou:', form.errors)
+        return super().form_invalid(form)
+
 class FichaUpdate(LoginRequiredMixin, PermissionRequiredMixin, UpdateView):
-    template_name = 'ficha_update.html'
+    template_name = 'ficha.html'
     model = Ficha
     fields = '__all__'
     success_url = reverse_lazy('restrita')
 
-    # from django.forms import formset_factory
-    # from forms import FichaForm
-    # FichaFormSet = formset_factory(FichaForm)
-    #
+
     def has_permission(self):
         return self.request.user == Ficha.objects.get(pk=self.kwargs['pk']).user
 
+    def is_mobile(self):
+        """Return True if the request comes from a mobile device."""
+
+        MOBILE_AGENT_RE = re.compile(r".*(iphone|mobile|androidtouch)", re.IGNORECASE)
+        return MOBILE_AGENT_RE.match(self.request.META['HTTP_USER_AGENT'])
+
+    def get_template_names(self):
+        template_name = 'ficha.html'
+        if self.is_mobile():
+            template_name = 'ficha_mobile.html'
+        return template_name
+
     def form_valid(self, form):
-        print('VALID FORM')
         form = form.save(commit=False)
         form.user = self.request.user
         form.save()
         return redirect('restrita')
 
     def form_invalid(self, form):
-        print('errrrrou', form.errors)
+        print('Errrrou:', form.errors)
         return super().form_invalid(form)
 
 

@@ -1,19 +1,43 @@
 M.AutoInit();
 
+document.addEventListener("DOMContentLoaded", function() {
+    var referer = document.getElementById("referer");
+    if(referer != null && referer.value.endsWith('ficha/')){
+        referer = 0;
+        window.print();
+    }
+});
+
+colapList = document.getElementsByClassName("collapsible-header");
+for (var i = 0; i < colapList.length; i++) {
+    colapList[i].addEventListener("click", meuTeste)};
+
+function meuTeste(){
+    const element = document.getElementById('nome');
+    if (element) {
+        window.scroll({
+            top: element.scrollTop,
+            behavior: 'smooth',
+        })
+    }
+};
+
 // PREENCHE A DATA DE HOJE
+document.addEventListener("DOMContentLoaded", function() {
+    if (!document.getElementById("data").value){
+        var today = new Date();
+        var dd = today.getDate();
+        var mm = today.getMonth()+1; //January is 0!
+        var yyyy = today.getFullYear();
 
-window.onload = function() {
-    var today = new Date();
-    var dd = today.getDate();
-    var mm = today.getMonth()+1; //January is 0!
-    var yyyy = today.getFullYear();
+        if(dd<10){dd='0'+dd;}
+        if(mm<10){mm='0'+mm;}
+        var today = yyyy + '-' + mm + '-' + dd;
 
-    if(dd<10){dd='0'+dd;}
-    if(mm<10){mm='0'+mm;}
-    var today = yyyy + '-' + mm + '-' + dd;
+        document.getElementById("data").value = today;
+    }
+});
 
-    document.getElementById("data").value = today;
-}
 // CALCULA OS PESOS
 var pesoInput = document.getElementById('peso');
 var alturaInput = document.getElementById('altura');

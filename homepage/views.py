@@ -31,7 +31,7 @@ class Teste(LoginRequiredMixin, ListView):
         return MOBILE_AGENT_RE.match(self.request.META['HTTP_USER_AGENT'])
 
     def get_template_names(self):
-        template_name = 'ficha.html'
+        template_name = 'teste.html'
 
         if self.is_mobile():
             template_name = 'teste.html'

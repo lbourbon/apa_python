@@ -1,27 +1,23 @@
-APA - MOBILE FIRST!!!
-Lembrar:
-    fazer a parte da clinica que pulei
-    autofocus -> no nome
-    li class active -> em identificacao
+lembrar: colectstatic quando mudar JS
 
 TODO:
-
 -->> para liberar:
 email?
-ficha
- - maxlength="14" (escolher tamanho máximo para campos)
- - tabindex= -1 nos elementos não digitaveis
- - datepicker
- teste
- linebreaks no textarea no mobile? (exfisico)
+
+ficha:
+ficha imprimir
+teste
+ - maxlength="15" (escolher tamanho máximo para campos)
 <<<-------
 
+datepicker
+linebreaks no textarea no mobile? (exfisico)
 css tcle
 css orçamento imprimir
 configuracoes
 Colocar termo escondido na msm página da ficha - necessário para imprimir?
 ficha_delete (fake delete?) on.cascade?
-unaccent
+unaccent no search
 senha: hide/show
 
 FEATURES:
