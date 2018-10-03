@@ -6,6 +6,8 @@ from django.contrib.auth.forms import UserCreationForm
 
 
 class FichaForm(ModelForm):
+    data = forms.DateField(input_formats=['%Y-%m-%d', '%m/%d/%Y', '%m/%d/%y', '%d/%m/%Y', '%d-%m-%Y'])
+
     class Meta:
         model = Ficha
         exclude = ['user', ]

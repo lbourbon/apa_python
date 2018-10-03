@@ -21,20 +21,22 @@ class Home(TemplateView):
         return super().dispatch(request, *args, **kwargs)
 
 
-class Teste(LoginRequiredMixin, ListView):
-    template_name = 'teste.html'
+class Teste(TemplateView):
+    template_name = 'ficha.html'
     model = Ficha
+    fields = '__all__'
+    success_url = '/'
 
     def is_mobile(self):
         """Return True if the request comes from a mobile device."""
+
         MOBILE_AGENT_RE = re.compile(r".*(iphone|mobile|androidtouch)", re.IGNORECASE)
         return MOBILE_AGENT_RE.match(self.request.META['HTTP_USER_AGENT'])
 
     def get_template_names(self):
-        template_name = 'teste.html'
-
+        template_name = 'ficha.html'
         if self.is_mobile():
-            template_name = 'teste.html'
+            template_name = 'ficha_mobile.html'
         return template_name
 
 

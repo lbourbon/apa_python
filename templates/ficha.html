@@ -9,6 +9,7 @@
     <nav>
         <div class="nav-wrapper">
             <a href="{% url 'restrita' %}" class="left brand-logo" id="apa-logo">A.P.A.</a>
+            <span id="titulo" class="flow-text black-text hide-on-med-and-down">Ficha de Avaliação Pré-Anestésica</span>
             <ul id="nav-mobile" class="right">
                 <li><label for="submit-form"><i class="material-icons black-text">save</i></label></li>
                 <li><label for="print-form"><i class="material-icons black-text">print</i></label></li>
@@ -18,6 +19,7 @@
     </nav>
 </div>
 <input type="hidden" id="referer" value="{{ request.META.HTTP_REFERER }}">
+<input type="hidden" id="myurl" value="{{ request.path }}">
 {% if "update" in request.path %}
 <form action="{% url 'ficha_update' ficha.pk %}" method="post">
     {% else %}
@@ -38,8 +40,8 @@
                                               value="{{form.nome.value|default:''}}">
                         </div>
                         <div class="col s4">
-                    <label>Data</label><input id="data" name="data" type="date"
-                                                   value={{form.data.value|date:'Y-m-d'|default:""}}>
+                    <label>Data</label><input id="data" name="data" type="text" class="datepicker"
+                                                   value={{form.data.value|date:'d-m-Y'|default:""}}>
                         </div>
                     </div>
 

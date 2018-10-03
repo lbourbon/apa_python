@@ -1,8 +1,10 @@
 M.AutoInit();
 
 document.addEventListener("DOMContentLoaded", function() {
+    var path = document.getElementById("myurl");
     var referer = document.getElementById("referer");
-    if(referer != null && referer.value.endsWith('ficha/')){
+
+    if(referer != null && referer.value.endsWith('ficha/') && path != null && path.value.includes('update')){
         referer = 0;
         window.print();
     }
@@ -22,21 +24,50 @@ function meuTeste(){
     }
 };
 
-// PREENCHE A DATA DE HOJE
-document.addEventListener("DOMContentLoaded", function() {
-    if (!document.getElementById("data").value){
-        var today = new Date();
-        var dd = today.getDate();
-        var mm = today.getMonth()+1; //January is 0!
-        var yyyy = today.getFullYear();
+$(document).ready(function(){
+    var today = new Date();
+    var dd = today.getDate();
+    var mm = today.getMonth()+1; //January is 0!
+    var yyyy = today.getFullYear();
 
-        if(dd<10){dd='0'+dd;}
-        if(mm<10){mm='0'+mm;}
-        var today = yyyy + '-' + mm + '-' + dd;
+    if(dd<10){dd='0'+dd;}
+    if(mm<10){mm='0'+mm;}
+    var today = mm + '/' + dd + '/' + yyyy;
 
-        document.getElementById("data").value = today;
-    }
+    $('.datepicker').datepicker({
+    format: 'dd/mm/yyyy',
+    defaultDate: new Date(today),
+    setDefaultDate: true,
+    i18n: {
+    today: 'Hoje',
+    clear: 'Limpar',
+    done: 'Ok',
+    nextMonth: 'Próximo mês',
+    previousMonth: 'Mês anterior',
+    weekdaysAbbrev: ['D', 'S', 'T', 'Q', 'Q', 'S', 'S'],
+    weekdaysShort: ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb'],
+    weekdays: ['Domingo', 'Segunda-Feira', 'Terça-Feira', 'Quarta-Feira', 'Quinta-Feira', 'Sexta-Feira', 'Sábado'],
+    monthsShort: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'],
+    months: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro']
+}
 });
+  });
+// PREENCHE A DATA DE HOJE
+//document.addEventListener("DOMContentLoaded", function() {
+//    if (!document.getElementById("data").value){
+//        var today = new Date();
+//        var dd = today.getDate();
+//        var mm = today.getMonth()+1; //January is 0!
+//        var yyyy = today.getFullYear();
+//
+//        if(dd<10){dd='0'+dd;}
+//        if(mm<10){mm='0'+mm;}
+//        //var today = yyyy + '-' + mm + '-' + dd;
+//        var today = dd + '-' + mm + '-' + yyyy;
+//
+//        document.getElementById("data").value = today;
+//    }
+//});
 
 // CALCULA OS PESOS
 var pesoInput = document.getElementById('peso');
