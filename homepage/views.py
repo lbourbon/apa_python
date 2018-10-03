@@ -22,7 +22,7 @@ class Home(TemplateView):
 
 
 class Teste(TemplateView):
-    template_name = 'ficha.html'
+    template_name = 'teste.html'
     model = Ficha
     fields = '__all__'
     success_url = '/'
@@ -34,9 +34,9 @@ class Teste(TemplateView):
         return MOBILE_AGENT_RE.match(self.request.META['HTTP_USER_AGENT'])
 
     def get_template_names(self):
-        template_name = 'ficha.html'
+        template_name = 'teste.html'
         if self.is_mobile():
-            template_name = 'ficha_mobile.html'
+            template_name = 'teste_mobile.html'
         return template_name
 
 

@@ -19,6 +19,7 @@
     </nav>
 </div>
 <input type="hidden" id="referer" value="{{ request.META.HTTP_REFERER }}">
+<input type="hidden" id="myurl" value="{{ request.path }}">
 {% if "update" in request.path %}
 <form action="{% url 'ficha_update' ficha.pk %}" method="post">
     {% else %}
@@ -30,8 +31,10 @@
                 <div class="collapsible-header"><i class="material-icons">person</i>IDENTIFICAÇÃO</div>
                 <div class="collapsible-body">
                     <!------!!!!!------------ IDENTIFICAÇÃO ------------->
-                    <div><label>Data</label><input id="data" name="data" type="date"
-                                                   value={{form.data.value|date:'Y-m-d'|default:""}}></div>
+                    <div>
+                     <label>Data</label><input id="data" name="data" type="text" class="datepicker"
+                                                   value={{form.data.value|date:'d-m-Y'|default:""}}>
+                    </div>
                     <label>Nome</label><input required name="nome" id="nome" type="text" placeholder="Nome Completo"
                                               tabindex="0" maxlength="100"  autocomplete="off"
                                               value="{{form.nome.value|default:''}}">

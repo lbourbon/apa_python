@@ -2,36 +2,26 @@
 {% load static %}
 {% block meta %}
 <link rel="stylesheet" href="{% static 'ficha_mobile.css' %}" media="screen">
-<link rel="stylesheet" href="{% static 'imprimir_ficha.css' %}" media="print">
 {% endblock%}
-{% block title %} Ficha de Avaliação Pré-Anestésica {% endblock%}
+{% block title %} Teste - A.P.A. {% endblock%}
 {% block main %}
-<div class="navbar-fixed">
-    <nav>
-        <div class="nav-wrapper">
-            <a href="{% url 'restrita' %}" class="left brand-logo" id="apa-logo">A.P.A.</a>
-            <ul id="nav-mobile" class="right">
-                <li><label for="submit-form"><i class="material-icons black-text">save</i></label></li>
-                <li><label for="print-form"><i class="material-icons black-text">print</i></label></li>
-                <li><a href="{% url 'ajuda' %}"><i class="material-icons black-text">help</i></a></li>
-            </ul>
-        </div>
-    </nav>
-</div>
-<input type="hidden" id="referer" value="{{ request.META.HTTP_REFERER }}">
-{% if "update" in request.path %}
-<form action="{% url 'ficha_update' ficha.pk %}" method="post">
-    {% else %}
+{% include "navbar.html" %}
     <form action="{% url 'ficha' %}" method="post">
-        {% endif %}
         {% csrf_token %}
-        <ul class="collapsible expandable" >
+        <ul class="collapsible popout">
+            <div id="alerta">
+            <p class="alerta borda center flow-text z-depth-3"> Atenção: Todos os dados digitados nessa ficha de teste serão descartados!
+                Para usar todos os recursos disponíveis, faça seu <a href="{% url 'cadastro' %}"> Cadastro</a>.
+            </p>
+        </div>
             <li class="active colaps" id="cnome">
                 <div class="collapsible-header"><i class="material-icons">person</i>IDENTIFICAÇÃO</div>
                 <div class="collapsible-body">
                     <!------!!!!!------------ IDENTIFICAÇÃO ------------->
-                    <div><label>Data</label><input id="data" name="data" type="date"
-                                                   value={{form.data.value|date:'Y-m-d'|default:""}}></div>
+                    <div>
+                     <label>Data</label><input id="data" name="data" type="text" class="datepicker"
+                                                   value={{form.data.value|date:'d-m-Y'|default:""}}>
+                    </div>
                     <label>Nome</label><input required name="nome" id="nome" type="text" placeholder="Nome Completo"
                                               tabindex="0" maxlength="100"  autocomplete="off"
                                               value="{{form.nome.value|default:''}}">
@@ -40,7 +30,7 @@
                             <label>Idade<input class="meiatela" name="idade" id="idade" type="number" autocomplete="off"
                                                value="{{form.idade.value|default:''}}"></label>
                         </div>
-                        <div class="col s6">
+                        <div id="sexo" class="col s6">
                             <label><input name="sexo" id="masc" type="radio" class="with-gap" value="1"
                                           {% ifequal form.sexo.value "1" %}checked{% endifequal %}>
                                 <span>M</span></label>
@@ -61,7 +51,7 @@
                                            value="{{form.cirurgiao.value|default:''}}"></label>
                 </div>
             </li>
-            <li id="cpeso" class="active colaps">
+            <li id="cpeso" class="colaps">
                 <div class="collapsible-header"><i class="material-icons">local_hospital</i>AVALIAÇÃO CLÍNICA</div>
                 <div class="collapsible-body">
                     <!------!!!!!------------ PESOS ------------ ------------->
@@ -637,7 +627,7 @@
                         </div>
                     </div>
                     <label>Outros</label><input type="text" id="outros_lab" name="outros_lab" autocomplete="off"
-                                                value="{{form.outros_lab.value|stringformat:'s'|default:''}}">
+                                                 value="{{form.outros_lab.value|default:''}}">
 
                     <div class="circular-label">
                         <legend class="enfase">EXAMES COMPLEMENTARES:</legend>
@@ -691,30 +681,24 @@
             </li>
         </ul>
         <div class="center margint">
-            <button class="btn-small waves-effect waves-light red darken-4 z-depth-3" name="fim" id="submit-form"
-                    type="submit" value="SALVAR">SALVAR
-            <i class="material-icons left">save</i>
-          </button>
-           {% if "update" in request.path %}
-            <button class="btn-small waves-effect waves-light red darken-4 z-depth-3" id="print-form" value="IMPRIMIR"
-                    name="fim" type="button" onClick="javascript:window.print()">IMPRIMIR
-                <i class="material-icons left">print</i>
-          </button>
-            {% else %}
-            <button class="btn-small waves-effect waves-light red darken-4 z-depth-3" id="print-form" value="IMPRIMIR"
-                    name="fim" type="submit">IMPRIMIR<i class="material-icons left">print</i>
-          </button>
-            {% endif %}
+            <a class="btn-small waves-effect waves-light red darken-4 z-depth-3" href="{% url 'home' %}"
+               value="SALVAR">VOLTAR
+            <i class="material-icons right">exit_to_app</i>
+          </a>
+
+
         </div>
     </form>
     {% block js %}
-
     <script>
-        document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener('DOMContentLoaded', function() {
+    setTimeout(function () {
+        document.getElementById('alerta').style.display='none';
+    }, 10000);
 
-var elem = document.querySelector('.collapsible.expandable');
-var instance = M.Collapsible.init(elem, {accordion: false});
+
 });
     </script>
+    <script src="{% static 'ficha.js' %}"></script>
     {% endblock%}
     {% endblock%}
