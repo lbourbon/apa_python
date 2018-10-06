@@ -1,26 +1,45 @@
-{% extends "base.html" %}
 {% load static %}
-{% block meta %}
-<link rel="stylesheet" href="{% static 'ficha.css' %}" media="screen">
-{% endblock%}
-{% block title %} Teste - A.P.A. {% endblock%}
-{% block main %}
-{% include "navbar.html" %}
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <link href="https://fonts.googleapis.com/css?family=Kaushan+Script|Merienda|Playfair+Display" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'ficha_print.css' %}">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="author" content="Lécio dos Anjos Bourbon Filho">
+    <meta name="keywords" content="anestesia, avaliação pré-anestésica, ficha, anestesiologia">
+    <meta name="description" content="Aplicativo web com ficha de avaliação pré-Anestésica">
+    <meta name="application-name" content="Avaliação Pré-Anestésica">
+    <title>www.avaliacaopreanestesica.com</title>
+    <style>
+    html{font-family: 'Playfair Display', serif;}
+    </style>
+</head>
+<body>
+<div class="container">
+<div class="pagina">
+    <div id="cabecalho">
+    <img src="../static/img/logo.svg" alt="logo" id="logo">
+        <h2 id="titulo">Ficha de Avaliação Pré-Anestésica <span id="versao" class="noprint"> (versão para impressão)</span>
+
+        </h2>
+        <label>Data:<input id="data" name="data" type="text"
+                          value={{form.data.value|date:'d-m-Y'|default:""}}></label>
+    </div>
+
+
+<input type="hidden" id="referer" value="{{ request.META.HTTP_REFERER }}">
+<input type="hidden" id="myurl" value="{{ request.path }}">
     <form action="{% url 'ficha' %}" method="post">
         {% csrf_token %}
-        <br>
-
-        <div class="row">
-            <div class="col l2">
-            </div>
-            <div id="main-col" class="col s12 m9 l8">
-                <div id="identificacao" class="section scrollspy">
-                     <div id="alerta">
-            <p class="alerta borda center flow-text z-depth-3"> Atenção: Todos os dados digitados nessa ficha de teste serão descartados!
-                Para usar todos os recursos disponíveis, faça seu <a href="{% url 'cadastro' %}"> Cadastro</a>.
-            </p>
+        <div class="myheader"><span>IDENTIFICAÇÃO</span>
+            <span class="right">ANTROPOMETRIA</span>
         </div>
-                    <div class="myheader"><i class="material-icons">person</i>IDENTIFICAÇÃO</div>
+
+
+            <div id="identificacao" class="section">
                     <!------!!!!!------------ IDENTIFICAÇÃO ------------->
                     <div class="row">
                         <div class="col s8">
@@ -28,12 +47,7 @@
                                               tabindex="0" maxlength="100" autocomplete="off"
                                               value="{{form.nome.value|default:''}}">
                         </div>
-                        <div class="col s4">
-                    <label>Data</label><input id="data" name="data" type="text" class="datepicker"
-                                                   value={{form.data.value|date:'d-m-Y'|default:""}}>
-                        </div>
                     </div>
-
                     <div class="row">
                         <div class="col s3">
                             <label>Idade<input name="idade" id="idade" type="number" autocomplete="off"
@@ -73,13 +87,9 @@
 
                         </div>
                     </div>
-
                 </div>
-                <div id="avclinica" class="section scrollspy">
-                    <div class="myheader"><i class="material-icons">local_hospital</i>AVALIAÇÃO CLÍNICA</div>
-
-                         <!------!!!!!------------ PESOS ------------ ------------->
-                    <div class="row">
+        <!------!!!!!------------ PESOS ------------ ------------->
+                    <div class="section">
                         <div class="col s1"></div>
                         <div class="col s3">
                             <label>Peso(kg)</label><input class="meiatela" id="peso" name="peso" type="number" step="0.1"
@@ -104,6 +114,11 @@
                                                          tabindex="-1"
                                                          value="{{form.predito.value|stringformat:'s'|default:''}}">
                         </div>
+
+                    <div class="myheader">AVALIAÇÃO CLÍNICA</div>
+                <div id="avclinica" class="section scrollspy">
+
+
                         <div class="col s1"></div>
                     </div>
 
@@ -466,7 +481,7 @@
                                                      value="{{form.pas.value|default:''}}">
                         </div>
                         <div class="col s1 x">
-                            <label class="invisivel">x</label>
+                            <label class="inv">x</label>
                             <input type="text" class="x" value="x" readonly tabindex="-1">
                         </div>
                         <div class="col s2">
@@ -548,7 +563,7 @@
 
                 </div>
                 <div id="exames" class="section scrollspy">
-                    <div class="myheader"><i class="material-icons">colorize</i>EXAMES COMPLEMENTARES</div>
+                    <div class="myheader">EXAMES COMPLEMENTARES</div>
 
                      <!------!!!!!------------ EXAMES COMPLEMENTARES ------------->
                     <div class="row">
@@ -653,7 +668,7 @@
 
                 </div>
                 <div id="conclusao" class="section scrollspy">
-                    <div class="myheader"><i class="material-icons">check_box</i>CONCLUSÃO</div>
+                    <div class="myheader">CONCLUSÃO</div>
 
                         <!------!!!!!!------------ CONCLUSÃO ------------->
                     <div>
@@ -687,39 +702,23 @@
                     </div>
 
                     <div class="center margint">
-                <a href="{% url 'cadastro' %}" class="waves-effect waves-light btn-small red darken-4 botoes-titulo">Cadastre-se</a>
-
+            <button class="noprint" name="fim" id="submit-form"
+                    type="submit" value="VOLTAR">VOLTAR
+          </button>
+            <button class="noprint" id="print-form" value="IMPRIMIR"
+                    name="fim" type="button" onClick="javascript:window.print()">IMPRIMIR
+          </button>
 
         </div>
 
                 </div>
-            </div>
 
-
-            <div class="col hide-on-small-only m3 l2">
-                <ul class="section table-of-contents fixed">
-                    <li><a href="#identificacao">Identificação</a></li>
-                    <li><a href="#avclinica">Avaliação Clínica</a></li>
-                    <li><a href="#exames">Exames</a></li>
-                    <li><a href="#conclusao">Conclusão</a></li>
-                </ul>
-            </div>
         </div>
     </form>
-    {% block js %}
+
+</div>
+</div>
     <script>
-document.addEventListener('DOMContentLoaded', function() {
-    var elems = document.querySelectorAll('.scrollspy');
-    var instances = M.ScrollSpy.init(elems, {scrollOffset:0});
-
-    setTimeout(function () {
-        document.getElementById('alerta').style.display='none';
-    }, 10000);
-
-
-});
     </script>
-        <script src="{% static 'ficha.js' %}"></script>
-
-    {% endblock%}
-    {% endblock%}
+</body>
+</html>

@@ -70,6 +70,17 @@ class FichaUpdate(LoginRequiredMixin, PermissionRequiredMixin, UpdateView):
         return super().form_invalid(form)
 
 
+class FichaPrint(LoginRequiredMixin, PermissionRequiredMixin, UpdateView):
+    template_name = 'ficha_print.html'
+    model = Ficha
+    fields = '__all__'
+    success_url = reverse_lazy('restrita')
+
+    def has_permission(self):
+        return self.request.user == Ficha.objects.get(pk=self.kwargs['pk']).user
+
+
+
 class FichaDelete(LoginRequiredMixin, PermissionRequiredMixin, DeleteView):
     template_name = 'ficha_delete.html'
     model = Ficha

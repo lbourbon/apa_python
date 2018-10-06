@@ -1,0 +1,166 @@
+@page {
+margin: 0.6cm;
+}
+@media screen{
+body {
+font: 12pt Georgia, "Times New Roman", Times, serif;
+line-height: 1.3;
+background: re;
+}
+.container{
+    display: grid;
+}
+.pagina{
+    margin: 20px 22.5%;
+    padding: 10px;
+    border: 1px solid rgb(200, 200, 200);
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+#cabecalho{
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    justify-items: center;
+    align-items: center;
+
+}
+#logo{
+    min-width: 55px;
+    height: 55px;
+    }
+#versao{
+    font: 12pt Georgia, "Times New Roman", Times, serif;
+}
+.myheader{
+    border: 1px solid rgba(25, 0, 145, .4);
+    border-width: 1px 0 1px 0;
+}
+.left{
+    float: left;
+}
+.right{
+    float: right;
+}
+.section{
+    border: 2px solid rgba(25, 0, 145, .8);
+    border-radius: 5px;
+    margin: 3px 0;
+    padding: 3px;
+}
+::-webkit-input-placeholder {
+  color: transparent;
+}
+.inv{display:none;
+}
+input{
+    border: 1px solid blu;
+}
+input[type=text], input[type=number]{
+    border-width: 0 0 1px 0;
+}
+label{
+    border: 1px solid re;
+}
+img{
+    max-width: 30px;
+}
+.borda{
+    border: 1px solid red;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+}
+@media print{
+body {
+font: 12pt Georgia, "Times New Roman", Times, serif;
+line-height: 1.3;
+background: re;
+}
+.container{
+    display: grid;
+}
+.pagina{
+    margin: 20px 10%;
+    padding: 10px;
+    border: 1px solid rgb(200, 200, 200);
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+#cabecalho{
+    display: grid;
+    grid-template-columns: 80px 1fr 200px;
+    justify-items: center;
+    align-items: center;
+
+}
+#logo{
+    min-width: 60px;
+    height: 60px;
+    }
+#titulo{
+background: re;
+}
+#versao{
+    font: 12pt Georgia, "Times New Roman", Times, serif;
+}
+::-webkit-input-placeholder {
+  color: transparent;
+}
+.inv{display:none;
+}
+input{
+    border: 1px solid blu;
+}
+input[type=text], input[type=number]{
+    border-width: 0 0 1px 0;
+}
+label{
+    border: 1px solid re;
+}
+img{
+    max-width: 30px;
+}
+.borda{
+    border: 1px solid red;
+}
+.myheader{
+    border: 1px solid rgb(222, 222, 222);
+    border-width: 1px 0 1px 0;
+}
+.left{
+    float: left;
+}
+.right{
+    float: right;
+}
+.section{
+    border: 2px solid rgba(25, 0, 145, .8);
+    border-radius: 5px;
+    margin: 3px 0;
+    padding: 3px;
+}
+
+
+
+
+
+
+
+.pagina{
+    margin: 0;
+    padding: 0;
+    border: 0px solid rgb(200, 200, 200);
+    box-shadow: 0 0 0 0;
+}
+.noprint{
+    display: none;
+}
+}
