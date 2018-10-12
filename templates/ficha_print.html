@@ -17,514 +17,385 @@
     html{font-family: 'Playfair Display', serif;}
     </style>
 </head>
+
 <body>
-<div class="container">
 <div class="pagina">
+    <div class="container">
+
     <div id="cabecalho">
     <img src="../static/img/logo.svg" alt="logo" id="logo">
-        <h2 id="titulo">Ficha de Avaliação Pré-Anestésica <span id="versao" class="noprint"> (versão para impressão)</span>
+        <h2 id="titulo">Ficha de Avaliação Pré-Anestésica <span id="versao" class="noprint"> <br>(versão para impressão)</span>
 
         </h2>
-        <label>Data:<input id="data" name="data" type="text"
-                          value={{form.data.value|date:'d-m-Y'|default:""}}></label>
+        <label id="date"><input id="data" name="data" type="text"
+                          value={{form.data.value|date:'d/m/Y'|default:""}}></label>
+    <input type="hidden" id="referer" value="{{ request.META.HTTP_REFERER }}">
+    <input type="hidden" id="myurl" value="{{ request.path }}">
+    <form action="{% url 'ficha' %}" method="post">
+        {% csrf_token %}
+    </div>
+
+    <div class="myheader" id="head1">IDENTIFICAÇÃO<span class="right">DADOS ANTROPOMÉTRICOS</span>
+    </div>
+
+        <div id="ident" class="section">
+        <!------!!!!!------------ IDENTIFICAÇÃO ------------->
+            <div class="row">
+                <div class="col s6">
+                     <label>Nome:</label><input required name="nome" id="nome" type="text" placeholder="Nome Completo"
+                                      tabindex="0" maxlength="100" autocomplete="off"
+                                      value="{{form.nome.value|default:''}}">
+                </div>
+                <div class="col s1">
+                    <label>Idade:<input name="idade" id="idade" type="number" autocomplete="off"
+                                       value="{{form.idade.value|default:''}}"></label>
+                </div>
+                <div id="sexo"  class="col s2">
+                    <label><input name="sexo" id="masc" type="radio" value="1"
+                                  {% ifequal form.sexo.value "1" %}checked{% endifequal %}>
+                        <span>M</span></label>
+                    <label><input name="sexo" id="fem" type="radio" value="2"
+                                  {% ifequal form.sexo.value "2" %}checked{% endifequal %}>
+                        <span>F</span></label>
+                </div>
+                <div class="col s3">
+                    <label id="cpf-label">CPF:<input id="cpf" name="cpf" type="text" maxlength="14" autocomplete="off"
+                             value="{{form.cpf.value|default:''}}"></label>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col s6">
+            <label>Hospital:<input id="hosp" name="hosp" type="text" maxlength="25"
+                                  value="{{form.hosp.value|default:''}}"></label>
+                </div>
+                <div class="col s6">
+            <label>Convênio:<input id="convenio" name="convenio" type="text" maxlength="25" value="{{form.convenio.value|default:''}}"></label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s6">
+            <label>Cirurgia:<input id="cirurgia" name="cirurgia" type="text" maxlength="100"
+                                  value="{{form.cirurgia.value|default:''}}"></label>
+                </div>
+                <div class="col s6">
+            <label>Cirurgião:<input id="cirurgiao" name="cirurgiao" type="text" maxlength="60"
+                                   value="{{form.cirurgiao.value|default:''}}"></label>
+                </div>
+                </div>
+        </div>
+        <!------!!!!!------------ PESOS ------------ ------------->
+        <div class="section" id="antrop">
+            <div class="row">
+                <div class="col s6">
+                    <label>Peso(kg):<input class="meiatela" id="peso" name="peso" type="number" step="0.1"
+                                              autocomplete="off"
+                                              value="{{form.peso.value|stringformat:'s'|default:''}}"></label>
+                </div>
+                <div class="col s6">
+                    <label>Altura(cm):<input class="meiatela" id="altura" name="altura" type="number"
+                                                 autocomplete="off"
+                                                 value="{{form.altura.value|default:''}}"></label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s6">
+                    <label class="outros-pesos">IMC(kg/m<span class="sup">2</span>)<input id="imc" name="imc" type="number" step="0.1" tabindex="-1"
+                                         value="{{form.imc.value|stringformat:'s'|default:''}}"></label></div>
+                <div class="col s6">
+                    <label class="outros-pesos">Peso ideal<input id="ideal" name="ideal" type="number" step="0.1" tabindex="-1"
+                                              value="{{form.ideal.value|stringformat:'s'|default:''}}"></label></div>
+
+            </div>
+            <div class="row">
+                <div class="col s6">
+                    <label class="outros-pesos">Peso Predito<input id="predito" name="predito" type="number" step="0.1" tabindex="-1"
+                                             value="{{form.predito.value|stringformat:'s'|default:''}}"></label></div>
+                <div class="col s6">
+                    <label class="outros-pesos">P. Ajustado<input id="ajustado" name="ajustado" type="number" step="0.1" tabindex="-1"
+                                              value="{{form.ajustado.value|stringformat:'s'|default:''}}"></label></div>
+            </div>
+
     </div>
 
 
-<input type="hidden" id="referer" value="{{ request.META.HTTP_REFERER }}">
-<input type="hidden" id="myurl" value="{{ request.path }}">
-    <form action="{% url 'ficha' %}" method="post">
-        {% csrf_token %}
-        <div class="myheader"><span>IDENTIFICAÇÃO</span>
-            <span class="right">ANTROPOMETRIA</span>
+    <div id="head2" class="myheader">HISTÓRIA CIRÚRGICA PRÉVIA</div>
+
+    <div id="previas" class="section">
+
+        <!------!!!!!------------ PROCEDIMENTO ------------ ------------->
+
+        <div id="proc_previo" class="row">
+            <label>Procedimentos prévios:<input id="c_previa" name="c_previa" type="text" maxlength="100"
+                                                value="{{form.c_previa.value|default:' -'}}"></label>
+            <label>Anestesias prévias:<input id="a_previa" name="a_previa" type="text" maxlength="100"
+                                             value="{{form.a_previa.value|default:' -'}}"></label>
+        </div>
+        <!------!!!!!------------ ADVERSOS ------------ ------------->
+        <div id="adverso_i" class="row">
+            <label>Eventos adversos:<input id="e_adversos" name="e_adversos" type="text" maxlength="100"
+                                           value="{{form.e_adversos.value|default:' -'}}"></label>
         </div>
 
 
-            <div id="identificacao" class="section">
-                    <!------!!!!!------------ IDENTIFICAÇÃO ------------->
-                    <div class="row">
-                        <div class="col s8">
-                             <label>Nome</label><input required name="nome" id="nome" type="text" placeholder="Nome Completo"
-                                              tabindex="0" maxlength="100" autocomplete="off"
-                                              value="{{form.nome.value|default:''}}">
-                        </div>
+    </div>
+    <div id="head3" class="myheader">COMORBIDADES</div>
+    <div id="comorbidades" class="section">
+    <!------!!!!!------------ CLINICA ------------ ------------->
+            {% if form.bool_doencas.value %}
+            <div id="clinica">
+                {% if form.cardio_has.value %}
+                <label><input name="cardio_has" value="True" type="checkbox" checked>
+                    <span>Hipertensão</span></label>
+                {% endif %}
+                {% if form.cardio_arr.value %}
+                <label><input name="cardio_arr" value="True" type="checkbox" checked>
+                    <span>Arritmia</span></label>
+                {% endif %}
+                {% if form.cardio_cor.value %}
+                <label><input name="cardio_cor" value="True" type="checkbox" checked>
+                    <span>Coronariopatia</span></label>
+                {% endif %}
+                {% if form.cardio_icc.value %}
+                <label><input name="cardio_icc" value="True" type="checkbox" checked>
+                    <span>ICC</span></label>
+                {% endif %}
+                {% if form.cardio_out.value %}
+                <label><input name="cardio_out" value="True" type="checkbox" checked>
+                    <span>Outras doenças cardiovasculares</span></label>
+                {% endif %}
+
+
+                {% if form.neuro_avc.value %}
+                <label><input name="neuro_avc" value="True" type="checkbox" checked>
+                    <span>AVC prévio</span></label>
+                {% endif %}
+                {% if form.neuro_cef.value %}
+                <label><input name="neuro_cef" value="True" type="checkbox" checked>
+                      <span>Cefaléia</span></label>
+                {% endif %}
+                {% if form.neuro_con.value %}
+                <label><input name="neuro_con" value="True" type="checkbox" checked>
+                     <span>Convulsão</span></label>
+                    {% endif %}
+                {% if form.neuro_lme.value %}
+                <label><input name="neuro_lme" value="True" type="checkbox" checked>
+                    <span>Lesão medular</span></label>
+                {% endif %}
+                {% if form.neuro_out.value %}
+                <label><input name="neuro_out" value="True" type="checkbox" checked>
+                     <span>Outras doenças neurológicas</span></label>
+                {% endif %}
+
+                {% if form.resp_asm.value %}
+                <label><input name="resp_asm" value="True" type="checkbox" checked>
+                    <span>Asma</span></label>
+                {% endif %}
+                {% if form.resp_dpo.value %}
+                <label><input name="resp_dpo" value="True" type="checkbox" checked>
+                    <span>DPOC</span></label>
+                 {% endif %}
+                {% if form.resp_tbg.value %}
+                <label><input name="resp_tbg" value="True" type="checkbox" checked>
+                    <span>Tabagismo</span></label>
+                {% endif %}
+                {% if form.resp_iva.value %}
+                <label><input name="resp_iva" value="True" type="checkbox" checked>
+                    <span>IVAS Recente</span></label>
+                {% endif %}
+                {% if form.resp_out.value %}
+                <label><input name="resp_out" value="True" type="checkbox" checked>
+                    <span>Outras doenças respiratórias</span></label>
+                {%endif%}
+
+
+                {% if form.gastro_rge.value %}
+                <label><input name="gastro_rge" value="True" type="checkbox" checked>
+                    <span>Refluxo</span></label>
+                {% endif %}
+                {% if form.gastro_gas.value %}
+                <label><input name="gastro_gas" value="True" type="checkbox" checked>
+                    <span>Gastrite</span></label>
+                {% endif %}
+                {% if form.gastro_vom.value %}
+                <label><input name="gastro_vom" value="True" type="checkbox" checked>
+                    <span>Vômito/Diarréia</span></label>
+                {% endif %}
+                {% if form.gastro_obs.value %}
+                <label><input name="gastro_obs" value="True" type="checkbox" checked>
+                    <span>Obstrução Intestinal</span></label>
+                {% endif %}
+                {% if form.gastro_out.value %}
+                <label><input name="gastro_out" value="True" type="checkbox" checked>
+                    <span>Outras doenças gastrointestinais</span></label>
+                {% endif %}
+
+               {% if form.endocrino_dia.value %}
+                <label><input name="endocrino_dia" value="True" type="checkbox" checked>
+                    <span>Diabetes</span></label>
+                {% endif %}
+                {% if form.endocrino_dti.value %}
+                <label><input name="endocrino_dti" value="True" type="checkbox" checked>
+                    <span>Disfunção Tireoideana</span></label>
+                {% endif %}
+                {% if form.endocrino_dlp.value %}
+                <label><input name="endocrino_dlp" value="True" type="checkbox" checked>
+                    <span>Dislipidemia</span></label>
+                {% endif %}
+                {% if form.endocrino_out.value %}
+                <label><input name="endocrino_out" value="True" type="checkbox" checked>
+                    <span>Outras doenças endocrinológicas</span></label>
+                {% endif %}
+
+                {% if form.renal_irc.value %}
+                    <label><input name="renal_irc" value="True" type="checkbox" checked>
+                        <span>Insuf. Renal Crônica</span></label>
+                {% endif %}
+                {% if form.renal_ira.value %}
+                    <label><input name="renal_ira" value="True" type="checkbox" checked>
+                        <span>Insuf. Renal Aguda </span></label>
+                {% endif %}
+                {% if form.renal_dia.value %}
+                    <label><input name="renal_dia" value="True" type="checkbox" checked>
+                        <span>Diálise </span></label>
+                {% endif %}
+                {% if form.renal_out.value %}
+                    <label><input name="renal_out" value="True" type="checkbox" checked>
+                        <span>Outras doenças renais</span></label>
+                {% endif %}
+
+                {% if form.hem_coa.value %}
+                <label><input name="hem_coa" value="True" type="checkbox" checked>
+                    <span>Coagulopatia</span></label>
+                {% endif %}
+                {% if form.hem_ane.value %}
+                <label><input name="hem_ane" value="True" type="checkbox" checked>
+                    <span>Anemia</span></label>
+                {% endif %}
+                {% if form.hem_tra.value %}
+                <label><input name="hem_tra" value="True" type="checkbox" checked>
+                    <span>Transfusão Prévia</span></label>
+                {% endif %}
+                {% if form.hem_hep.value %}
+                <label><input name="hem_hep" value="True" type="checkbox" checked>
+                    <span>Hepatite</span></label>
+                {% endif %}
+                {% if form.hem_hiv.value %}
+                <label><input name="hem_hiv" value="True" type="checkbox" checked>
+                    <span>HIV </span></label>
+                {% endif %}
+                {% if form.hem_out.value %}
+                <label><input name="hem_out" value="True" type="checkbox" checked>
+                    <span>Outras doenças hematológicas</span></label>
+                {% endif %}
+
+                {% if form.musc_lom.value %}
+                <label><input name="musc_lom" value="True" type="checkbox" checked>
+                    <span>Lombalgia</span></label>
+                {% endif %}
+                {% if form.musc_des.value %}
+                <label><input name="musc_des" value="True" type="checkbox" checked>
+                    <span>Desvio da coluna</span></label>
+                {% endif %}
+                {% if form.musc_ati.value %}
+                <label><input name="musc_ati" value="True" type="checkbox" checked>
+                    <span>Artrite</span></label>
+                {% endif %}
+                {% if form.musc_ato.value %}
+                <label><input name="musc_ato" value="True" type="checkbox" checked>
+                    <span>Artrose</span></label>
+                {% endif %}
+                {% if form.musc_dis.value %}
+                <label><input name="musc_dis" value="True" type="checkbox" checked>
+                    <span>Distrofia Muscular</span></label>
+                {% endif %}
+                {% if form.musc_out.value %}
+                <label><input name="musc_out" value="True" type="checkbox" checked>
+                    <span>Outras doenças músculo-esqueléticas</span></label>
+                {% endif %}
+            </div>
+                {% else %}
+                    <div>
+                    Nega comorbidades <div>-</div>
                     </div>
-                    <div class="row">
-                        <div class="col s3">
-                            <label>Idade<input name="idade" id="idade" type="number" autocomplete="off"
-                                               value="{{form.idade.value|default:''}}"></label>
-                        </div>
-                        <div id="sexo"  class="col s3">
-                            <label><input name="sexo" id="masc" type="radio" class="with-gap" value="1"
-                                          {% ifequal form.sexo.value "1" %}checked{% endifequal %}>
-                                <span>M</span></label>
-                            <label><input name="sexo" id="fem" type="radio" class="with-gap" value="2"
-                                          {% ifequal form.sexo.value "2" %}checked{% endifequal %}>
-                                <span>F</span></label>
-                        </div>
-                        <div class="col s6">
-                            <label>CPF<input id="cpf" name="cpf" type="text" maxlength="14" autocomplete="off"
-                                     value="{{form.cpf.value|default:''}}"></label>
-                        </div>
-                    </div>
+                {% endif %}
 
-                    <div class="row">
-                        <div class="col s6">
-                    <label>Hospital<input id="hosp" name="hosp" type="text" maxlength="25"
-                                          value="{{form.hosp.value|default:''}}"></label>
-                        </div>
-                        <div class="col s6">
-                    <label>Convênio<input id="convenio" name="convenio" type="text" maxlength="25" value="{{form.convenio.value|default:''}}"></label>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col s6">
-                    <label>Cirurgia<input id="cirurgia" name="cirurgia" type="text" maxlength="100"
-                                          value="{{form.cirurgia.value|default:''}}"></label>
-                        </div>
-                        <div class="col s6">
-                    <label>Cirurgião<input id="cirurgiao" name="cirurgiao" type="text" maxlength="60"
-                                           value="{{form.cirurgiao.value|default:''}}"></label>
+              {% ifequal form.mets.value "1" %}Capacidade Funcional: > 4 METs {% endifequal %}
+              {% ifequal form.mets.value "2" %}Capacidade Funcional: < 4 METs {% endifequal %}
+              {% ifequal form.mets.value "0" %}Impossível avaliar a capacidade funcional {% endifequal %}
+    </div>
 
-                        </div>
-                    </div>
-                </div>
-        <!------!!!!!------------ PESOS ------------ ------------->
-                    <div class="section">
-                        <div class="col s1"></div>
-                        <div class="col s3">
-                            <label>Peso(kg)</label><input class="meiatela" id="peso" name="peso" type="number" step="0.1"
-                                                          autocomplete="off"
-                                                          value="{{form.peso.value|stringformat:'s'|default:''}}">
-                            <label>Altura (cm)</label><input class="meiatela" id="altura" name="altura" type="number"
-                                                             autocomplete="off"
-                                                             value="{{form.altura.value|default:''}}">
-                        </div>
-                        <div class="col s2"></div>
-                        <div id="pesos" class="col s2">
-                            <label>IMC(kg/m<sup>2</sup>)</label><input id="imc" name="imc" type="number" step="0.1" tabindex="-1"
-                                                     value="{{form.imc.value|stringformat:'s'|default:''}}">
-                            <label>Peso ideal</label><input id="ideal" name="ideal" type="number" step="0.1" tabindex="-1"
-                                                          value="{{form.ideal.value|stringformat:'s'|default:''}}">
-                             </div>
-                        <div id="pesos" class="col s2">
-                             <label>Peso Ajustado</label><input id="ajustado" name="ajustado" type="number" step="0.1"
-                                                          tabindex="-1"
-                                                          value="{{form.ajustado.value|stringformat:'s'|default:''}}">
-                            <label>Peso Predito</label><input id="predito" name="predito" type="number" step="0.1"
-                                                         tabindex="-1"
-                                                         value="{{form.predito.value|stringformat:'s'|default:''}}">
-                        </div>
+    <div id="head4" class="myheader">MEDICAÇÕES</div>
+    <div id="medic" class="section">
+            <!----!!!!!------------ MEDICAÇÕES ------------ ----------->
+            <div id="medicacoes_i" class="row hide input-field">
+                <textarea id="medicacoes" name="medicacoes" class="materialize-textarea">{{ form.medicacoes.value|default_if_none:"" }}</textarea>
+            </div>
+    </div>
 
-                    <div class="myheader">AVALIAÇÃO CLÍNICA</div>
-                <div id="avclinica" class="section scrollspy">
+    <div id="head5" class="myheader">ALERGIAS</div>
+    <div id="alergia" class="section">
+        <!------!!!!!------------ ALERGIAS ------------ ------------->
 
-
-                        <div class="col s1"></div>
-                    </div>
-
-                    <!------!!!!!------------ PROCEDIMENTO ------------ ------------->
-                    <div class="row">
-                        <div class="col s2">
-                            <img class="questionmark" src="../static/img/questionmark.svg">
-                        </div>
-                        <div class="col s10 pergunta">Já foi submetido a algum <span class="enfase">procedimento</span> com
-                            anestesia?
-                        </div>
-                        <div class="switch center">
-                            <label>
-                                Não
-                                <input id="bool_previo" name="bool_previo" type="checkbox" value="True"
-                                       {% if form.bool_previo.value %} checked {% endif %}>
-                                <span class="lever"></span>
-                                Sim
-                            </label>
-                        </div>
-                    </div>
-                    <div id="proc_previo" class="row hide">
-                        <label>Procedimentos prévios:<input id="c_previa" name="c_previa" type="text" maxlength="100"
-                                                            value="{{form.c_previa.value|default:''}}"></label>
-                        <label>Anestesias prévias:<input id="a_previa" name="a_previa" type="text" maxlength="100"
-                                                         value="{{form.a_previa.value|default:''}}"></label>
-                    </div>
-                    <!------!!!!!------------ ADVERSOS ------------ ------------->
-                    <div id="adverso_b" class="row hide">
-                        <div class="col s2">
-                            <img src="../static/img/questionmark.svg" class="questionmark">
-                        </div>
-                        <div class="col s10 pergunta">Apresentou <span class="enfase">evento adverso</span> causado pela
-                            anestesia?
-                        </div>
-                        <div class="switch center">
-                            <label>
-                                Não
-                                <input id="bool_adverso" name="bool_adverso" type="checkbox" value="True"
-                                       {% if form.bool_adverso.value %} checked {% endif %}>
-                                <span class="lever"></span>
-                                Sim
-                            </label>
-                        </div>
-                    </div>
-                    <div id="adverso_i" class="row hide">
-                        <label>Eventos adversos:<input id="e_adversos" name="e_adversos" type="text" maxlength="100"
-                                                       value="{{form.e_adversos.value|default:''}}"></label>
-                    </div>
-                    <!------!!!!!------------ ALERGIAS ------------ ------------->
-                    <div id="alergias_b" class="row">
-                        <div class="col s2">
-                            <img src="../static/img/questionmark.svg" class="questionmark">
-                        </div>
-                        <div class="col s10 pergunta">Possui <span class="enfase">alergia</span> a algum medicamento ou
-                            alimento?
-                        </div>
-                        <div class="switch center">
-                            <label>
-                                Não
-                                <input id="bool_alergias" name="bool_alergias" type="checkbox" value="True"
-                                       {% if form.bool_alergias.value %} checked {% endif %}>
-                                <span class="lever"></span>
-                                Sim
-                            </label>
-                        </div>
-                    </div>
-                    <div id="alergias_i" class="row hide">
-                        <label>Alergias:<input id="alergias" name="alergias" type="text" maxlength="100" class="borda"
-                                               value="{{form.alergias.value|default:''}}"></label>
-                    </div>
-                    <!------!!!!!------------ CLINICA ------------ ------------->
-                    <div id="doencas_b" class="row">
-                        <div class="col s2">
-                            <img src="../static/img/questionmark.svg" class="questionmark">
-                        </div>
-                        <div class="col s10 pergunta">Possui alguma <span class="enfase">comorbidade</span> ou condição
-                            clínica relevante?
-                        </div>
-                        <div class="switch center">
-                            <label>
-                                Não
-                                <input id="bool_doencas" name="bool_doencas" type="checkbox" value="True"
-                                       {% if form.bool_doencas.value %} checked {% endif %}>
-                                <span class="lever"></span>
-                                Sim
-                            </label>
-                        </div>
-                    </div>
-
-                    <div id="clinica" class="row hide">
-                        <legend class="enfase">AVALIAÇÃO CLÍNICA:</legend>
-                        <div class="row">
-                            <div class="col s4">
-                                <div class="mydropdown">
-                                    <button type="button" class="mydropbtn">Cardiovascular</button>
-                                    <div class="mydropdown-content">
-                                        <label><input name="cardio_has" value="True" type="checkbox"
-                                                      {% if form.cardio_has.value %} checked {% endif %}>
-                                            <span>Hipertensão</span></label>
-                                        <label><input name="cardio_arr" value="True" type="checkbox"
-                                                      {% if form.cardio_arr.value %} checked {% endif %}>
-                                            <span>Arritmia</span></label>
-                                        <label><input name="cardio_cor" value="True" type="checkbox"
-                                                      {% if form.cardio_cor.value %} checked {% endif %}>
-                                            <span>Coronariopatia</span></label>
-                                        <label><input name="cardio_icc" value="True" type="checkbox"
-                                                      {% if form.cardio_icc.value %} checked {% endif %}>
-                                            <span>ICC</span></label>
-                                        <label><input name="cardio_out" value="True" type="checkbox"
-                                                      {% if form.cardio_out.value %} checked {% endif %}>
-                                            <span>Outras</span></label>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col s4">
-                                <div class="mydropdown">
-                                    <button type="button" class="mydropbtn">Capacidade Funcional</button>
-                                    <div class="mydropdown-content">
-                                        <label><input name="mets" type="radio" value="1" class="with-gap"
-                                                      {% ifequal form.mets.value "1" %}checked{% endifequal %}>
-                                            <span> > 4 METs</span></label>
-                                        <label><input name="mets" type="radio" value="2" class="with-gap"
-                                                      {% ifequal form.mets.value "2" %}checked{% endifequal %}>
-                                            <span> < 4 METs</span><br></label>
-                                        <label><input name="mets" type="radio" value="0" class="with-gap"
-                                                      {% ifequal form.mets.value "0" %}checked{% endifequal %}>
-                                            <span> Impossível avaliar</span><br></label>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col s4">
-                                <div class="mydropdown">
-                                    <button type="button" class="mydropbtn">Neurológico</button>
-                                    <div class="mydropdown-content">
-                                        <label><input name="neuro_avc" value="True" type="checkbox">
-                                            {% if form.neuro_avc.value %} checked {% endif %}
-                                            <span>AVC prévio</span></label>
-                                        <label><input name="neuro_cef" value="True" type="checkbox">
-                                            {% if form.neuro_cef.value %} checked {% endif %} <span>Cefaléia</span></label>
-                                        <label><input name="neuro_con" value="True" type="checkbox">
-                                            {% if form.neuro_con.value %} checked {% endif %} <span>Convulsão</span></label>
-                                        <label><input name="neuro_lme" value="True" type="checkbox">
-                                            {% if form.neuro_lme.value %} checked {% endif %}
-                                            <span>Lesão medular</span></label>
-                                        <label><input name="neuro_out" value="True" type="checkbox">
-                                            {% if form.neuro_out.value %} checked {% endif %} <span>Outras</span></label>
-                                    </div>
-                                </div>
-
-                            </div>
-
-                        </div>
-                        <div class="row">
-                            <div class="col s4">
-                                <div class="mydropdown">
-                                    <button type="button" class="mydropbtn">Respiratório</button>
-                                    <div class="mydropdown-content">
-                                        <div class="clinica" id="resp">
-                                            <label><input name="resp_asm" value="True" type="checkbox"
-                                                          {% if form.resp_asm.value %} checked {% endif %}><span>Asma</span></label>
-                                            <label><input name="resp_dpo" value="True" type="checkbox"
-                                                          {% if form.resp_dpo.value %} checked {% endif %}><span>DPOC</span></label>
-                                            <label><input name="resp_tbg" value="True" type="checkbox"
-                                                          {% if form.resp_tbg.value %} checked {%endif%}>
-                                                <span>Tabagismo</span></label>
-                                            <label><input name="resp_iva" value="True" type="checkbox"
-                                                          {% if form.resp_iva.value %} checked {% endif %}>
-                                                <span>IVAS Recente</span></label>
-                                            <label><input name="resp_out" value="True" type="checkbox"
-                                                          {% if form.resp_out.value %} checked {%endif%}><span>Outras</span></label>
-                                        </div>
-                                    </div>
-                                </div>
-
-
-                            </div>
-
-                            <div class="col s4">
-                                <div class="mydropdown">
-                                    <button type="button" class="mydropbtn">Gastrointestinal</button>
-                                    <div class="mydropdown-content">
-                                        <div class="clinica" id="gastro">
-                                            <label><input name="gastro_rge" value="True" type="checkbox"
-                                                          {% if form.gastro_rge.value %} checked {% endif %}>
-                                                <span>Refluxo</span></label>
-                                            <label><input name="gastro_gas" value="True" type="checkbox"
-                                                          {% if form.gastro_gas.value %} checked {% endif %}>
-                                                <span>Gastrite</span></label>
-                                            <label><input name="gastro_vom" value="True" type="checkbox"
-                                                          {% if form.gastro_vom.value %} checked {% endif %}>
-                                                <span>Vômito/Diarréia</span></label>
-                                            <label><input name="gastro_obs" value="True" type="checkbox"
-                                                          {% if form.gastro_obs.value %} checked {% endif %}>
-                                                <span>Obstrução Intestinal</span></label>
-                                            <label><input name="gastro_out" value="True" type="checkbox"
-                                                          {% if form.gastro_out.value %} checked {% endif %}>
-                                                <span>Outras</span></label>
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
-                            <div class="col s4">
-                                <div class="mydropdown">
-                                    <button type="button" class="mydropbtn">Endócrino-metabólico</button>
-                                    <div class="mydropdown-content">
-                                        <div class="clinica" id="endocrino">
-                                            <label><input name="endocrino_dia" value="True" type="checkbox"
-                                                          {% if form.endocrino_dia.value %} checked {% endif %}>
-                                                <span>Diabetes</span></label>
-                                            <label><input name="endocrino_dti" value="True" type="checkbox"
-                                                          {% if form.endocrino_dti.value %} checked {% endif %}>
-                                                <span>Disfunção Tireoideana</span></label>
-                                            <label><input name="endocrino_dlp" value="True" type="checkbox"
-                                                          {% if form.endocrino_dlp.value %} checked {% endif %}>
-                                                <span>Dislipidemia</span></label>
-                                            <label><input name="endocrino_out" value="True" type="checkbox"
-                                                          {% if form.endocrino_out.value %} checked {% endif %}>
-                                                <span>Outras</span></label>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                                                    </div>
-                        <div class="row">
-                            <div class="col s4">
-                                <div class="mydropdown">
-                                    <button type="button" class="mydropbtn">Renal</button>
-                                    <div class="mydropdown-content">
-                                        <div class="clinica" id="renal">
-                                            <label><input name="renal_irc" value="True" type="checkbox"
-                                                          {% if form.renal_irc.value %} checked {% endif %}>
-                                                <span>Insuf. Renal Crônica</span></label>
-                                            <label><input name="renal_ira" value="True" type="checkbox"
-                                                          {% if form.renal_ira.value %} checked {% endif %}>
-                                                <span>Insuf. Renal Aguda </span></label>
-                                            <label><input name="renal_dia" value="True" type="checkbox"
-                                                          {% if form.renal_dia.value %} checked {% endif %}>
-                                                <span>Diálise </span></label>
-                                            <label><input name="renal_out" value="True" type="checkbox"
-                                                          {% if form.renal_out.value %} checked {% endif %}>
-                                                <span>Outras </span></label>
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
-                            <div class="col s4">
-                                <div class="mydropdown">
-                                    <button type="button" class="mydropbtn">Hematológico-Infeccioso</button>
-                                    <div class="mydropdown-content">
-                                        <div class="clinica" id="hem">
-                                            <label><input name="hem_coa" value="True" type="checkbox"
-                                                          {% if form.hem_coa.value %} checked {% endif %}>
-                                                <span>Coagulopatia</span></label>
-                                            <label><input name="hem_ane" value="True" type="checkbox"
-                                                          {% if form.hem_ane.value %} checked {% endif %}>
-                                                <span>Anemia</span></label>
-                                            <label><input name="hem_tra" value="True" type="checkbox"
-                                                          {% if form.hem_tra.value %} checked {% endif %}>
-                                                <span>Transfusão Prévia</span></label>
-                                            <label><input name="hem_hep" value="True" type="checkbox"
-                                                          {% if form.hem_hep.value %} checked {% endif %}>
-                                                <span>Hepatite</span></label>
-                                            <label><input name="hem_hiv" value="True" type="checkbox"
-                                                          {% if form.hem_hiv.value %} checked {% endif %}>
-                                                <span>HIV </span></label>
-                                            <label><input name="hem_out" value="True" type="checkbox"
-                                                          {% if form.hem_out.value %} checked {% endif %}>
-                                                <span>Outras</span></label>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col s4">
-                                <div class="mydropdown">
-                                    <button type="button" class="mydropbtn">Músculo-Esquelético</button>
-                                    <div class="mydropdown-content">
-                                        <div class="clinica" id="musc">
-                                            <label><input name="musc_lom" value="True" type="checkbox"
-                                                          {% if form.musc_lom.value %} checked {% endif %}>
-                                                <span>Lombalgia</span></label>
-                                            <label><input name="musc_des" value="True" type="checkbox"
-                                                          {% if form.musc_des.value %} checked {% endif %}>
-                                                <span>Desvio da coluna</span></label>
-                                            <label><input name="musc_ati" value="True" type="checkbox"
-                                                          {% if form.musc_ati.value %} checked {% endif %}>
-                                                <span>Artrite</span></label>
-                                            <label><input name="musc_ato" value="True" type="checkbox"
-                                                          {% if form.musc_ato.value %} checked {% endif %}>
-                                                <span>Artrose</span></label>
-                                            <label><input name="musc_dis" value="True" type="checkbox"
-                                                          {% if form.musc_dis.value %} checked {% endif %}>
-                                                <span>Distrofia Muscular</span></label>
-                                            <label><input name="musc_out" value="True" type="checkbox"
-                                                          {% if form.musc_out.value %} checked {% endif %}>
-                                                <span>Outras</span></label>
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
-                            <div class="col s6">
-
-                            </div>
-                        </div>
-                    </div>
-                    <!----!!!!!------------ MEDICAÇÕES ------------ ----------->
-                    <div id="med_b" class="row">
-                        <div class="col s2">
-                            <img src="../static/img/questionmark.svg" class="questionmark">
-                        </div>
-                        <div class="col s10 pergunta">Faz uso de algum <span class="enfase">medicamento</span> de uso
-                            diário?
-                        </div>
-                        <div class="switch center">
-                            <label>
-                                Não
-                                <input id="bool_med" name="bool_med" type="checkbox" class="" value="True"
-                                       {% if form.bool_med.value %} checked {% endif %}>
-                                <span class="lever"></span>
-                                Sim
-                            </label>
-                        </div>
-                    </div>
-                    <div id="medicacoes_i" class="row hide input-field">
-                        <textarea id="medicacoes" name="medicacoes" class="materialize-textarea">{{ form.medicacoes.value|default_if_none:"" }}</textarea>
-                        <label for="medicacoes">Medicações</label>
-                    </div>
-                    <!----!!!!!------------ FÍSICO ------------ ----------->
-                    <div id="fisico_b" class="row">
-                        <div class="col s2">
-                            <img src="../static/img/questionmark.svg" class="questionmark">
-                        </div>
-                        <div class="col s10 pergunta">Possui alguma alteração no <span class="enfase">exame físico</span>?
-                            &nbsp
-                        </div>
-                        <div class="switch center">
-                            <label>
-                                Não
-                                <input id="bool_exfisico" name="bool_exfisico" type="checkbox" value="True"
-                                       {% if form.bool_exfisico.value %} checked {% endif %}>
-                                <span class="lever"></span>
-                                Sim
-                            </label>
-                        </div>
-                    </div>
+        <div id="alergias_i" class="row hide">
+        <input id="alergias" name="alergias" type="text" maxlength="100" class="borda"
+                                   value="{{form.alergias.value|default:''}}">
+        </div>
+    </div>
+    <div id="head6" class="myheader">EXAME FÍSICO <span class="right">SINAIS VITAIS</span></div>
+    <div id="fisico" class="section">
+        <!----!!!!!------------ FÍSICO ------------ ----------->
                     <div id="exfisico_i" class="row hide input-field">
                         <textarea id="exfisico" name="exfisico" class="materialize-textarea">{{form.exfisico.value|default_if_none:""}}</textarea>
-                        <label for="exfisico">Exame Físico</label>
                     </div>
+    </div>
+    <div id="sinais-vitais" class="section">
                     <!----!!!!!------------ SINAIS VITAIS ------------ ----------->
                     <div class="row">
-                        <legend class="enfase">SINAIS VITAIS:</legend>
-                        <div class="col s1"></div>
-                        <div class="col s2">
-                            <label>PA</label> <input type="number" id="pas" name="pas" autocomplete="off"
+                        <div class="col s5">
+                            <label>PA: <input type="number" id="pas" name="pas" autocomplete="off"
                                                      value="{{form.pas.value|default:''}}">
                         </div>
-                        <div class="col s1 x">
-                            <label class="inv">x</label>
-                            <input type="text" class="x" value="x" readonly tabindex="-1">
+                        <div class="col s2 x">
+                            <input type="text" class="x" value=" x" readonly tabindex="-1">
                         </div>
-                        <div class="col s2">
-                            <label class="invisivel">PA</label> <input type="number" id="pad" name="pad" autocomplete="off"
-                                                                       value="{{form.pad.value|default:''}}">
+                        <div class="col s5">
+                            <input type="number" id="pad" name="pad" autocomplete="off"
+                                                                       value="{{form.pad.value|default:''}}"></label>
                         </div>
-                        <div class="col s2">
-                            <label>FC</label> <input type="number" id="fc" name="fc" autocomplete="off"
-                                                     value="{{form.fc.value|default:''}}">
-                        </div>
-                        <div class="col s2">
-                            <label>FR</label> <input type="number" id="fr" name="fr" autocomplete="off"
-                                                     value="{{form.fr.value|default:''}}">
-                        </div>
-                        <div class="col s1"></div>
                     </div>
-                        <div class="row"><br></div>
+                    <div class="row">
+                        <div class="col s12">
+                        <label>FC: <input type="number" id="fc" name="fc" autocomplete="off"
+                                                     value="{{form.fc.value|default:''}}"></label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col s12">
+                        <label>FR: <input type="number" id="fr" name="fr" autocomplete="off"
+                                                     value="{{form.fr.value|default:''}}"></label>
+                        </div>
+                    </div>
+    </div>
+    <div id="head7" class="myheader">VIAS AÉREAS</div>
+    <div id="va" class="section">
                     <!----!!!!!------------ VIAS AÉREAS ------------ ----------->
-                    <legend class="enfase">VIAS AÉREAS:</legend>
-                    <legend>Mallampati</legend>
-                    <div class="row vias-aereas">
-                        <div class="col s2">
+                        <div class="">
+                          <legend>Mallampati</legend>
                             <label><input name="mallampati" type="radio" value="1" class="with-gap"
-                                          {% ifequal form.mallampati.value "1" %}checked{% endifequal %}> <span><img
-                                    src="../static/img/mal1.png"></span></label>
-                        </div>
-                        <div class="col s2">
+                                          {% ifequal form.mallampati.value "1" %}checked{% endifequal %}> <span>I</span></label>
+
                             <label><input name="mallampati" type="radio" value="2" class="with-gap"
-                                          {% ifequal form.mallampati.value "2" %}checked{% endifequal %}> <span><img
-                                    src="../static/img/mal2.png"></span></span></label>
-                        </div>
-                        <div class="col s2">
+                                          {% ifequal form.mallampati.value "2" %}checked{% endifequal %}> <span>II</span></label>
+
                             <label> <input name="mallampati" type="radio" value="3" class="with-gap"
-                                           {% ifequal form.mallampati.value "3" %}checked{% endifequal %}> <span><img
-                                    src="../static/img/mal3.png"></span></span></label>
-                        </div>
-                        <div class="col s2">
+                                           {% ifequal form.mallampati.value "3" %}checked{% endifequal %}> <span>III</span></label>
+
                             <label><input name="mallampati" type="radio" value="4" class="with-gap"
-                                          {% ifequal form.mallampati.value "4" %}checked{% endifequal %}> <span><img
-                                    src="../static/img/mal4.png"></span></span></label>
+                                          {% ifequal form.mallampati.value "4" %}checked{% endifequal %}> <span>IV</span></label>
                         </div>
-                        <div class="col s1"></div>
-                        <div class="col s3">
+
+                        <div class="">
                                <legend>Abertura Oral</legend>
                         <label><input name="aboral" type="radio" value="1" class="with-gap"
                                       {% ifequal form.aboral.value "1" %}checked{% endifequal %}><span>> 4cm</span></label>
@@ -532,42 +403,39 @@
                                       {% ifequal form.aboral.value "2" %}checked{% endifequal %}><span>< 4cm</span></label>
 
                         </div>
-                    </div>
-                    <div class="row vias-aereas">
-                        <div class="col s3"> <legend>Distância Esterno-Mento</legend>
+                        <div class="">
+                             <legend>Distância Esterno-Mento</legend>
                         <label><input name="distem" type="radio" value="1" class="with-gap"
                                       {% ifequal form.distem.value "1" %}checked{% endifequal %}>
                             <span>> 12cm</span></label>
-                        <label><input name="distem" type="radio" value="2" class="with-gap"
+                            <label><input name="distem" type="radio" value="2" class="with-gap"
                                       {% ifequal form.distem.value "2" %}checked{% endifequal %}>
-                            <span>< 12cm</span></label></div>
-                        <div class="col s3"> <legend>Mobilidade Cervical</legend>
+                            <span>< 12cm</span></label>
+                        </div>
+
+                        <div class=""> <legend>Mobilidade Cervical</legend>
                         <label><input name="mobcer" type="radio" value="1" class="with-gap"
                                       {% ifequal form.mobcer.value "1" %}checked{% endifequal %}> <span>Boa</span></label>
                         <label><input name="mobcer" type="radio" value="2" class="with-gap"
                                       {% ifequal form.mobcer.value "2" %}checked{% endifequal %}>
                             <span>Limitada</span></label></div>
-                        <div class="col s3"><legend>Prótese Dentária</legend>
+                        <div class=""><legend>Prótese Dentária</legend>
                         <label><input name="protese" type="radio" value="1" class="with-gap"
                                       {% ifequal form.protese.value "1" %}checked{% endifequal %}><span>Não</span></label>
                         <label><input name="protese" type="radio" value="2" class="with-gap"
                                       {% ifequal form.protese.value "2" %}checked{% endifequal %}><span>Sim</span></label>
-                   </div>
-                        <div class="col s3"><legend> - Risco de Via Aérea Difícil -</legend>
+                        </div>
+                        <div class=""><legend> - Risco de Via Aérea Difícil -</legend>
                         <label><input name="vad" type="radio" value="1" class="with-gap"
                                       {% ifequal form.vad.value "1" %}checked{% endifequal %}><span>Não</span></label>
                         <label><input name="vad" type="radio" value="2" class="with-gap"
                                       {% ifequal form.vad.value "2" %}checked{% endifequal %}><span>Sim</span></label>
-                   </div>
-                     </div>
-
-                </div>
-                <div id="exames" class="section scrollspy">
-                    <div class="myheader">EXAMES COMPLEMENTARES</div>
-
+                        </div>
+    </div>
+    <div id="head8" class="myheader">EXAMES LABORATORIAIS</div>
+        <div id="lab" class="section">
                      <!------!!!!!------------ EXAMES COMPLEMENTARES ------------->
                     <div class="row">
-                        <legend class="enfase">EXAMES LABORATORIAIS:</legend>
                         <div class="col s2">
                             <label>Hb<input class="lab" type="number" step="0.1" id="hemo" name="hb" autocomplete="off"
                                             value="{{form.hb.value|stringformat:'s'|default:''}}"></label>
@@ -581,7 +449,7 @@
                                                value="{{form.leuco.value|stringformat:'s'|default:''}}"></label>
                         </div>
                         <div class="col s2">
-                            <label>Plaq (<sub> x </sub>10<sup>3</sup>)<input class="lab" type="number" id="plt" name="plt"
+                            <label>Plaq (.10<span class="sup">3</span>)<input class="lab" type="number" id="plt" name="plt"
                                                               autocomplete="off"
                                                               value="{{form.plt.value|stringformat:'s'|default:''}}">
                             </label></div>
@@ -619,8 +487,6 @@
                             <label>TTPA<input class="lab" type="number" step="any" id="ttpa" name="ttpa"
                                               autocomplete="off"
                                               value="{{form.ttpa.value|stringformat:'s'|default:''}}"></label></div>
-                        <div class="col s2">
-                        </div>
                     </div>
                     <div class="row">
                         <div class="col s2">
@@ -650,75 +516,68 @@
                             </label>
                         </div>
                     </div>
-                    <label>Outros</label><input type="text" id="outros_lab" name="outros_lab" autocomplete="off"
-                                                value="{{form.outros_lab.value|default:''}}">
-
+                    <div class="row">
+                        <div class="col s12">
+                        <label>Outros: </label><input type="text" id="outros_lab" name="outros_lab" autocomplete="off"
+                                                    value="{{form.outros_lab.value|default:''}}">
+                        </div>
+                    </div>
+        </div>
+        <div id="head9" class="myheader">EXAMES COMPLEMENTARES</div>
+        <div id="exames" class="section">
                     <div class="circular-label">
-                        <legend class="enfase">EXAMES COMPLEMENTARES:</legend>
-                        <label>ECG</label><input type="text" id="ecg" name="ecg" value="{{form.ecg.value|default:''}}">
-                        <label>ECO</label><input type="text" id="eco" name="eco" value="{{form.eco.value|default:''}}">
-                        <label>Radiografia</label><input type="text" id="rx" name="rx"
-                                                         value="{{form.rx.value|default:''}}">
-                        <label>T. Ergométrico</label><input type="text" id="ergo" name="ergo"
-                                                            value="{{form.ergo.value|default:''}}">
-                        <label for="outroex">Outros Exames</label>
-                        <textarea name="outroex" id="outroex" class="materialize-textarea">{{ form.outroex.value|default_if_none:"" }}</textarea>
+                        <label>ECG: <input type="text" id="ecg" name="ecg" value="{{form.ecg.value|default:''}}"></label>
+                        <label>ECO: <input type="text" id="eco" name="eco" value="{{form.eco.value|default:''}}"></label>
+                        <label>Radiografia: <input type="text" id="rx" name="rx"
+                                                         value="{{form.rx.value|default:''}}"></label>
+                        <label>T. Ergométrico: <input type="text" id="ergo" name="ergo"
+                                                            value="{{form.ergo.value|default:''}}"></label>
+                        <textarea name="outroex" id="outroex" class="materialize-textarea">Outros : &nbsp;{{ form.outroex.value|default_if_none:"" }}</textarea>
 
                     </div>
+        </div>
+        <div id="head10" class="myheader">ANOTAÇÕES</div>
+        <div id="anot" class="section">
+            <div class="input-field col s12 margint">
+                        <textarea name="anotacoes" id="anotacoes" class="materialize-textarea">{{ form.anotacoes.value|default_if_none:"" }}</textarea>
+                    </div>
 
-                </div>
-                <div id="conclusao" class="section scrollspy">
-                    <div class="myheader">CONCLUSÃO</div>
-
-                        <!------!!!!!!------------ CONCLUSÃO ------------->
-                    <div>
+        </div>
+        <div id="proposta" class="section">
                         <label>Anestesia Proposta:<input type="text" name="proposta"
                                                          value="{{form.proposta.value|default:''}}"></label>
                         <label>Jejum Pré-operatório:<input type="text" name="jejum"
                                                            value="{{form.jejum.value|default:''}}"></label>
-                    </div>
-                    <div id="prescricao">
-                        <legend>PRESCRIÇÃO PRÉ-ANESTÉSICA</legend>
-                        <label>1.</label><input type="text" name="prescricao"
-                                                value="{{form.prescricao.value|default:''}}">
-                        <label>2.</label><input type="text" name="prescricao2"
-                                                value="{{form.prescricao2.value|default:''}}">
-                        <label>3.</label><input type="text" name="prescricao3"
-                                                value="{{form.prescricao3.value|default:''}}">
-                    </div>
-                    <div class="input-field col s12 margint">
-                        <textarea name="anotacoes" id="anotacoes" class="materialize-textarea">{{ form.anotacoes.value|default_if_none:"" }}</textarea>
-                        <label for="anotacoes">ANOTAÇÕES</label>
-                    </div>
-                    <div id="asa" class="row">
-                        <div class="col s4"></div>
-                        <div class="col s4">
+        </div>
+        <div id="head11" class="myheader">PRESCRIÇÃO PRÉ-ANESTÉSICA</div>
+        <div id="prescricao" class="section">
+            <label>1.<input type="text" name="prescricao"
+                                    value="{{form.prescricao.value|default:''}}"></label>
+            <label>2.<input type="text" name="prescricao2"
+                                    value="{{form.prescricao2.value|default:''}}"></label>
+            <label>3.<input type="text" name="prescricao3"
+                                    value="{{form.prescricao3.value|default:''}}"></label>
+        </div>
+        <div id="carimbo" class="section">CARIMBO E ASSINATURA</div>
+        <div id="asas" class="section">
                             <label for="asa"><span class="enfase">ASA:</span></label>
                             <input name="asa" class="center" id="asa" type="number" min="1" max="5"
                                    value="{{form.asa.value|floatformat|default:''}}">
-                        </div>
-                            <div id="carimbo" class="hide">CARIMBO E ASSINATURA</div>
-                        <div class="col s4"></div>
-                    </div>
-
-                    <div class="center margint">
-            <button class="noprint" name="fim" id="submit-form"
+        </div>
+        <div id="botoes" class="noprint">
+            <button name="fim" id="submit-form"
                     type="submit" value="VOLTAR">VOLTAR
           </button>
-            <button class="noprint" id="print-form" value="IMPRIMIR"
+            <button id="print-form" value="IMPRIMIR"
                     name="fim" type="button" onClick="javascript:window.print()">IMPRIMIR
           </button>
-
-        </div>
-
-                </div>
-
         </div>
     </form>
 
+    </div>
 </div>
-</div>
-    <script>
-    </script>
+<script>
+
+</script>
 </body>
 </html>

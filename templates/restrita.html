@@ -40,6 +40,7 @@
                         <button class="mydropbtn"><i class="material-icons">more_vert</i></button>
                         <div class="mydropdown-content">
                             <a href="{% url 'ficha_update' ficha.id %}"><i class="material-icons">edit</i>editar</a>
+                            <a href="{% url 'ficha_print' ficha.id %}"><i class="material-icons">print</i>imprimir</a>
                             <a href="{% url 'tcle' ficha.id %}"><i class="material-icons">description</i>TCLE</a>
                             <a href="{% url 'orcamento' ficha.id %}"><i class="material-icons">attach_money</i>orçamento</a>
                             <a href="{% url 'ficha_delete' ficha.id %}"><i class="material-icons">delete</i>delete</a>
