@@ -15,42 +15,45 @@
     <title>www.avaliacaopreanestesica.com</title>
     <style>
     html{font-family: 'Playfair Display', serif;}
+
+
+
     </style>
 </head>
 
 <body>
 <div class="pagina">
     <div class="container">
+        <div id="cabecalho">
+            <img src="../static/img/logo.svg" alt="logo" id="logo">
+            <h2 id="titulo">Ficha de Avaliação Pré-Anestésica <span id="versao" class="noprint"> <br>(versão para impressão)</span>
 
-    <div id="cabecalho">
-    <img src="../static/img/logo.svg" alt="logo" id="logo">
-        <h2 id="titulo">Ficha de Avaliação Pré-Anestésica <span id="versao" class="noprint"> <br>(versão para impressão)</span>
+            </h2>
+            <label id="date"><input id="data" name="data" type="text"
+                                    value={{form.data.value|date:'d/m/Y'|default:""}}></label>
+            <input type="hidden" id="referer" value="{{ request.META.HTTP_REFERER }}">
+            <input type="hidden" id="myurl" value="{{ request.path }}">
+            <form action="{% url 'ficha' %}" method="post">
+                {% csrf_token %}
+        </div>
 
-        </h2>
-        <label id="date"><input id="data" name="data" type="text"
-                          value={{form.data.value|date:'d/m/Y'|default:""}}></label>
-    <input type="hidden" id="referer" value="{{ request.META.HTTP_REFERER }}">
-    <input type="hidden" id="myurl" value="{{ request.path }}">
-    <form action="{% url 'ficha' %}" method="post">
-        {% csrf_token %}
-    </div>
-
-    <div class="myheader" id="head1">IDENTIFICAÇÃO<span class="right">DADOS ANTROPOMÉTRICOS</span>
-    </div>
+        <div class="myheader" id="head1">IDENTIFICAÇÃO<span class="right">DADOS ANTROPOMÉTRICOS</span>
+        </div>
 
         <div id="ident" class="section">
-        <!------!!!!!------------ IDENTIFICAÇÃO ------------->
+            <!------!!!!!------------ IDENTIFICAÇÃO ------------->
             <div class="row">
                 <div class="col s6">
-                     <label>Nome:</label><input required name="nome" id="nome" type="text" placeholder="Nome Completo"
-                                      tabindex="0" maxlength="100" autocomplete="off"
-                                      value="{{form.nome.value|default:''}}">
+                    <label>Nome:</label><input required name="nome" id="nome" type="text"
+                                               placeholder="Nome Completo"
+                                               tabindex="0" maxlength="100" autocomplete="off"
+                                               value="{{form.nome.value|default:''}}">
                 </div>
                 <div class="col s1">
                     <label>Idade:<input name="idade" id="idade" type="number" autocomplete="off"
-                                       value="{{form.idade.value|default:''}}"></label>
+                                        value="{{form.idade.value|default:''}}"></label>
                 </div>
-                <div id="sexo"  class="col s2">
+                <div id="sexo" class="col s2">
                     <label><input name="sexo" id="masc" type="radio" value="1"
                                   {% ifequal form.sexo.value "1" %}checked{% endifequal %}>
                         <span>M</span></label>
@@ -59,89 +62,102 @@
                         <span>F</span></label>
                 </div>
                 <div class="col s3">
-                    <label id="cpf-label">CPF:<input id="cpf" name="cpf" type="text" maxlength="14" autocomplete="off"
-                             value="{{form.cpf.value|default:''}}"></label>
+                    <label id="cpf-label">CPF:<input id="cpf" name="cpf" type="text" maxlength="14"
+                                                     autocomplete="off"
+                                                     value="{{form.cpf.value|default:''}}"></label>
                 </div>
             </div>
 
             <div class="row">
                 <div class="col s6">
-            <label>Hospital:<input id="hosp" name="hosp" type="text" maxlength="25"
-                                  value="{{form.hosp.value|default:''}}"></label>
+                    <label>Hospital:<input id="hosp" name="hosp" type="text" maxlength="25"
+                                           value="{{form.hosp.value|default:''}}"></label>
                 </div>
                 <div class="col s6">
-            <label>Convênio:<input id="convenio" name="convenio" type="text" maxlength="25" value="{{form.convenio.value|default:''}}"></label>
+                    <label>Convênio:<input id="convenio" name="convenio" type="text" maxlength="25"
+                                           value="{{form.convenio.value|default:''}}"></label>
                 </div>
             </div>
             <div class="row">
                 <div class="col s6">
-            <label>Cirurgia:<input id="cirurgia" name="cirurgia" type="text" maxlength="100"
-                                  value="{{form.cirurgia.value|default:''}}"></label>
+                    <label>Cirurgia:<input id="cirurgia" name="cirurgia" type="text" maxlength="100"
+                                           value="{{form.cirurgia.value|default:''}}"></label>
                 </div>
                 <div class="col s6">
-            <label>Cirurgião:<input id="cirurgiao" name="cirurgiao" type="text" maxlength="60"
-                                   value="{{form.cirurgiao.value|default:''}}"></label>
+                    <label>Cirurgião:<input id="cirurgiao" name="cirurgiao" type="text" maxlength="60"
+                                            value="{{form.cirurgiao.value|default:''}}"></label>
                 </div>
-                </div>
+            </div>
         </div>
         <!------!!!!!------------ PESOS ------------ ------------->
         <div class="section" id="antrop">
             <div class="row">
                 <div class="col s6">
                     <label>Peso(kg):<input class="meiatela" id="peso" name="peso" type="number" step="0.1"
-                                              autocomplete="off"
-                                              value="{{form.peso.value|stringformat:'s'|default:''}}"></label>
+                                           autocomplete="off"
+                                           value="{{form.peso.value|stringformat:'s'|default:''}}"></label>
                 </div>
                 <div class="col s6">
                     <label>Altura(cm):<input class="meiatela" id="altura" name="altura" type="number"
-                                                 autocomplete="off"
-                                                 value="{{form.altura.value|default:''}}"></label>
+                                             autocomplete="off"
+                                             value="{{form.altura.value|default:''}}"></label>
                 </div>
             </div>
             <div class="row">
                 <div class="col s6">
-                    <label class="outros-pesos">IMC(kg/m<span class="sup">2</span>)<input id="imc" name="imc" type="number" step="0.1" tabindex="-1"
-                                         value="{{form.imc.value|stringformat:'s'|default:''}}"></label></div>
+                    <label class="outros-pesos">IMC(kg/m<span class="sup">2</span>)<input id="imc" name="imc"
+                                                                                          type="number" step="0.1"
+                                                                                          tabindex="-1"
+                                                                                          value="{{form.imc.value|stringformat:'s'|default:''}}"></label>
+                </div>
                 <div class="col s6">
-                    <label class="outros-pesos">Peso ideal<input id="ideal" name="ideal" type="number" step="0.1" tabindex="-1"
-                                              value="{{form.ideal.value|stringformat:'s'|default:''}}"></label></div>
+                    <label class="outros-pesos">Peso ideal<input id="ideal" name="ideal" type="number" step="0.1"
+                                                                 tabindex="-1"
+                                                                 value="{{form.ideal.value|stringformat:'s'|default:''}}"></label>
+                </div>
 
             </div>
             <div class="row">
                 <div class="col s6">
-                    <label class="outros-pesos">Peso Predito<input id="predito" name="predito" type="number" step="0.1" tabindex="-1"
-                                             value="{{form.predito.value|stringformat:'s'|default:''}}"></label></div>
+                    <label class="outros-pesos">Peso Predito<input id="predito" name="predito" type="number"
+                                                                   step="0.1"
+                                                                   tabindex="-1"
+                                                                   value="{{form.predito.value|stringformat:'s'|default:''}}"></label>
+                </div>
                 <div class="col s6">
-                    <label class="outros-pesos">P. Ajustado<input id="ajustado" name="ajustado" type="number" step="0.1" tabindex="-1"
-                                              value="{{form.ajustado.value|stringformat:'s'|default:''}}"></label></div>
+                    <label class="outros-pesos">P. Ajustado<input id="ajustado" name="ajustado" type="number"
+                                                                  step="0.1"
+                                                                  tabindex="-1"
+                                                                  value="{{form.ajustado.value|stringformat:'s'|default:''}}"></label>
+                </div>
             </div>
 
-    </div>
-
-
-    <div id="head2" class="myheader">HISTÓRIA CIRÚRGICA PRÉVIA</div>
-
-    <div id="previas" class="section">
-
-        <!------!!!!!------------ PROCEDIMENTO ------------ ------------->
-
-        <div id="proc_previo" class="row">
-            <label>Procedimentos prévios:<input id="c_previa" name="c_previa" type="text" maxlength="100"
-                                                value="{{form.c_previa.value|default:' -'}}"></label>
-            <label>Anestesias prévias:<input id="a_previa" name="a_previa" type="text" maxlength="100"
-                                             value="{{form.a_previa.value|default:' -'}}"></label>
-        </div>
-        <!------!!!!!------------ ADVERSOS ------------ ------------->
-        <div id="adverso_i" class="row">
-            <label>Eventos adversos:<input id="e_adversos" name="e_adversos" type="text" maxlength="100"
-                                           value="{{form.e_adversos.value|default:' -'}}"></label>
         </div>
 
 
-    </div>
-    <div id="head3" class="myheader">COMORBIDADES</div>
-    <div id="comorbidades" class="section">
-    <!------!!!!!------------ CLINICA ------------ ------------->
+        <div id="head2" class="myheader">HISTÓRIA CIRÚRGICA PRÉVIA</div>
+
+        <div id="previas" class="section">
+
+            <!------!!!!!------------ PROCEDIMENTO ------------ ------------->
+
+            <div id="proc_previo" class="row">
+                <label>Procedimentos prévios:<input id="c_previa" name="c_previa" type="text" maxlength="100"
+                                                    value="{{form.c_previa.value|default:' -'}}"></label>
+                <label>Anestesias prévias:<input id="a_previa" name="a_previa" type="text" maxlength="100"
+                                                 value="{{form.a_previa.value|default:' -'}}"></label>
+            </div>
+            <!------!!!!!------------ ADVERSOS ------------ ------------->
+            <div id="adverso_i" class="row">
+                <label>Eventos adversos:<input id="e_adversos" name="e_adversos" type="text" maxlength="100"
+                                               value="{{form.e_adversos.value|default:' -'}}"></label>
+            </div>
+
+
+        </div>
+        <div id="head3" class="myheader">COMORBIDADES</div>
+        <div id="comorbidades" class="section">
+            <!------!!!!!------------ CLINICA ------------ ------------->
             {% if form.bool_doencas.value %}
             <div id="clinica">
                 {% if form.cardio_has.value %}
@@ -172,19 +188,19 @@
                 {% endif %}
                 {% if form.neuro_cef.value %}
                 <label><input name="neuro_cef" value="True" type="checkbox" checked>
-                      <span>Cefaléia</span></label>
+                    <span>Cefaléia</span></label>
                 {% endif %}
                 {% if form.neuro_con.value %}
                 <label><input name="neuro_con" value="True" type="checkbox" checked>
-                     <span>Convulsão</span></label>
-                    {% endif %}
+                    <span>Convulsão</span></label>
+                {% endif %}
                 {% if form.neuro_lme.value %}
                 <label><input name="neuro_lme" value="True" type="checkbox" checked>
                     <span>Lesão medular</span></label>
                 {% endif %}
                 {% if form.neuro_out.value %}
                 <label><input name="neuro_out" value="True" type="checkbox" checked>
-                     <span>Outras doenças neurológicas</span></label>
+                    <span>Outras doenças neurológicas</span></label>
                 {% endif %}
 
                 {% if form.resp_asm.value %}
@@ -194,7 +210,7 @@
                 {% if form.resp_dpo.value %}
                 <label><input name="resp_dpo" value="True" type="checkbox" checked>
                     <span>DPOC</span></label>
-                 {% endif %}
+                {% endif %}
                 {% if form.resp_tbg.value %}
                 <label><input name="resp_tbg" value="True" type="checkbox" checked>
                     <span>Tabagismo</span></label>
@@ -230,7 +246,7 @@
                     <span>Outras doenças gastrointestinais</span></label>
                 {% endif %}
 
-               {% if form.endocrino_dia.value %}
+                {% if form.endocrino_dia.value %}
                 <label><input name="endocrino_dia" value="True" type="checkbox" checked>
                     <span>Diabetes</span></label>
                 {% endif %}
@@ -248,20 +264,20 @@
                 {% endif %}
 
                 {% if form.renal_irc.value %}
-                    <label><input name="renal_irc" value="True" type="checkbox" checked>
-                        <span>Insuf. Renal Crônica</span></label>
+                <label><input name="renal_irc" value="True" type="checkbox" checked>
+                    <span>Insuf. Renal Crônica</span></label>
                 {% endif %}
                 {% if form.renal_ira.value %}
-                    <label><input name="renal_ira" value="True" type="checkbox" checked>
-                        <span>Insuf. Renal Aguda </span></label>
+                <label><input name="renal_ira" value="True" type="checkbox" checked>
+                    <span>Insuf. Renal Aguda </span></label>
                 {% endif %}
                 {% if form.renal_dia.value %}
-                    <label><input name="renal_dia" value="True" type="checkbox" checked>
-                        <span>Diálise </span></label>
+                <label><input name="renal_dia" value="True" type="checkbox" checked>
+                    <span>Diálise </span></label>
                 {% endif %}
                 {% if form.renal_out.value %}
-                    <label><input name="renal_out" value="True" type="checkbox" checked>
-                        <span>Outras doenças renais</span></label>
+                <label><input name="renal_out" value="True" type="checkbox" checked>
+                    <span>Outras doenças renais</span></label>
                 {% endif %}
 
                 {% if form.hem_coa.value %}
@@ -314,270 +330,272 @@
                     <span>Outras doenças músculo-esqueléticas</span></label>
                 {% endif %}
             </div>
-                {% else %}
-                    <div>
-                    Nega comorbidades <div>-</div>
-                    </div>
-                {% endif %}
+            {% else %}
+            <div>
+                Nega comorbidades
+                <div>-</div>
+            </div>
+            {% endif %}
 
-              {% ifequal form.mets.value "1" %}Capacidade Funcional: > 4 METs {% endifequal %}
-              {% ifequal form.mets.value "2" %}Capacidade Funcional: < 4 METs {% endifequal %}
-              {% ifequal form.mets.value "0" %}Impossível avaliar a capacidade funcional {% endifequal %}
-    </div>
+            {% ifequal form.mets.value "1" %}Capacidade Funcional: > 4 METs {% endifequal %}
+            {% ifequal form.mets.value "2" %}Capacidade Funcional: < 4 METs {% endifequal %}
+            {% ifequal form.mets.value "0" %}Impossível avaliar a capacidade funcional {% endifequal %}
+        </div>
 
-    <div id="head4" class="myheader">MEDICAÇÕES</div>
-    <div id="medic" class="section">
+        <div id="head4" class="myheader">MEDICAÇÕES</div>
+        <div id="medic" class="section">
             <!----!!!!!------------ MEDICAÇÕES ------------ ----------->
             <div id="medicacoes_i" class="row hide input-field">
                 <textarea id="medicacoes" name="medicacoes" class="materialize-textarea">{{ form.medicacoes.value|default_if_none:"" }}</textarea>
             </div>
-    </div>
-
-    <div id="head5" class="myheader">ALERGIAS</div>
-    <div id="alergia" class="section">
-        <!------!!!!!------------ ALERGIAS ------------ ------------->
-
-        <div id="alergias_i" class="row hide">
-        <input id="alergias" name="alergias" type="text" maxlength="100" class="borda"
-                                   value="{{form.alergias.value|default:''}}">
         </div>
-    </div>
-    <div id="head6" class="myheader">EXAME FÍSICO <span class="right">SINAIS VITAIS</span></div>
-    <div id="fisico" class="section">
-        <!----!!!!!------------ FÍSICO ------------ ----------->
-                    <div id="exfisico_i" class="row hide input-field">
-                        <textarea id="exfisico" name="exfisico" class="materialize-textarea">{{form.exfisico.value|default_if_none:""}}</textarea>
-                    </div>
-    </div>
-    <div id="sinais-vitais" class="section">
-                    <!----!!!!!------------ SINAIS VITAIS ------------ ----------->
-                    <div class="row">
-                        <div class="col s5">
-                            <label>PA: <input type="number" id="pas" name="pas" autocomplete="off"
-                                                     value="{{form.pas.value|default:''}}">
-                        </div>
-                        <div class="col s2 x">
-                            <input type="text" class="x" value=" x" readonly tabindex="-1">
-                        </div>
-                        <div class="col s5">
-                            <input type="number" id="pad" name="pad" autocomplete="off"
-                                                                       value="{{form.pad.value|default:''}}"></label>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col s12">
-                        <label>FC: <input type="number" id="fc" name="fc" autocomplete="off"
-                                                     value="{{form.fc.value|default:''}}"></label>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col s12">
-                        <label>FR: <input type="number" id="fr" name="fr" autocomplete="off"
-                                                     value="{{form.fr.value|default:''}}"></label>
-                        </div>
-                    </div>
-    </div>
-    <div id="head7" class="myheader">VIAS AÉREAS</div>
-    <div id="va" class="section">
-                    <!----!!!!!------------ VIAS AÉREAS ------------ ----------->
-                        <div class="">
-                          <legend>Mallampati</legend>
-                            <label><input name="mallampati" type="radio" value="1" class="with-gap"
-                                          {% ifequal form.mallampati.value "1" %}checked{% endifequal %}> <span>I</span></label>
 
-                            <label><input name="mallampati" type="radio" value="2" class="with-gap"
-                                          {% ifequal form.mallampati.value "2" %}checked{% endifequal %}> <span>II</span></label>
+        <div id="head5" class="myheader">ALERGIAS</div>
+        <div id="alergia" class="section">
+            <!------!!!!!------------ ALERGIAS ------------ ------------->
 
-                            <label> <input name="mallampati" type="radio" value="3" class="with-gap"
-                                           {% ifequal form.mallampati.value "3" %}checked{% endifequal %}> <span>III</span></label>
+            <div id="alergias_i" class="row hide">
+                <input id="alergias" name="alergias" type="text" maxlength="100" class="borda"
+                       value="{{form.alergias.value|default:''}}">
+            </div>
+        </div>
+        <div id="head6" class="myheader">EXAME FÍSICO <span class="right">SINAIS VITAIS</span></div>
+        <div id="fisico" class="section">
+            <!----!!!!!------------ FÍSICO ------------ ----------->
+            <div id="exfisico_i" class="row hide input-field">
+                <textarea id="exfisico" name="exfisico" class="materialize-textarea">{{form.exfisico.value|default_if_none:""}}</textarea>
+            </div>
+        </div>
+        <div id="sinais-vitais" class="section">
+            <!----!!!!!------------ SINAIS VITAIS ------------ ----------->
+            <div class="row">
+                <div class="col s5">
+                    <label>PA: <input type="number" id="pas" name="pas" autocomplete="off"
+                                      value="{{form.pas.value|default:''}}"></label>
+                </div>
+                <div class="col s2 x">
+                    <input type="text" class="x" value=" x" readonly tabindex="-1">
+                </div>
+                <div class="col s5">
+                    <input type="number" id="pad" name="pad" autocomplete="off"
+                           value="{{form.pad.value|default:''}}">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s12">
+                    <label>FC: <input type="number" id="fc" name="fc" autocomplete="off"
+                                      value="{{form.fc.value|default:''}}"></label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s12">
+                    <label>FR: <input type="number" id="fr" name="fr" autocomplete="off"
+                                      value="{{form.fr.value|default:''}}"></label>
+                </div>
+            </div>
+        </div>
+        <div id="head7" class="myheader">VIAS AÉREAS</div>
+        <div id="va" class="section">
+            <!----!!!!!------------ VIAS AÉREAS ------------ ----------->
+            <div class="">
+                <div>Mallampati</div>
+                <label><input name="mallampati" type="radio" value="1" class="with-gap"
+                              {% ifequal form.mallampati.value "1" %}checked{% endifequal %}> <span>I</span></label>
 
-                            <label><input name="mallampati" type="radio" value="4" class="with-gap"
-                                          {% ifequal form.mallampati.value "4" %}checked{% endifequal %}> <span>IV</span></label>
-                        </div>
+                <label><input name="mallampati" type="radio" value="2" class="with-gap"
+                              {% ifequal form.mallampati.value "2" %}checked{% endifequal %}>
+                    <span>II</span></label>
 
-                        <div class="">
-                               <legend>Abertura Oral</legend>
-                        <label><input name="aboral" type="radio" value="1" class="with-gap"
-                                      {% ifequal form.aboral.value "1" %}checked{% endifequal %}><span>> 4cm</span></label>
-                        <label><input name="aboral" type="radio" value="2" class="with-gap"
-                                      {% ifequal form.aboral.value "2" %}checked{% endifequal %}><span>< 4cm</span></label>
+                <label> <input name="mallampati" type="radio" value="3" class="with-gap"
+                               {% ifequal form.mallampati.value "3" %}checked{% endifequal %}>
+                    <span>III</span></label>
 
-                        </div>
-                        <div class="">
-                             <legend>Distância Esterno-Mento</legend>
-                        <label><input name="distem" type="radio" value="1" class="with-gap"
-                                      {% ifequal form.distem.value "1" %}checked{% endifequal %}>
-                            <span>> 12cm</span></label>
-                            <label><input name="distem" type="radio" value="2" class="with-gap"
-                                      {% ifequal form.distem.value "2" %}checked{% endifequal %}>
-                            <span>< 12cm</span></label>
-                        </div>
+                <label><input name="mallampati" type="radio" value="4" class="with-gap"
+                              {% ifequal form.mallampati.value "4" %}checked{% endifequal %}>
+                    <span>IV</span></label>
+            </div>
 
-                        <div class=""> <legend>Mobilidade Cervical</legend>
-                        <label><input name="mobcer" type="radio" value="1" class="with-gap"
-                                      {% ifequal form.mobcer.value "1" %}checked{% endifequal %}> <span>Boa</span></label>
-                        <label><input name="mobcer" type="radio" value="2" class="with-gap"
-                                      {% ifequal form.mobcer.value "2" %}checked{% endifequal %}>
-                            <span>Limitada</span></label></div>
-                        <div class=""><legend>Prótese Dentária</legend>
-                        <label><input name="protese" type="radio" value="1" class="with-gap"
-                                      {% ifequal form.protese.value "1" %}checked{% endifequal %}><span>Não</span></label>
-                        <label><input name="protese" type="radio" value="2" class="with-gap"
-                                      {% ifequal form.protese.value "2" %}checked{% endifequal %}><span>Sim</span></label>
-                        </div>
-                        <div class=""><legend> - Risco de Via Aérea Difícil -</legend>
-                        <label><input name="vad" type="radio" value="1" class="with-gap"
-                                      {% ifequal form.vad.value "1" %}checked{% endifequal %}><span>Não</span></label>
-                        <label><input name="vad" type="radio" value="2" class="with-gap"
-                                      {% ifequal form.vad.value "2" %}checked{% endifequal %}><span>Sim</span></label>
-                        </div>
-    </div>
-    <div id="head8" class="myheader">EXAMES LABORATORIAIS</div>
+            <div class="">
+                <div>Abertura Oral</div>
+                <label><input name="aboral" type="radio" value="1" class="with-gap"
+                              {% ifequal form.aboral.value "1" %}checked{% endifequal %}><span>> 4cm</span></label>
+                <label><input name="aboral" type="radio" value="2" class="with-gap"
+                              {% ifequal form.aboral.value "2" %}checked{% endifequal %}><span>< 4cm</span></label>
+
+            </div>
+            <div class="">
+                <div>Distância Esterno-Mento</div>
+                <label><input name="distem" type="radio" value="1" class="with-gap"
+                              {% ifequal form.distem.value "1" %}checked{% endifequal %}>
+                    <span>> 12cm</span></label>
+                <label><input name="distem" type="radio" value="2" class="with-gap"
+                              {% ifequal form.distem.value "2" %}checked{% endifequal %}>
+                    <span>< 12cm</span></label>
+            </div>
+
+            <div class="">
+                <div>Mobilidade Cervical</div>
+                <label><input name="mobcer" type="radio" value="1" class="with-gap"
+                              {% ifequal form.mobcer.value "1" %}checked{% endifequal %}> <span>Boa</span></label>
+                <label><input name="mobcer" type="radio" value="2" class="with-gap"
+                              {% ifequal form.mobcer.value "2" %}checked{% endifequal %}>
+                    <span>Limitada</span></label></div>
+            <div class="">
+                <div>Prótese Dentária</div>
+                <label><input name="protese" type="radio" value="1" class="with-gap"
+                              {% ifequal form.protese.value "1" %}checked{% endifequal %}><span>Não</span></label>
+                <label><input name="protese" type="radio" value="2" class="with-gap"
+                              {% ifequal form.protese.value "2" %}checked{% endifequal %}><span>Sim</span></label>
+            </div>
+            <div class="">
+                <div> - Risco de Via Aérea Difícil -</div>
+                <label><input name="vad" type="radio" value="1" class="with-gap"
+                              {% ifequal form.vad.value "1" %}checked{% endifequal %}><span>Não</span></label>
+                <label><input name="vad" type="radio" value="2" class="with-gap"
+                              {% ifequal form.vad.value "2" %}checked{% endifequal %}><span>Sim</span></label>
+            </div>
+        </div>
+        <div id="head8" class="myheader">EXAMES LABORATORIAIS</div>
         <div id="lab" class="section">
-                     <!------!!!!!------------ EXAMES COMPLEMENTARES ------------->
-                    <div class="row">
-                        <div class="col s2">
-                            <label>Hb<input class="lab" type="number" step="0.1" id="hemo" name="hb" autocomplete="off"
-                                            value="{{form.hb.value|stringformat:'s'|default:''}}"></label>
-                        </div>
-                        <div class="col s2">
-                            <label>Ht<input class="lab" type="number" step="0.1" id="ht" name="ht" autocomplete="off"
-                                            value="{{form.ht.value|stringformat:'s'|default:''}}"></label>
-                        </div>
-                        <div class="col s2">
-                            <label>Leuco<input class="lab" type="number" id="leuco" name="leuco" autocomplete="off"
-                                               value="{{form.leuco.value|stringformat:'s'|default:''}}"></label>
-                        </div>
-                        <div class="col s2">
-                            <label>Plaq (.10<span class="sup">3</span>)<input class="lab" type="number" id="plt" name="plt"
-                                                              autocomplete="off"
-                                                              value="{{form.plt.value|stringformat:'s'|default:''}}">
-                            </label></div>
-                        <div class="col s2">
-                            <label>Uréia<input class="lab" type="number" step="any" id="u" name="u" autocomplete="off"
-                                               value="{{form.u.value|stringformat:'s'|default:''}}"</label>
-                        </div>
-                        <div class="col s2">
-                            <label>Cr<input class="lab" type="number" step="any" id="cr" name="cr" autocomplete="off"
-                                            value="{{form.cr.value|stringformat:'s'|default:''}}"></label>
-                        </div>
-                    </div>
+            <!------!!!!!------------ EXAMES COMPLEMENTARES ------------->
+            <div class="row">
+                <div class="col s2">
+                    <label>Hb<input class="lab" type="number" step="0.1" id="hemo" name="hb" autocomplete="off"
+                                    value="{{form.hb.value|stringformat:'s'|default:''}}"></label>
+                </div>
+                <div class="col s2">
+                    <label>Ht<input class="lab" type="number" step="0.1" id="ht" name="ht" autocomplete="off"
+                                    value="{{form.ht.value|stringformat:'s'|default:''}}"></label>
+                </div>
+                <div class="col s2">
+                    <label>Leuco<input class="lab" type="number" id="leuco" name="leuco" autocomplete="off"
+                                       value="{{form.leuco.value|stringformat:'s'|default:''}}"></label>
+                </div>
+                <div class="col s2">
+                    <label>Plaq (.10<span class="sup">3</span>)<input class="lab" type="number" id="plt" name="plt"
+                                                                      autocomplete="off"
+                                                                      value="{{form.plt.value|stringformat:'s'|default:''}}">
+                    </label></div>
+                <div class="col s2">
+                    <label>Uréia<input class="lab" type="number" step="any" id="u" name="u" autocomplete="off"
+                                       value="{{form.u.value|stringformat:'s'|default:''}}"></label>
+                </div>
+                <div class="col s2">
+                    <label>Cr<input class="lab" type="number" step="any" id="cr" name="cr" autocomplete="off"
+                                    value="{{form.cr.value|stringformat:'s'|default:''}}"></label>
+                </div>
+            </div>
 
-                    <div class="row">
-                        <div class="col s2">
-                            <label>Glicemia<input class="lab" type="number" step="0.1" id="gli" name="gli"
-                                                  autocomplete="off"
-                                                  value="{{form.gli.value|stringformat:'s'|default:''}}"></label></div>
-                        <div class="col s2">
-                            <label>TS<input class="lab" type="number" step="any" id="ts" name="ts" autocomplete="off"
-                                            value="{{form.ts.value|stringformat:'s'|default:''}}"</label></div>
-                        <div class="col s2">
-                            <label>TC<input class="lab" type="number" step="any" id="tc" name="tc" autocomplete="off"
-                                            value="{{form.tc.value|stringformat:'s'|default:''}}"></label></div>
+            <div class="row">
+                <div class="col s2">
+                    <label>Glicemia<input class="lab" type="number" step="0.1" id="gli" name="gli"
+                                          autocomplete="off"
+                                          value="{{form.gli.value|stringformat:'s'|default:''}}"></label></div>
+                <div class="col s2">
+                    <label>TS<input class="lab" type="number" step="any" id="ts" name="ts" autocomplete="off"
+                                    value="{{form.ts.value|stringformat:'s'|default:''}}"></label></div>
+                <div class="col s2">
+                    <label>TC<input class="lab" type="number" step="any" id="tc" name="tc" autocomplete="off"
+                                    value="{{form.tc.value|stringformat:'s'|default:''}}"></label></div>
 
-                        <div class="col s2">
-                            <label>INR<input class="lab" type="number" step="any" id="inr" name="inr" autocomplete="off"
-                                             value="{{form.inr.value|stringformat:'s'|default:''}}"></label>
-                        </div>
-                        <div class="col s2">
-                            <label>TP<input class="lab" type="number" step="any" id="tp" name="tp" autocomplete="off"
-                                            value="{{form.tp.value|stringformat:'s'|default:''}}"></label>
-                        </div>
-                        <div class="col s2">
-                            <label>TTPA<input class="lab" type="number" step="any" id="ttpa" name="ttpa"
-                                              autocomplete="off"
-                                              value="{{form.ttpa.value|stringformat:'s'|default:''}}"></label></div>
-                    </div>
-                    <div class="row">
-                        <div class="col s2">
-                            <label>Na<input class="lab" type="number" step="any" id="na" name="na" autocomplete="off"
-                                            value="{{form.na.value|stringformat:'s'|default:''}}"></label>
-                        </div>
-                        <div class="col s2">
-                            <label>K<input class="lab" type="number" step="any" id="k" name="k" autocomplete="off"
-                                           value="{{form.k.value|stringformat:'s'|default:''}}"
-                            </label>
-                        </div>
-                        <div class="col s2">
-                            <label>TGO<input class="lab" type="number" step="any" id="tgo" name="tgo" autocomplete="off"
-                                             value="{{form.tgo.value|stringformat:'s'|default:''}}"</label>
-                        </div>
-                        <div class="col s2">
-                            <label>TGP<input class="lab" type="number" step="any" id="tgp" name="tgp" autocomplete="off"
-                                             value="{{form.tgp.value|stringformat:'s'|default:''}}"></label>
-                        </div>
-                        <div class="col s2">
-                            <label>FA<input class="lab" type="number" step="any" id="fa" name="fa" autocomplete="off"
-                                            value="{{form.fa.value|stringformat:'s'|default:''}}"></label>
-                        </div>
-                        <div class="col s2">
-                            <label>GGT<input class="lab" type="number" step="any" id="ggt" name="ggt" autocomplete="off"
-                                             value="{{form.ggt.value|stringformat:'s'|default:''}}"
-                            </label>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col s12">
-                        <label>Outros: </label><input type="text" id="outros_lab" name="outros_lab" autocomplete="off"
-                                                    value="{{form.outros_lab.value|default:''}}">
-                        </div>
-                    </div>
+                <div class="col s2">
+                    <label>INR<input class="lab" type="number" step="any" id="inr" name="inr" autocomplete="off"
+                                     value="{{form.inr.value|stringformat:'s'|default:''}}"></label>
+                </div>
+                <div class="col s2">
+                    <label>TP<input class="lab" type="number" step="any" id="tp" name="tp" autocomplete="off"
+                                    value="{{form.tp.value|stringformat:'s'|default:''}}"></label>
+                </div>
+                <div class="col s2">
+                    <label>TTPA<input class="lab" type="number" step="any" id="ttpa" name="ttpa"
+                                      autocomplete="off"
+                                      value="{{form.ttpa.value|stringformat:'s'|default:''}}"></label></div>
+            </div>
+            <div class="row">
+                <div class="col s2">
+                    <label>Na<input class="lab" type="number" step="any" id="na" name="na" autocomplete="off"
+                                    value="{{form.na.value|stringformat:'s'|default:''}}"></label>
+                </div>
+                <div class="col s2">
+                    <label>K<input class="lab" type="number" step="any" id="k" name="k" autocomplete="off"
+                                   value="{{form.k.value|stringformat:'s'|default:''}}"></label>
+                </div>
+                <div class="col s2">
+                    <label>TGO<input class="lab" type="number" step="any" id="tgo" name="tgo" autocomplete="off"
+                                     value="{{form.tgo.value|stringformat:'s'|default:''}}"></label>
+                </div>
+                <div class="col s2">
+                    <label>TGP<input class="lab" type="number" step="any" id="tgp" name="tgp" autocomplete="off"
+                                     value="{{form.tgp.value|stringformat:'s'|default:''}}"></label>
+                </div>
+                <div class="col s2">
+                    <label>FA<input class="lab" type="number" step="any" id="fa" name="fa" autocomplete="off"
+                                    value="{{form.fa.value|stringformat:'s'|default:''}}"></label>
+                </div>
+                <div class="col s2">
+                    <label>GGT<input class="lab" type="number" step="any" id="ggt" name="ggt" autocomplete="off"
+                                     value="{{form.ggt.value|stringformat:'s'|default:''}}"></label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s12">
+                    <label>Outros: </label><input type="text" id="outros_lab" name="outros_lab" autocomplete="off"
+                                                  value="{{form.outros_lab.value|default:''}}">
+                </div>
+            </div>
         </div>
         <div id="head9" class="myheader">EXAMES COMPLEMENTARES</div>
         <div id="exames" class="section">
-                    <div class="circular-label">
-                        <label>ECG: <input type="text" id="ecg" name="ecg" value="{{form.ecg.value|default:''}}"></label>
-                        <label>ECO: <input type="text" id="eco" name="eco" value="{{form.eco.value|default:''}}"></label>
-                        <label>Radiografia: <input type="text" id="rx" name="rx"
-                                                         value="{{form.rx.value|default:''}}"></label>
-                        <label>T. Ergométrico: <input type="text" id="ergo" name="ergo"
-                                                            value="{{form.ergo.value|default:''}}"></label>
-                        <textarea name="outroex" id="outroex" class="materialize-textarea">Outros : &nbsp;{{ form.outroex.value|default_if_none:"" }}</textarea>
+            <div class="circular-label">
+                <label>ECG: <input type="text" id="ecg" name="ecg" value="{{form.ecg.value|default:''}}"></label>
+                <label>ECO: <input type="text" id="eco" name="eco" value="{{form.eco.value|default:''}}"></label>
+                <label>Radiografia: <input type="text" id="rx" name="rx"
+                                           value="{{form.rx.value|default:''}}"></label>
+                <label>T. Ergométrico: <input type="text" id="ergo" name="ergo"
+                                              value="{{form.ergo.value|default:''}}"></label>
+                <textarea name="outroex" id="outroex" class="materialize-textarea">Outros : &nbsp;{{ form.outroex.value|default_if_none:"" }}</textarea>
 
-                    </div>
+            </div>
         </div>
         <div id="head10" class="myheader">ANOTAÇÕES</div>
         <div id="anot" class="section">
             <div class="input-field col s12 margint">
-                        <textarea name="anotacoes" id="anotacoes" class="materialize-textarea">{{ form.anotacoes.value|default_if_none:"" }}</textarea>
-                    </div>
+                <textarea name="anotacoes" id="anotacoes" class="materialize-textarea">{{ form.anotacoes.value|default_if_none:"" }}</textarea>
+            </div>
 
         </div>
         <div id="proposta" class="section">
-                        <label>Anestesia Proposta:<input type="text" name="proposta"
-                                                         value="{{form.proposta.value|default:''}}"></label>
-                        <label>Jejum Pré-operatório:<input type="text" name="jejum"
-                                                           value="{{form.jejum.value|default:''}}"></label>
+            <label>Anestesia Proposta:<input type="text" name="proposta"
+                                             value="{{form.proposta.value|default:''}}"></label>
+            <label>Jejum Pré-operatório:<input type="text" name="jejum"
+                                               value="{{form.jejum.value|default:''}}"></label>
         </div>
         <div id="head11" class="myheader">PRESCRIÇÃO PRÉ-ANESTÉSICA</div>
         <div id="prescricao" class="section">
             <label>1.<input type="text" name="prescricao"
-                                    value="{{form.prescricao.value|default:''}}"></label>
+                            value="{{form.prescricao.value|default:''}}"></label>
             <label>2.<input type="text" name="prescricao2"
-                                    value="{{form.prescricao2.value|default:''}}"></label>
+                            value="{{form.prescricao2.value|default:''}}"></label>
             <label>3.<input type="text" name="prescricao3"
-                                    value="{{form.prescricao3.value|default:''}}"></label>
+                            value="{{form.prescricao3.value|default:''}}"></label>
         </div>
         <div id="carimbo" class="section">CARIMBO E ASSINATURA</div>
         <div id="asas" class="section">
-                            <label for="asa"><span class="enfase">ASA:</span></label>
-                            <input name="asa" class="center" id="asa" type="number" min="1" max="5"
-                                   value="{{form.asa.value|floatformat|default:''}}">
+            <label for="asa"><span class="enfase">ASA:</span></label>
+            <input name="asa" class="center" id="asa" type="number" min="1" max="5"
+                   value="{{form.asa.value|floatformat|default:''}}">
         </div>
         <div id="botoes" class="noprint">
             <button name="fim" id="submit-form"
                     type="submit" value="VOLTAR">VOLTAR
-          </button>
+            </button>
             <button id="print-form" value="IMPRIMIR"
                     name="fim" type="button" onClick="javascript:window.print()">IMPRIMIR
-          </button>
+            </button>
+            </form>
         </div>
-    </form>
 
     </div>
 </div>
-<script>
-
-</script>
 </body>
 </html>

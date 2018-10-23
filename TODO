@@ -1,4 +1,11 @@
-lembrar: colectstatic quando mudar JS
+check-list deploy:
+
+migrate
+colectstatic quando mudar JS
+
+
+lembrar:
+
 -> bug neurologico '>' após checked
 
 TODO:

@@ -1,12 +1,16 @@
 @page {
 margin: 0.7cm;
+margin-bottom: 0;
 }
-@media screen{
+
+@media screen, print{
+
 body {
 font: 12pt Georgia, "Times New Roman", Times, serif;
 line-height: 1.3;
-background: re;
+background: transparent;
 margin: 0 10%;
+max-height: 1550px;
 }
 .container{
     background: transparent;
@@ -16,15 +20,15 @@ margin: 0 10%;
     grid-gap: 0.1em;
     grid: [row1-start]  "tit tit tit tit tit tit tit tit tit tit tit tit" 90px [row1-end]
           [row2-start]  "he1 he1 he1 he1 he1 he1 he1 he1 he1 he1 he1 he1" 20px [row2-end]
-          [row3-start]  "ide ide ide ide ide ide ide ide ide ant ant ant" 80px [row3-end]
+          [row3-start]  "ide ide ide ide ide ide ide ide ide ant ant ant" 100px [row3-end]
           [row4-start]  "he2 he2 he2 he2 he2 he2 he2 he2 he2 he2 he2 he2" 20px [row4-end]
           [row5-start]  "pre pre pre pre pre pre pre pre pre pre pre pre" 80px [row5-end]
           [row6-start]  "he3 he3 he3 he3 he3 he3 he3 he3 he3 he3 he3 he3" 20px [row6-end]
           [row7-start]  "cli cli cli cli cli cli cli cli cli cli cli cli" 100px [row7-end]
           [row8-start]  "he4 he4 he4 he4 he4 he4 he4 he4 he4 he4 he4 he4" 20px [row8-end]
-          [row9-start]  "med med med med med med med med med med med med" 100px [row9-end]
+          [row9-start]  "med med med med med med med med med med med med" 90px [row9-end]
           [row10-start] "he5 he5 he5 he5 he5 he5 he5 he5 he5 he5 he5 he5" 20px [row10-end]
-          [row11-start] "ale ale ale ale ale ale ale ale ale ale ale ale" 60px [row11-end]
+          [row11-start] "ale ale ale ale ale ale ale ale ale ale ale ale" 50px [row11-end]
           [row12-start] "he6 he6 he6 he6 he6 he6 he6 he6 he6 he6 he6 he6" 20px [row12-end]
           [row13-start] "fis fis fis fis fis fis fis fis fis fis vit vit" 100px [row13-end]
           [row14-start] "he7 he7 he7 he7 he7 he7 he7 he7 he7 he7 he7 he7" 20px [row14-end]
@@ -43,13 +47,13 @@ margin: 0 10%;
     grid-template-columns: repeat(12, 85px);
 }
 .myheader{
-    border: 1px solid rgba(25, 0, 145, .4);
-    border-width: 1px 0 1px 0;
+    margin-top: 5px;
 }
 .pagina{
     margin-top: 30px;
     padding: 25px 0 0 50px;
     min-width: 1100px;
+    max-height: 1550px;
     border: 1px solid rgb(200, 200, 200);
     box-shadow: 2px -2px 10px 5px rgba(0,0,0,0.2);
 }
@@ -62,7 +66,7 @@ margin: 0 10%;
 }
 #sexo{
     position: relative;
-    left: 20px;
+    left: 30px;
 }
 .outros-pesos{
     font-size: 0.85em;
@@ -106,19 +110,29 @@ border-color: darkred;}
 #asas{grid-area: asa;}
 #botoes{grid-area: bot;}
 #date{
-    font-size: 1.6em;
+    font-size: 1.8em;
     justify-self: end;
+    border: 1px solid rgba(25, 0, 145, .5);
+    border-width: 0 0 1px 0;
+    width: 140px;
+}
+#ident{
+    font-size: 1.3em;
+}
+#antrop{
+    padding-top: 10px;
+    font-size: 1.05em;
 }
 #comorbidades{
     text-align: justify;
 }
 #medic{
-    padding: 10px;
+    padding: 5px;
 }
 #alergia input{
     font-size: 1.25em;
     width: 99%;
-    margin-top: 5px;
+    margin-top: 2px;
 }
 #sinais-vitais{
     font-size: 1.3em;
@@ -158,7 +172,8 @@ border-color: darkred;}
     width: 90%;
     margin-top: 7px;
 }
-#asas{padding-left:50px;}
+#asas{
+    padding: 5px 0 0 50px;}
 #asas input{
     width: 40px;
     font-size: 1.3em;
@@ -171,7 +186,7 @@ border-color: darkred;}
     float: right;
 }
 .section{
-    border: 2px solid rgba(25, 0, 145, .8);
+    border: 2px solid rgba(25, 25, 25, .8);
     border-radius: 5px;
     margin: 3px 0;
     padding: 5px;
@@ -184,15 +199,16 @@ label{
 }
 .inv{display:none;
 }
-input{
-    border: 1px solid blu;
-}
+
 input[type=text], input[type=number]{
     background: transparent;
     width: 80%;
     padding-left: 5px;
     border-width: 0 0 0 0;
     font-size: .85em;
+    color: darkblue;
+    font-family: "Lucida Console";
+
 }
 textarea{
     width: 99%;
@@ -202,19 +218,16 @@ textarea{
     border: 0;
     overflow: hidden;
     resize: none;
+        color: darkblue;
+    font-family: "Lucida Console";
 }
-label{
-    border: 1px solid re;
-}
+
 .sup{vertical-align: super;
     font-size: .6em;}
 img{
     max-width: 30px;
 }
-.borda{
-    border: 1px solid red;
-    background: red;
-}
+
 .row .col {
   float: left;
   -webkit-box-sizing: border-box;
@@ -310,338 +323,27 @@ img{
   left: auto;
   right: auto;
 }
-
-
-
 }
+
+
 @media print{
-html, body{max-height:99%;}
-body {
-font: 12pt Georgia, "Times New Roman", Times, serif;
-line-height: 1.3;
-background: re;
-margin: 0;
-padding-left: 35px;
+html, body{
+    margin: 0;
+    max-height: 1560px;
+    padding-left: 15px;
+    page-break-after: avoid;
+    page-break-before: avoid;
+    page-break-inside: avoid;
 }
-.container{
-    background: transparent;
-    display: grid;
-    justify-items: stretch;
-    align-items: stretch;
-    grid-gap: 0.1em;
-    grid: [row1-start]  "tit tit tit tit tit tit tit tit tit tit tit tit" 90px [row1-end]
-          [row2-start]  "he1 he1 he1 he1 he1 he1 he1 he1 he1 he1 he1 he1" 20px [row2-end]
-          [row3-start]  "ide ide ide ide ide ide ide ide ide ant ant ant" 80px [row3-end]
-          [row4-start]  "he2 he2 he2 he2 he2 he2 he2 he2 he2 he2 he2 he2" 20px [row4-end]
-          [row5-start]  "pre pre pre pre pre pre pre pre pre pre pre pre" 80px [row5-end]
-          [row6-start]  "he3 he3 he3 he3 he3 he3 he3 he3 he3 he3 he3 he3" 20px [row6-end]
-          [row7-start]  "cli cli cli cli cli cli cli cli cli cli cli cli" 100px [row7-end]
-          [row8-start]  "he4 he4 he4 he4 he4 he4 he4 he4 he4 he4 he4 he4" 20px [row8-end]
-          [row9-start]  "med med med med med med med med med med med med" 100px [row9-end]
-          [row10-start] "he5 he5 he5 he5 he5 he5 he5 he5 he5 he5 he5 he5" 20px [row10-end]
-          [row11-start] "ale ale ale ale ale ale ale ale ale ale ale ale" 60px [row11-end]
-          [row12-start] "he6 he6 he6 he6 he6 he6 he6 he6 he6 he6 he6 he6" 20px [row12-end]
-          [row13-start] "fis fis fis fis fis fis fis fis fis fis vit vit" 100px [row13-end]
-          [row14-start] "he7 he7 he7 he7 he7 he7 he7 he7 he7 he7 he7 he7" 20px [row14-end]
-          [row15-start] "via via via via via via via via via via via via" 110px [row15-end]
-          [row16-start] "he8 he8 he8 he8 he8 he8 he8 he8 he8 he8 he8 he8" 20px [row16-end]
-          [row17-start] "lab lab lab lab lab lab lab lab lab lab lab lab" 120px [row17-end]
-          [row18-start] "he9 he9 he9 he9 he9 he9 he9 he9 he9 he9 he9 he9" 20px [row18-end]
-          [row19-start] "exa exa exa exa exa exa exa exa exa exa exa exa" 160px [row19-end]
-          [row20-start] "h10 h10 h10 h10 h10 h10 h10 h10 h10 h10 h10 h10" 20px [row20-end]
-          [row21-start] "not not not not not not not not not not not not" 80px [row21-end]
-          [row22-start] "pro pro pro pro pro pro pro pro pro pro pro pro" 50px [row22-end]
-          [row23-start] "h11 h11 h11 h11 h11 h11 h11 h11 h11 h11 h11 h11" 20px [row23-end]
-          [row24-start] "psc psc psc psc psc psc psc psc psc car car car" 100px [row24-end]
-          [row25-start] "bot bot ... ... ... asa asa ... ... ... ... ..." 50px [row25-end]
-          [row26-start] "... ... ... ... ... ... ... ... ... ... ... ..." 100px [row26-end];
-    grid-template-columns: repeat(12, 85px);
-}
-.myheader{
-    border: 1px solid rgba(25, 0, 145, .4);
-    border-width: 1px 0 1px 0;
-}
-.pagina{
-    margin-top: 30px;
-    padding: 25px 0 0 50px;
-    border: 1px solid rgb(200, 200, 200);
-    box-shadow: 2px -2px 10px 5px rgba(0,0,0,0.2);
-}
-#cabecalho{
-    grid-area: tit;
-    display: grid;
-    grid-template-columns: 60px 1fr 150px;
-    justify-items: center;
-    align-items: center;
-}
-#sexo{
-    position: relative;
-    left: 20px;
-}
-.outros-pesos{
-    font-size: 0.85em;
-    color: rgba(1, 1, 1, 0.7);
-}
-#logo{
-    min-width: 55px;
-    height: 55px;
-    }
-#versao{
-    font: 12pt Georgia, "Times New Roman", Times, serif;
-}
-
-#head1{grid-area: he1;}
-#head2{grid-area: he2;}
-#head3{grid-area: he3;}
-#head4{grid-area: he4;}
-#head5{grid-area: he5;}
-#head6{grid-area: he6;}
-#head7{grid-area: he7;}
-#head8{grid-area: he8;}
-#head9{grid-area: he9;}
-#head10{grid-area: h10;}
-#head11{grid-area: h11;}
-#ident{grid-area: ide;}
-#antrop{grid-area: ant;}
-#previas{grid-area: pre;}
-#comorbidades{grid-area: cli;}
-#medic{grid-area: med;}
-#alergia{grid-area: ale;
-border-color: darkred;}
-#fisico{grid-area: fis;}
-#sinais-vitais{grid-area: vit;}
-#va{grid-area: via;}
-#lab{grid-area: lab;}
-#exames{grid-area: exa;}
-#anot{grid-area: not;}
-#proposta{grid-area: pro;}
-#prescricao{grid-area: psc;}
-#carimbo{grid-area: car;}
-#asas{grid-area: asa;}
-#botoes{grid-area: bot;}
-#date{
-    font-size: 1.6em;
-    justify-self: end;
-}
-#comorbidades{
-    text-align: justify;
-}
-#medic{
-    padding: 10px;
-}
-#alergia input{
-    font-size: 1.25em;
-    width: 99%;
-    margin-top: 5px;
-}
-#sinais-vitais{
-    font-size: 1.3em;
-    text-decoration: underline;
-    background: re;
-}
-#va{
-    display: grid;
-    grid-template-columns:repeat(3, 1fr);
-    grid-template-rows:repeat(2, 1fr);
-    justify-items: stretch;
-    align-items: stretch;
-    padding-left: 20px;
-    grid-gap: .1em;
-}
-#lab .col{
-    margin-bottom: 5px;
-}
-#lab label{
-    background: re;
-    margin: 5px;
-}
-#exames textarea{
-    font-size: 1em;
-    padding-left: 0;
-    height: 50px;
-}
-#exames{padding-left: 10px;}
-#anot textarea{
-    height: 50px;
-}
-#proposta input{
-    width: 32%;
-    margin-top: 5px;
-}
-#prescricao input{
-    width: 90%;
-    margin-top: 7px;
-}
-#asas{padding-left:50px;}
-#asas input{
-    width: 40px;
-    font-size: 1.3em;
-}
-#carimbo{padding-left:25px;}
-.left{
-    float: left;
-}
-.right{
-    float: right;
-}
-.section{
-    border: 2px solid rgba(25, 0, 145, .8);
-    border-radius: 5px;
-    margin: 3px 0;
-    padding: 5px;
-}
-label{
-    white-space: nowrap;
-}
-::-webkit-input-placeholder {
-  color: transparent;
-}
-.inv{display:none;
-}
-input{
-    border: 1px solid blu;
-}
-input[type=text], input[type=number]{
-    background: transparent;
-    width: 80%;
-    padding-left: 5px;
-    border-width: 0 0 0 0;
-    font-size: .85em;
-}
-textarea{
-    width: 99%;
-    height: 60px;
-    font-size: .85em;
-    padding: 5px;
-    border: 0;
-    overflow: hidden;
-    resize: none;
-}
-label{
-    border: 1px solid re;
-}
-.sup{vertical-align: super;
-    font-size: .6em;}
-img{
-    max-width: 30px;
-}
-.borda{
-    border: 1px solid red;
-    background: red;
-}
-.row .col {
-  float: left;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-  padding: 0 0.3rem;
-  min-height: 1px;
-}
-
-.row .col[class*="push-"], .row .col[class*="pull-"] {
-  position: relative;
-}
-
-.row .col.s1 {
-  width: 8.3333333333%;
-  margin-left: auto;
-  left: auto;
-  right: auto;
-}
-
-.row .col.s2 {
-  width: 16.6666666667%;
-  margin-left: auto;
-  left: auto;
-  right: auto;
-}
-
-.row .col.s3 {
-  width: 25%;
-  margin-left: auto;
-  left: auto;
-  right: auto;
-}
-
-.row .col.s4 {
-  width: 33.3333333333%;
-  margin-left: auto;
-  left: auto;
-  right: auto;
-}
-
-.row .col.s5 {
-  width: 41.6666666667%;
-  margin-left: auto;
-  left: auto;
-  right: auto;
-}
-
-.row .col.s6 {
-  width: 50%;
-  margin-left: auto;
-  left: auto;
-  right: auto;
-}
-
-.row .col.s7 {
-  width: 58.3333333333%;
-  margin-left: auto;
-  left: auto;
-  right: auto;
-}
-
-.row .col.s8 {
-  width: 66.6666666667%;
-  margin-left: auto;
-  left: auto;
-  right: auto;
-}
-
-.row .col.s9 {
-  width: 75%;
-  margin-left: auto;
-  left: auto;
-  right: auto;
-}
-
-.row .col.s10 {
-  width: 83.3333333333%;
-  margin-left: auto;
-  left: auto;
-  right: auto;
-}
-
-.row .col.s11 {
-  width: 91.6666666667%;
-  margin-left: auto;
-  left: auto;
-  right: auto;
-}
-
-.row .col.s12 {
-  width: 100%;
-  margin-left: auto;
-  left: auto;
-  right: auto;
-}
-
-
-section{
-background: red;
-}
-
-
 .pagina{
     margin: 0;
     padding: 0;
     border: 0;
     box-shadow: 0 0 0 0;
-    background: transparent;
-    border: 1px solid rgb(111, 111, 111);
     max-height: 1550px;
     page-break-after: avoid;
     page-break-before: avoid;
-
+    page-break-inside: avoid;
 }
 .noprint{
     display: none;
