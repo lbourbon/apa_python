@@ -6,12 +6,11 @@ colectstatic quando mudar JS
 
 lembrar:
 
--> bug neurologico '>' após checked
 
 TODO:
 -->> para liberar:
 email?
-ficha imprimir
+imprimir:
  - maxlength="15" (escolher tamanho máximo para campos)
 <<<-------
 

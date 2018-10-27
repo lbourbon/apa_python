@@ -1,14 +1,14 @@
 M.AutoInit();
 
-document.addEventListener("DOMContentLoaded", function() {
-    var path = document.getElementById("myurl");
-    var referer = document.getElementById("referer");
-
-    if(referer != null && referer.value.endsWith('ficha/') && path != null && path.value.includes('update')){
-        referer = 0;
-        window.print();
-    }
-});
+//document.addEventListener("DOMContentLoaded", function() {
+//    var path = document.getElementById("myurl");
+//    var referer = document.getElementById("referer");
+//
+//    if(referer != null && referer.value.endsWith('ficha/') && path != null && path.value.includes('update')){
+//        referer = 0;
+//        window.print();
+//    }
+//});
 
 colapList = document.getElementsByClassName("collapsible-header");
 for (var i = 0; i < colapList.length; i++) {

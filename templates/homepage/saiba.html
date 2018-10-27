@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+
+{% block title %} Saiba Mais - A.P.A. {% endblock%}
+
+{% block main %}
+
+<style>
+blockquote{
+    margin-top: 50px;
+    text-align: justify;
+}
+.transparent{
+    color: transparent;
+}
+#botao{
+    margin: 10px 20vw;
+    white-space: nowrap;
+}
+@media only screen and (min-width: 768px) {
+.flow-text {
+    font-size: 1.3rem;
+}
+
+
+</style>
+{% include 'navbar.html' %}
+
+<div class="container">
+
+    <blockquote>
+        <p class="flow-text">Ao fazer avaliações pré-anestésicas, percebi que perdia muito tempo preenchendo
+            a papelada e, inevitavelmente, desviava um pouco minha atenção do foco principal da consulta: o paciente.
+            Por conta disso, resolvi juntar minhas duas paixões para resolver esse problema: anestesia
+            e programação.</p>
+
+        <p class="flow-text"> No primeiro semestre de 2018, criei um aplicatico web para uso próprio com uma <b>ficha de
+            avaliação pré-anestésica</b> de uso rápido e com armazenamento na nuvem. Logo percebi que esse sistema agilizou
+            consideravelmente a parte "burocrática" da consulta.</p>
+
+        <p class="flow-text"> Resolvi, então, melhorar o layout do sistema e disponibilizar para qualquer colega anestesista que,
+        como eu, tenha interesse em melhorar a eficiência do seu trabalho, modernizar seu serviço e, mais importante,
+        focar no que realmente interessa: o paciente.</p>
+
+        <p class="flow-text"> Além da ficha de <strong>avaliação pré-anestésica</strong>, o sistema também traz o preenchimento automático do termo de consentimento e da
+        previsão orçamentária com os dados inseridos na ficha, ou seja, evitando escrever mais de um vez a mesma coisa.
+            Se você também deseja usufruir <b>gratuitamente</b> desses benefícios, não perca tempo, clique no botão abaixo, cadastre-se
+        e comece a usar agora mesmo!
+        </p>
+
+        <a href="{% url 'cadastro' %}" class="waves-effect waves-light btn-large red darken-4" id="botao">Cadastre-se</a>
+    </blockquote>
+
+</div>
+
+{% block js %}
+<script>
+$(document).ready(function(){
+    $('.sidenav').sidenav();
+  });
+
+
+</script>
+{% endblock%}
+{% endblock%}

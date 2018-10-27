@@ -29,8 +29,8 @@ class FichaNew(LoginRequiredMixin, CreateView):
         form = form.save(commit=False)
         form.user = self.request.user
         form.save()
-        if self.request.POST['fim'] == 'IMPRIMIR':
-            return redirect('ficha_update', pk=form.pk)
+        # if self.request.POST['fim'] == 'IMPRIMIR':
+        #     return redirect('ficha_update', pk=form.pk)
         return redirect('restrita')
 
     def form_invalid(self, form):

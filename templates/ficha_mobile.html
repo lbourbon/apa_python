@@ -12,7 +12,7 @@
             <a href="{% url 'restrita' %}" class="left brand-logo" id="apa-logo">A.P.A.</a>
             <ul id="nav-mobile" class="right">
                 <li><label for="submit-form"><i class="material-icons black-text">save</i></label></li>
-                <li><label for="print-form"><i class="material-icons black-text">print</i></label></li>
+                <li><a href="{% url 'ficha_print' ficha.id %}"><i class="material-icons black-text">print</i></a></li>
                 <li><a href="{% url 'ajuda' %}"><i class="material-icons black-text">help</i></a></li>
             </ul>
         </div>
@@ -241,15 +241,15 @@
                                         <label><input name="neuro_avc" value="True" type="checkbox">
                                             {% if form.neuro_avc.value %} checked {% endif %}
                                             <span>AVC prévio</span></label>
-                                        <label><input name="neuro_cef" value="True" type="checkbox">
-                                            {% if form.neuro_cef.value %} checked {% endif %} <span>Cefaléia</span></label>
-                                        <label><input name="neuro_con" value="True" type="checkbox">
-                                            {% if form.neuro_con.value %} checked {% endif %} <span>Convulsão</span></label>
-                                        <label><input name="neuro_lme" value="True" type="checkbox">
-                                            {% if form.neuro_lme.value %} checked {% endif %}
+                                        <label><input name="neuro_cef" value="True" type="checkbox"
+                                            {% if form.neuro_cef.value %} checked {% endif %}> <span>Cefaléia</span></label>
+                                        <label><input name="neuro_con" value="True" type="checkbox"
+                                            {% if form.neuro_con.value %} checked {% endif %}> <span>Convulsão</span></label>
+                                        <label><input name="neuro_lme" value="True" type="checkbox"
+                                            {% if form.neuro_lme.value %} checked {% endif %}>
                                             <span>Lesão medular</span></label>
-                                        <label><input name="neuro_out" value="True" type="checkbox">
-                                            {% if form.neuro_out.value %} checked {% endif %} <span>Outras</span></label>
+                                        <label><input name="neuro_out" value="True" type="checkbox"
+                                            {% if form.neuro_out.value %} checked {% endif %}> <span>Outras</span></label>
                                     </div>
                                 </div>
 
@@ -698,16 +698,8 @@
                     type="submit" value="SALVAR">SALVAR
             <i class="material-icons left">save</i>
           </button>
-           {% if "update" in request.path %}
-            <button class="btn-small waves-effect waves-light red darken-4 z-depth-3" id="print-form" value="IMPRIMIR"
-                    name="fim" type="button" onClick="javascript:window.print()">IMPRIMIR
-                <i class="material-icons left">print</i>
-          </button>
-            {% else %}
-            <button class="btn-small waves-effect waves-light red darken-4 z-depth-3" id="print-form" value="IMPRIMIR"
-                    name="fim" type="submit">IMPRIMIR<i class="material-icons left">print</i>
-          </button>
-            {% endif %}
+           <a href="{% url 'ficha_print' ficha.id %}" class="btn-small waves-effect waves-light red darken-4 z-depth-3">
+                IMPRIMIR<i class="material-icons left">print</i></a>
         </div>
     </form>
     {% block js %}
