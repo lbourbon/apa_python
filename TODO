@@ -1,12 +1,9 @@
 check-list deploy:
-
 migrate
 colectstatic quando mudar JS
 
 
 lembrar:
-
-
 TODO:
 base descricao
 -->> para liberar:
