@@ -8,17 +8,16 @@ lembrar:
 
 
 TODO:
+base descricao
 -->> para liberar:
 email?
-imprimir:
- - maxlength="15" (escolher tamanho máximo para campos)
+css orçamento imprimir
+
 <<<-------
 
+- maxlength="15" (escolher tamanho máximo para campos)
 linebreaks no textarea no mobile? (exfisico)
-css tcle
-css orçamento imprimir
 configuracoes
-Colocar termo escondido na msm página da ficha - necessário para imprimir?
 ficha_delete (fake delete?) on.cascade?
 unaccent no search
 senha: hide/show

@@ -49,4 +49,13 @@
     </div>
     <div id="termo_data">ARACAJU, {{ form.data.value }}</div>
 </div>
+
+    <div class="caixa z-depth-4 noprint" id="menu">
+        <input class="btn red darken-4" type="submit" value="IMPRIMIR" onClick="javascript:window.print()">
+        <a href="{% url 'restrita' %}" class="btn red darken-4">VOLTAR</a>
+    </div>
+
+<script>
+    window.onload = window.print();
+</script>
 {% endblock %}

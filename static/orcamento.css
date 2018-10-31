@@ -1,4 +1,7 @@
-body {background: rgb(235, 235, 235);}
+@media screen{
+body {
+    background: rgb(235, 235, 235);
+}
 #logo {
     width: 60px;
     height: 60px;
@@ -39,7 +42,8 @@ p {text-align: justify;}
 input:not([type=submit]):focus{
     border-bottom: 2px solid rgb(254, 97, 106) !important;
 }
-input[type=text]{
+input[type=text]:not(.browser-default){
+    height: 3rem;
     font-size: 1.2em !important;
 }
 table input{
@@ -55,6 +59,9 @@ table input{
     margin-top: 20px;
     color: black;
 }
+
+}
+
 @media only screen and (min-width: 768px) {
 
 .assinatura{
@@ -73,3 +80,4 @@ table input{
     border-bottom: 0px solid rgb(254, 97, 106) !important;
 }
 }
+
