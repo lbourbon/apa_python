@@ -5,11 +5,8 @@ colectstatic quando mudar JS
 
 lembrar:
 TODO:
-base descricao
 -->> para liberar:
-email?
-css orçamento imprimir
-
+deploy -> senha email, debug, secret key
 <<<-------
 
 - maxlength="15" (escolher tamanho máximo para campos)

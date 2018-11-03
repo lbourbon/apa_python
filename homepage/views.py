@@ -3,7 +3,7 @@ import customauth
 from ficha.models import Ficha
 from django.urls import reverse_lazy
 from django.shortcuts import redirect
-from forms import SignUpForm, ProfileForm
+from forms import SignUpForm, EsperaForm
 from django.db.models.functions import Lower
 from django.contrib.auth import login, authenticate
 from django.views.generic import TemplateView, ListView
@@ -43,8 +43,10 @@ class Teste(TemplateView):
 class Precos(TemplateView):
     template_name = 'precos.html'
 
+
 class Saiba(TemplateView):
     template_name = 'saiba.html'
+
 
 class About(TemplateView):
     template_name = 'about.html'
@@ -68,6 +70,19 @@ class Termos(TemplateView):
 
 class Privacidade(TemplateView):
     template_name = 'privacidade.html'
+
+
+class Espera(FormView):
+    form_class = EsperaForm
+    template_name = 'espera.html'
+
+    def form_valid(self, form):
+        form.save()
+        return redirect('home')
+
+    def form_invalid(self, form):
+        print('Errrrou:', form.errors)
+        return super().form_invalid(form)
 
 
 class Cadastro(FormView):

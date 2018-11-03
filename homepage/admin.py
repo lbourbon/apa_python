@@ -1,3 +1,4 @@
 from django.contrib import admin
+from homepage.models import Espera
 
-# Register your models here.
+admin.site.register(Espera)

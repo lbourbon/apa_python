@@ -1,13 +1,14 @@
 from django.contrib import admin
 from django.urls import path, include
 from homepage.views import Home, Teste, Saiba, Precos, About, Contato, Restrita, Cadastro, Configuracoes, Ajuda, \
-    Privacidade, Termos, ProfileUpdate
+    Privacidade, Termos, ProfileUpdate, Espera
 from ficha.views import FichaNew, FichaUpdate, FichaPrint, FichaDelete, Tcle, Orcamento
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', Home.as_view(), name='home'),
     path('cadastro/', Cadastro.as_view(), name='cadastro'),
+    path('espera/', Espera.as_view(), name='espera'),
     path('profile_update/<int:pk>', ProfileUpdate.as_view(), name='profile_update'),
     path('saiba/', Saiba.as_view(), name='saiba'),
     path('teste/', Teste.as_view(), name='teste'),

@@ -1,5 +1,6 @@
 from django import forms
 from ficha.models import Ficha
+from homepage.models import Espera
 from django.forms import ModelForm
 from customauth.models import MyUser, Profile
 from django.contrib.auth.forms import UserCreationForm
@@ -21,9 +22,19 @@ class SignUpForm(UserCreationForm):
         fields = ('email', 'password1', 'password2')
 
 
+class EsperaForm(ModelForm):
+
+    class Meta:
+        model = Espera
+        fields = ('nome', 'email', 'fone')
+
+
 class ProfileForm(forms.ModelForm):
     nome = forms.CharField(label="Nome Completo")
     telefone = forms.CharField(widget=forms.NumberInput(attrs={'placeholder': 'DDD + Número. Apenas dígitos.'}))
     class Meta:
         model = Profile
         fields = ('nome', 'crm', 'estado', 'telefone')
+
+
+

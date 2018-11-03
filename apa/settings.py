@@ -108,10 +108,10 @@ LOGIN_URL = 'login'
 LOGIN_REDIRECT_URL = 'restrita'
 LOGOUT_REDIRECT_URL = 'home'
 
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_PORT = 587
-EMAIL_HOST_USER = 'avaliacaopreanestesica.contato@gmail.com'
-EMAIL_HOST_PASSWORD = 'Mariana13'
+EMAIL_HOST = 'smtpout.secureserver.com'
+EMAIL_PORT = 465
+EMAIL_HOST_USER = 'contato@avaliacaopreanestesica.com'
+EMAIL_HOST_PASSWORD = 'Mariana13#'
 EMAIL_USE_TLS = True
 
 DECIMAL_SEPARATOR = ','
