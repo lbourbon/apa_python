@@ -12,7 +12,9 @@
             <a href="{% url 'restrita' %}" class="left brand-logo" id="apa-logo">A.P.A.</a>
             <ul id="nav-mobile" class="right">
                 <li><label for="submit-form"><i class="material-icons black-text">save</i></label></li>
-                <li><a href="{% url 'ficha_print' ficha.id %}"><i class="material-icons black-text">print</i></a></li>
+                {% if "update" in request.path %}
+                    <li><a href="{% url 'ficha_print' ficha.id %}"><i class="material-icons black-text">print</i></a></li>
+                {% endif %}
                 <li><a href="{% url 'ajuda' %}"><i class="material-icons black-text">help</i></a></li>
             </ul>
         </div>
@@ -698,8 +700,10 @@
                     type="submit" value="SALVAR">SALVAR
             <i class="material-icons left">save</i>
           </button>
-           <a href="{% url 'ficha_print' ficha.id %}" class="btn-small waves-effect waves-light red darken-4 z-depth-3">
-                IMPRIMIR<i class="material-icons left">print</i></a>
+            {% if "update" in request.path %}
+                    <a href="{% url 'ficha_print' ficha.id %}" class="btn-small waves-effect waves-light red darken-4 z-depth-3">
+                        IMPRIMIR<i class="material-icons left">print</i></a>
+            {% endif %}
         </div>
     </form>
     {% block js %}

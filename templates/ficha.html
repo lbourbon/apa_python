@@ -704,7 +704,10 @@
                     type="submit" value="SALVAR">SALVAR
             <i class="material-icons left">save</i>
           </button>
-
+                {% if "update" in request.path %}
+                    <a href="{% url 'ficha_print' ficha.id %}" class="btn-small waves-effect waves-light red darken-4 z-depth-3">
+                        IMPRIMIR<i class="material-icons left">print</i></a>
+                {% endif %}
         </div>
 
                 </div>
