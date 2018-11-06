@@ -64,6 +64,9 @@ class FichaUpdate(LoginRequiredMixin, PermissionRequiredMixin, UpdateView):
         form = form.save(commit=False)
         form.user = self.request.user
         form.save()
+        if self.request.POST['fim'] == 'IMPRIMIR':
+            print("-> COMANDO: IMPRIMIR <-")
+            return redirect('ficha_print', pk=form.pk)
         return redirect('restrita')
 
     def form_invalid(self, form):
