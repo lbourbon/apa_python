@@ -379,16 +379,5 @@ html, body{
 }
 }
 
-@media only screen and (max-device-width: 1000px){
-html {
-    transform: scale(0.32);
-    transform-origin: 0 0;
-}
-#menu{
-    transform: scale(3);
-    transform-origin: 0 0;
-}
-
-}
 
 
