@@ -1,8 +1,7 @@
 check-list deploy:
 
 heroku run python3 manage.py migrate
-
-colectstatic quando mudar JS
+heroku run python3 manage.py collectstatic
 
 
 lembrar:

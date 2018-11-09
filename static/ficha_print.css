@@ -378,10 +378,10 @@ html, body{
 }
 
 @media only screen and (max-width: 1000px){
+
 html {
     transform: scale(0.32);
     transform-origin: 0 0;
-    background: black;
 }
 #menu{
     transform: scale(3);
@@ -407,8 +407,6 @@ html {
     box-shadow: 2px 2px 10px 5px rgba(0,0,0,0.2);
 
 }
-
-
 }
 
 
