@@ -381,6 +381,7 @@ html, body{
 html {
     transform: scale(0.32);
     transform-origin: 0 0;
+    background: black;
 }
 #menu{
     transform: scale(3);
