@@ -377,7 +377,7 @@ html, body{
 }
 }
 
-@media only screen and (max-device-width: 1000px){
+@media only screen and (max-width: 1000px){
 html {
     transform: scale(0.32);
     transform-origin: 0 0;
@@ -400,12 +400,14 @@ html {
 }
 #menu input{
     border: 1px solid black;
-    font-size: 1em;
-    background: rgb(218, 23, 23);;
+    font-size: 1.05em;
+    background: rgb(218, 23, 23) !important;
     border-radius: 5px;
     box-shadow: 2px 2px 10px 5px rgba(0,0,0,0.2);
 
 }
+
+
 }
 
 
