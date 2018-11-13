@@ -126,6 +126,9 @@ border-color: darkred;}
     line-height: 22px;
 
 }
+#previas{
+    line-height: normal;
+}
 #comorbidades{
     text-align: justify;
 }
@@ -151,6 +154,9 @@ border-color: darkred;}
     padding-left: 20px;
     grid-gap: .1em;
 }
+#lab(
+    line-height: normal;
+)
 #lab .col{
     margin-bottom: 5px;
 }
@@ -158,18 +164,24 @@ border-color: darkred;}
     background: re;
     margin: 5px;
 }
+#exames{
+    padding-left: 10px;
+    line-height: normal;
+}
 #exames textarea{
     font-size: 1em;
     padding-left: 0;
     height: 50px;
 }
-#exames{padding-left: 10px;}
 #anot textarea{
     height: 50px;
 }
 #proposta input{
     width: 32%;
     margin-top: 5px;
+}
+#prescricao{
+    line-height: normal;
 }
 #prescricao input{
     width: 90%;
@@ -392,11 +404,10 @@ html {
 #sinais-vitais{
 font-size: 1.1em;
 }
-
-
-
-
-
+#ident{
+    font-size: 20px;
+    line-height: 24px;
+}
 #menu{
     transform: scale(3);
     transform-origin: 0 0;
