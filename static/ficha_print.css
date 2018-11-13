@@ -7,7 +7,6 @@ margin-bottom: 0;
 
 body {
 font: 12pt Georgia, "Times New Roman", Times, serif;
-line-height: 1.3;
 background: transparent;
 margin: 0 10%;
 max-height: 1550px;
@@ -118,11 +117,14 @@ border-color: darkred;}
     width: 140px;
 }
 #ident{
-    font-size: 1.3em;
+    font-size: 20px;
+    line-height: 26px;
 }
 #antrop{
     padding-top: 10px;
-    font-size: 1.05em;
+    font-size: 17px;
+    line-height: 22px;
+
 }
 #comorbidades{
     text-align: justify;
@@ -223,8 +225,12 @@ textarea{
     font-family: "Lucida Console";
 }
 
-.sup{vertical-align: super;
-    font-size: .6em;}
+.sup{
+    color: black;
+    font-size: 12px;
+    line-height: normal;
+    vertical-align: super;
+}
 img{
     max-width: 30px;
 }
@@ -383,6 +389,14 @@ html {
     transform: scale(0.32);
     transform-origin: 0 0;
 }
+#sinais-vitais{
+font-size: 1.1em;
+}
+
+
+
+
+
 #menu{
     transform: scale(3);
     transform-origin: 0 0;
