@@ -7,7 +7,7 @@ margin-bottom: 0;
 
 body {
 font: 12pt Georgia, "Times New Roman", Times, serif;
-background: lightgray;
+background: white;
 margin: 0 10%;
 max-height: 1550px;
 -webkit-text-size-adjust: none;
@@ -127,7 +127,8 @@ border-color: darkred;}
 
 }
 #previas{
-    line-height: normal;
+    font-size: 16px;
+    line-height: 20px;
 }
 #comorbidades{
     text-align: justify;
@@ -155,8 +156,8 @@ border-color: darkred;}
     grid-gap: .1em;
 }
 #lab{
-    line-height: 16px;
     font-size: 17px;
+    line-height: 18px;
 }
 #lab .col{
     margin-bottom: 5px;
@@ -180,6 +181,7 @@ border-color: darkred;}
     margin-top: 5px;
 }
 #prescricao{
+    font-size: 16px;
     line-height: 18px;
 }
 #prescricao input{
@@ -399,11 +401,18 @@ html, body{
 }
 }
 
-@media only screen and (max-width: 1000px){
+@media only screen and (max-width: 900px){
 
 html {
     transform: scale(0.32);
     transform-origin: 0 0;
+}
+body{
+    background: lightpink;
+}
+#ident{
+    font-size: 20px;
+    line-height: 22px;
 }
 #sinais-vitais{
 font-size: 1.1em;
