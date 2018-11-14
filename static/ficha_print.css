@@ -181,8 +181,8 @@ border-color: darkred;}
     margin-top: 5px;
 }
 #prescricao{
-    font-size: 16px;
-    line-height: 18px;
+    font-size: 18px;
+    line-height: 20px;
 }
 #prescricao input{
     width: 90%;
@@ -408,11 +408,11 @@ html {
     transform-origin: 0 0;
 }
 body{
-    background: lightpink;
+    background: re;
 }
 #ident{
-    font-size: 20px;
-    line-height: 22px;
+    font-size: 16px !important;
+    line-height: 18px !important;
 }
 #sinais-vitais{
 font-size: 1.1em;
@@ -420,6 +420,10 @@ font-size: 1.1em;
 #ident{
     font-size: 20px;
     line-height: 24px;
+}
+#prescricao{
+    font-size: 18px !important;
+    line-height: 18px !important;
 }
 #menu{
     transform: scale(3);
