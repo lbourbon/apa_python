@@ -1,5 +1,5 @@
 @page {
-margin: 0.7cm;
+margin: 0.5cm;
 margin-bottom: 0;
 }
 
@@ -401,12 +401,9 @@ html, body{
 }
 }
 
-@media only screen and (max-width: 900px){
+@media screen and (max-width: 900px), print{
 
-html {
-    transform: scale(0.32);
-    transform-origin: 0 0;
-}
+
 body{
     background: white;
 }
@@ -456,6 +453,13 @@ font-size: 1.1em;
     border-radius: 15px;
     box-shadow: 2px 2px 10px 5px rgba(0,0,0,0.2);
 
+}
+}
+@media only screen and (max-width: 900px){
+
+html {
+    transform: scale(0.32);
+    transform-origin: 0 0;
 }
 }
 

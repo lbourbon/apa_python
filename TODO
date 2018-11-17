@@ -8,7 +8,7 @@ lembrar:
 TODO:
 -->> para liberar:
 print mobile
-deploy -> senha email, debug, secret key
+deploy -> senha email, debug, secret key, ficha, print, mobile
 <<<-------
 
 - maxlength="15" (escolher tamanho máximo para campos)
