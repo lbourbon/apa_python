@@ -1,6 +1,5 @@
 @page {
-margin: 0.5cm;
-margin-bottom: 0;
+margin: 0.2cm 0.5cm 0cm 0.5cm;
 }
 
 @media screen, print{
@@ -419,8 +418,8 @@ body{
 font-size: 1.1em;
 }
 #lab{
-    font-size: 16px !important;
-    line-height: 18px !important;
+    font-size: 14px !important;
+    line-height: 16px !important;
 }
 #exames{
     font-size: 14px !important;
