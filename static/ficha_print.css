@@ -1,5 +1,5 @@
 @page {
-margin: 0.2cm 0.5cm 0cm 0.5cm;
+margin: 0.3cm 0.5cm 0cm 0.5cm;
 }
 
 @media screen, print{
@@ -17,32 +17,32 @@ max-height: 1550px;
     justify-items: stretch;
     align-items: stretch;
     grid-gap: 0.1em;
-    grid: [row1-start]  "tit tit tit tit tit tit tit tit tit tit tit tit" 90px [row1-end]
-          [row2-start]  "he1 he1 he1 he1 he1 he1 he1 he1 he1 he1 he1 he1" 20px [row2-end]
-          [row3-start]  "ide ide ide ide ide ide ide ide ide ant ant ant" 100px [row3-end]
-          [row4-start]  "he2 he2 he2 he2 he2 he2 he2 he2 he2 he2 he2 he2" 20px [row4-end]
-          [row5-start]  "pre pre pre pre pre pre pre pre pre pre pre pre" 80px [row5-end]
-          [row6-start]  "he3 he3 he3 he3 he3 he3 he3 he3 he3 he3 he3 he3" 20px [row6-end]
-          [row7-start]  "cli cli cli cli cli cli cli cli cli cli cli cli" 100px [row7-end]
-          [row8-start]  "he4 he4 he4 he4 he4 he4 he4 he4 he4 he4 he4 he4" 20px [row8-end]
-          [row9-start]  "med med med med med med med med med med med med" 90px [row9-end]
-          [row10-start] "he5 he5 he5 he5 he5 he5 he5 he5 he5 he5 he5 he5" 20px [row10-end]
-          [row11-start] "ale ale ale ale ale ale ale ale ale ale ale ale" 50px [row11-end]
-          [row12-start] "he6 he6 he6 he6 he6 he6 he6 he6 he6 he6 he6 he6" 20px [row12-end]
-          [row13-start] "fis fis fis fis fis fis fis fis fis fis vit vit" 100px [row13-end]
-          [row14-start] "he7 he7 he7 he7 he7 he7 he7 he7 he7 he7 he7 he7" 20px [row14-end]
-          [row15-start] "via via via via via via via via via via via via" 110px [row15-end]
-          [row16-start] "he8 he8 he8 he8 he8 he8 he8 he8 he8 he8 he8 he8" 20px [row16-end]
-          [row17-start] "lab lab lab lab lab lab lab lab lab lab lab lab" 120px [row17-end]
-          [row18-start] "he9 he9 he9 he9 he9 he9 he9 he9 he9 he9 he9 he9" 20px [row18-end]
-          [row19-start] "exa exa exa exa exa exa exa exa exa exa exa exa" 160px [row19-end]
-          [row20-start] "h10 h10 h10 h10 h10 h10 h10 h10 h10 h10 h10 h10" 20px [row20-end]
-          [row21-start] "not not not not not not not not not not not not" 80px [row21-end]
-          [row22-start] "pro pro pro pro pro pro pro pro pro pro pro pro" 50px [row22-end]
-          [row23-start] "h11 h11 h11 h11 h11 h11 h11 h11 h11 h11 h11 h11" 20px [row23-end]
-          [row24-start] "psc psc psc psc psc psc psc psc psc car car car" 100px [row24-end]
-          [row25-start] "bot bot ... ... ... asa asa ... ... ... ... ..." 50px [row25-end]
-          [row26-start] "... ... ... ... ... ... ... ... ... ... ... ..." 100px [row26-end];
+    grid: [row1-start]  "tit tit tit tit tit tit tit tit tit tit tit tit" 22.5mm [row1-end]
+          [row2-start]  "he1 he1 he1 he1 he1 he1 he1 he1 he1 he1 he1 he1" 5mm [row2-end]
+          [row3-start]  "ide ide ide ide ide ide ide ide ide ant ant ant" 26mm [row3-end]
+          [row4-start]  "he2 he2 he2 he2 he2 he2 he2 he2 he2 he2 he2 he2" 5mm [row4-end]
+          [row5-start]  "pre pre pre pre pre pre pre pre pre pre pre pre" 21.5mm [row5-end]
+          [row6-start]  "he3 he3 he3 he3 he3 he3 he3 he3 he3 he3 he3 he3" 5mm [row6-end]
+          [row7-start]  "cli cli cli cli cli cli cli cli cli cli cli cli" 26.5mm [row7-end]
+          [row8-start]  "he4 he4 he4 he4 he4 he4 he4 he4 he4 he4 he4 he4" 5mm [row8-end]
+          [row9-start]  "med med med med med med med med med med med med" 24mm [row9-end]
+          [row10-start] "he5 he5 he5 he5 he5 he5 he5 he5 he5 he5 he5 he5" 5mm [row10-end]
+          [row11-start] "ale ale ale ale ale ale ale ale ale ale ale ale" 13mm [row11-end]
+          [row12-start] "he6 he6 he6 he6 he6 he6 he6 he6 he6 he6 he6 he6" 5mm [row12-end]
+          [row13-start] "fis fis fis fis fis fis fis fis fis fis vit vit" 26.5mm [row13-end]
+          [row14-start] "he7 he7 he7 he7 he7 he7 he7 he7 he7 he7 he7 he7" 5mm [row14-end]
+          [row15-start] "via via via via via via via via via via via via" 29mm [row15-end]
+          [row16-start] "he8 he8 he8 he8 he8 he8 he8 he8 he8 he8 he8 he8" 5mm [row16-end]
+          [row17-start] "lab lab lab lab lab lab lab lab lab lab lab lab" 35mm [row17-end]
+          [row18-start] "he9 he9 he9 he9 he9 he9 he9 he9 he9 he9 he9 he9" 5mm [row18-end]
+          [row19-start] "exa exa exa exa exa exa exa exa exa exa exa exa" 42.5mm [row19-end]
+          [row20-start] "h10 h10 h10 h10 h10 h10 h10 h10 h10 h10 h10 h10" 5mm [row20-end]
+          [row21-start] "not not not not not not not not not not not not" 21.5mm [row21-end]
+          [row22-start] "pro pro pro pro pro pro pro pro pro pro pro pro" 13mm [row22-end]
+          [row23-start] "h11 h11 h11 h11 h11 h11 h11 h11 h11 h11 h11 h11" 5mm [row23-end]
+          [row24-start] "psc psc psc psc psc psc psc psc psc car car car" 26.5mm [row24-end]
+          [row25-start] "bot bot ... ... ... asa asa ... ... ... ... ..." 13mm [row25-end]
+          [row26-start] "... ... ... ... ... ... ... ... ... ... ... ..." 1mm [row26-end];
     grid-template-columns: repeat(12, 85px);
 }
 .myheader{
