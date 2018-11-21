@@ -1,5 +1,5 @@
 @page {
-margin: 0.2cm 0.5cm 0cm 0.5cm;
+margin: 10pt 10pt 0pt 22pt;
 }
 
 @media screen, print{
@@ -8,8 +8,7 @@ body {
 font: 12pt Georgia, "Times New Roman", Times, serif;
 background: white;
 margin: 0 10%;
-max-height: 1550px;
--webkit-text-size-adjust: none;
+max-height: 1550pt;
 }
 .container{
     background: transparent;
@@ -43,16 +42,16 @@ max-height: 1550px;
           [row24-start] "psc psc psc psc psc psc psc psc psc car car car" 26.5mm [row24-end]
           [row25-start] "bot bot ... ... ... asa asa ... ... ... ... ..." 13mm [row25-end]
           [row26-start] "... ... ... ... ... ... ... ... ... ... ... ..." 1mm [row26-end];
-    grid-template-columns: repeat(12, 85px);
+    grid-template-columns: repeat(12, 65pt);
 }
 .myheader{
     margin-top: 5px;
 }
 .pagina{
-    margin-top: 30px;
-    padding: 25px 0 0 50px;
-    min-width: 1100px;
-    max-height: 1550px;
+    margin-top: 20pt;
+    padding: 25pt 0 0 50pt;
+    min-width: 820pt;
+    max-height: 1200pt;
     border: 1px solid rgb(200, 200, 200);
     box-shadow: 2px -2px 10px 5px rgba(0,0,0,0.2);
 }
@@ -239,15 +238,11 @@ textarea{
 
 .sup{
     color: black;
-    font-size: 12px;
-    line-height: 12px;
+    font-size: 10pt;
+    line-height: 10pt;
     vertical-align: super;
 }
-.sup2{
-    font-size: 10px;
-    line-height: 10px;
-    vertical-align: super;
-}
+
 img{
     max-width: 30px;
 }
@@ -418,8 +413,8 @@ body{
 font-size: 1.1em;
 }
 #lab{
-    font-size: 13pt !important;
-    line-height: 13pt !important;
+    font-size: 14pt !important;
+    line-height: 14pt !important;
 }
 #exames{
     font-size: 14px !important;
