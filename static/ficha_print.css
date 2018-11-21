@@ -1,5 +1,5 @@
 @page {
-margin: 0.3cm 0.5cm 0cm 0.5cm;
+margin: 0.2cm 0.5cm 0cm 0.5cm;
 }
 
 @media screen, print{
@@ -16,7 +16,7 @@ max-height: 1550px;
     display: grid;
     justify-items: stretch;
     align-items: stretch;
-    grid-gap: 0.1em;
+    grid-gap: 0.1mm;
     grid: [row1-start]  "tit tit tit tit tit tit tit tit tit tit tit tit" 22.5mm [row1-end]
           [row2-start]  "he1 he1 he1 he1 he1 he1 he1 he1 he1 he1 he1 he1" 5mm [row2-end]
           [row3-start]  "ide ide ide ide ide ide ide ide ide ant ant ant" 26mm [row3-end]
@@ -68,7 +68,7 @@ max-height: 1550px;
     left: 30px;
 }
 .outros-pesos{
-    font-size: 0.85em;
+    font-size: 11pt;
     color: rgba(1, 1, 1, 0.7);
 }
 #logo{
@@ -109,7 +109,7 @@ border-color: darkred;}
 #asas{grid-area: asa;}
 #botoes{grid-area: bot;}
 #date{
-    font-size: 1.8em;
+    font-size: 22pt;
     justify-self: end;
     border: 1px solid rgba(25, 0, 145, .5);
     border-width: 0 0 1px 0;
@@ -136,14 +136,13 @@ border-color: darkred;}
     padding: 5px;
 }
 #alergia input{
-    font-size: 1.25em;
+    font-size: 15pt;
     width: 99%;
     margin-top: 2px;
 }
 #sinais-vitais{
-    font-size: 1.3em;
+    font-size: 16pt;
     text-decoration: underline;
-    background: re;
 }
 #va{
     display: grid;
@@ -151,12 +150,12 @@ border-color: darkred;}
     grid-template-rows:repeat(2, 1fr);
     justify-items: stretch;
     align-items: stretch;
-    padding-left: 20px;
-    grid-gap: .1em;
+    padding-left: 16pt;
+    grid-gap: 0.1mm;
 }
 #lab{
-    font-size: 16px;
-    line-height: 18px;
+    font-size: 13pt;
+    line-height: 16pt;
 }
 #lab .col{
     margin-bottom: 5px;
@@ -165,10 +164,10 @@ border-color: darkred;}
     margin: 5px;
 }
 #exames{
-    padding-left: 10px;
+    padding-left: 8pt;
 }
 #exames textarea{
-    font-size: 16px;
+    font-size: 13pt;
     padding-left: 0;
     height: 50px;
 }
@@ -235,6 +234,7 @@ textarea{
     resize: none;
         color: darkblue;
     font-family: "Lucida Console";
+    background: transparent;
 }
 
 .sup{
@@ -419,7 +419,7 @@ font-size: 1.1em;
 }
 #lab{
     font-size: 14px !important;
-    line-height: 16px !important;
+    line-height: 14px !important;
 }
 #exames{
     font-size: 14px !important;
