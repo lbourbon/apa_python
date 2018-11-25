@@ -1,4 +1,5 @@
 @page {
+size: A4;
 margin: 10pt 10pt 0pt 22pt;
 }
 
@@ -8,7 +9,8 @@ body {
 font: 12pt Georgia, "Times New Roman", Times, serif;
 background: white;
 margin: 0 10%;
-max-height: 1550pt;
+width: 210mm;
+max-height: 100%;
 }
 .container{
     background: transparent;
@@ -373,6 +375,7 @@ img{
 
 @media print{
 html, body{
+    background: white;
     margin: 0;
     max-height: 1560px;
     padding-left: 15px;
@@ -392,14 +395,6 @@ html, body{
 }
 .noprint{
     display: none;
-}
-}
-
-@media screen and (max-width: 900px), print{
-
-
-body{
-    background: white;
 }
 #ident{
     font-size: 16px !important;
@@ -449,11 +444,59 @@ font-size: 1.1em;
 
 }
 }
+
 @media only screen and (max-width: 900px){
 
 html {
     transform: scale(0.32);
     transform-origin: 0 0;
+}
+#ident{
+    font-size: 16px !important;
+    line-height: 18px !important;
+}
+#previas{
+    font-size: 14px !important;
+    line-height: 18px !important;
+}
+#sinais-vitais{
+font-size: 1.1em;
+}
+#lab{
+    font-size: 14pt !important;
+    line-height: 14pt !important;
+}
+#exames{
+    font-size: 14px !important;
+    line-height: 16px !important;
+}
+#prescricao{
+    font-size: 14px !important;
+    line-height: 16px !important;
+}
+#menu{
+    transform: scale(3);
+    transform-origin: 0 0;
+}
+#menu a{
+    text-decoration: none;
+    border: 1px solid black;
+    padding: 2px 5px;
+    font-size: 1em;
+    border-radius: 15px;
+    background: rgb(227, 184, 184);
+    max-height: 3px;
+    box-shadow: 2px 2px 10px 5px rgba(0,0,0,0.2);
+    color: black;
+
+}
+#menu input{
+    border: 1px solid black;
+    font-size: 1.05em;
+    background: rgb(227, 184, 184);
+    border-radius: 15px;
+    box-shadow: 2px 2px 10px 5px rgba(0,0,0,0.2);
+
 }
 }
 
