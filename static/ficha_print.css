@@ -1,6 +1,7 @@
 @page {
 size: A4;
-margin: 10pt 10pt 0pt 22pt;
+width: 210mm;
+margin: 0 !important;
 }
 
 @media screen, print{
@@ -9,7 +10,6 @@ body {
 font: 12pt Georgia, "Times New Roman", Times, serif;
 background: white;
 margin: 0 10%;
-width: 210mm;
 max-height: 100%;
 }
 .container{
@@ -44,7 +44,7 @@ max-height: 100%;
           [row24-start] "psc psc psc psc psc psc psc psc psc car car car" 26.5mm [row24-end]
           [row25-start] "bot bot ... ... ... asa asa ... ... ... ... ..." 13mm [row25-end]
           [row26-start] "... ... ... ... ... ... ... ... ... ... ... ..." 1mm [row26-end];
-    grid-template-columns: repeat(12, 65pt);
+    grid-template-columns: repeat(12, 23mm);
 }
 .myheader{
     margin-top: 5px;
@@ -376,7 +376,7 @@ img{
 @media print{
 html, body{
     background: white;
-    margin: 0;
+    margin: 0 !important;
     max-height: 1560px;
     padding-left: 15px;
     page-break-after: avoid;
@@ -393,6 +393,7 @@ html, body{
     page-break-before: avoid;
     page-break-inside: avoid;
 }
+
 .noprint{
     display: none;
 }
@@ -460,7 +461,7 @@ html {
     line-height: 18px !important;
 }
 #sinais-vitais{
-font-size: 1.1em;
+    font-size: 1.1em;
 }
 #lab{
     font-size: 14pt !important;
