@@ -1,14 +1,14 @@
 @page {
+margin: 0.5cm;
 size: A4;
 width: 210mm;
-margin: 0 !important;
+height: 297mm;
 }
 
 @media screen, print{
-
 body {
 font: 12pt Georgia, "Times New Roman", Times, serif;
-background: white;
+background: transparent;
 margin: 0 10%;
 max-height: 100%;
 }
@@ -18,15 +18,15 @@ max-height: 100%;
     justify-items: stretch;
     align-items: stretch;
     grid-gap: 0.1mm;
-    grid: [row1-start]  "tit tit tit tit tit tit tit tit tit tit tit tit" 22.5mm [row1-end]
+    grid: [row1-start]  "tit tit tit tit tit tit tit tit tit tit tit tit" 16mm [row1-end]
           [row2-start]  "he1 he1 he1 he1 he1 he1 he1 he1 he1 he1 he1 he1" 5mm [row2-end]
           [row3-start]  "ide ide ide ide ide ide ide ide ide ant ant ant" 26mm [row3-end]
           [row4-start]  "he2 he2 he2 he2 he2 he2 he2 he2 he2 he2 he2 he2" 5mm [row4-end]
           [row5-start]  "pre pre pre pre pre pre pre pre pre pre pre pre" 21.5mm [row5-end]
           [row6-start]  "he3 he3 he3 he3 he3 he3 he3 he3 he3 he3 he3 he3" 5mm [row6-end]
-          [row7-start]  "cli cli cli cli cli cli cli cli cli cli cli cli" 26.5mm [row7-end]
+          [row7-start]  "cli cli cli cli cli cli cli cli cli cli cli cli" 25mm [row7-end]
           [row8-start]  "he4 he4 he4 he4 he4 he4 he4 he4 he4 he4 he4 he4" 5mm [row8-end]
-          [row9-start]  "med med med med med med med med med med med med" 24mm [row9-end]
+          [row9-start]  "med med med med med med med med med med med med" 22mm [row9-end]
           [row10-start] "he5 he5 he5 he5 he5 he5 he5 he5 he5 he5 he5 he5" 5mm [row10-end]
           [row11-start] "ale ale ale ale ale ale ale ale ale ale ale ale" 13mm [row11-end]
           [row12-start] "he6 he6 he6 he6 he6 he6 he6 he6 he6 he6 he6 he6" 5mm [row12-end]
@@ -34,7 +34,7 @@ max-height: 100%;
           [row14-start] "he7 he7 he7 he7 he7 he7 he7 he7 he7 he7 he7 he7" 5mm [row14-end]
           [row15-start] "via via via via via via via via via via via via" 29mm [row15-end]
           [row16-start] "he8 he8 he8 he8 he8 he8 he8 he8 he8 he8 he8 he8" 5mm [row16-end]
-          [row17-start] "lab lab lab lab lab lab lab lab lab lab lab lab" 35mm [row17-end]
+          [row17-start] "lab lab lab lab lab lab lab lab lab lab lab lab" 37mm [row17-end]
           [row18-start] "he9 he9 he9 he9 he9 he9 he9 he9 he9 he9 he9 he9" 5mm [row18-end]
           [row19-start] "exa exa exa exa exa exa exa exa exa exa exa exa" 42.5mm [row19-end]
           [row20-start] "h10 h10 h10 h10 h10 h10 h10 h10 h10 h10 h10 h10" 5mm [row20-end]
@@ -42,8 +42,8 @@ max-height: 100%;
           [row22-start] "pro pro pro pro pro pro pro pro pro pro pro pro" 13mm [row22-end]
           [row23-start] "h11 h11 h11 h11 h11 h11 h11 h11 h11 h11 h11 h11" 5mm [row23-end]
           [row24-start] "psc psc psc psc psc psc psc psc psc car car car" 26.5mm [row24-end]
-          [row25-start] "bot bot ... ... ... asa asa ... ... ... ... ..." 13mm [row25-end]
-          [row26-start] "... ... ... ... ... ... ... ... ... ... ... ..." 1mm [row26-end];
+          [row25-start] "bot bot ... ... ... asa asa ... ... ... ... ..." 12mm [row25-end]
+          [row26-start] "... ... ... ... ... ... ... ... ... ... ... ..." 0mm [row26-end];
     grid-template-columns: repeat(12, 23mm);
 }
 .myheader{
@@ -58,11 +58,13 @@ max-height: 100%;
     box-shadow: 2px -2px 10px 5px rgba(0,0,0,0.2);
 }
 #cabecalho{
+    padding-top: 0;
+    margin-top: 0;
     grid-area: tit;
     display: grid;
     grid-template-columns: 60px 1fr 150px;
     justify-items: center;
-    align-items: center;
+    align-items: start;
 }
 #sexo{
     position: relative;
@@ -134,7 +136,7 @@ border-color: darkred;}
     text-align: justify;
 }
 #medic{
-    padding: 5px;
+    padding: 2px;
 }
 #alergia input{
     font-size: 15pt;
@@ -166,9 +168,10 @@ border-color: darkred;}
 }
 #exames{
     padding-left: 8pt;
+
 }
 #exames textarea{
-    font-size: 13pt;
+    font-size: 12pt;
     padding-left: 0;
     height: 50px;
 }
@@ -214,7 +217,11 @@ label{
 }
 .inv{display:none;
 }
-
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
 input[type=text], input[type=number]{
     background: transparent;
     width: 80%;
@@ -409,8 +416,8 @@ html, body{
 font-size: 1.1em;
 }
 #lab{
-    font-size: 14pt !important;
-    line-height: 14pt !important;
+    font-size: 13pt !important;
+    line-height: 13pt !important;
 }
 #exames{
     font-size: 14px !important;
