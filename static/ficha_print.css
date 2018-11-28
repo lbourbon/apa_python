@@ -1,5 +1,4 @@
 @page {
-margin: 0.5cm;
 size: A4;
 width: 210mm;
 height: 297mm;
@@ -38,13 +37,13 @@ max-height: 100%;
           [row18-start] "he9 he9 he9 he9 he9 he9 he9 he9 he9 he9 he9 he9" 5mm [row18-end]
           [row19-start] "exa exa exa exa exa exa exa exa exa exa exa exa" 42.5mm [row19-end]
           [row20-start] "h10 h10 h10 h10 h10 h10 h10 h10 h10 h10 h10 h10" 5mm [row20-end]
-          [row21-start] "not not not not not not not not not not not not" 21.5mm [row21-end]
+          [row21-start] "not not not not not not not not not not not not" 16mm [row21-end]
           [row22-start] "pro pro pro pro pro pro pro pro pro pro pro pro" 13mm [row22-end]
           [row23-start] "h11 h11 h11 h11 h11 h11 h11 h11 h11 h11 h11 h11" 5mm [row23-end]
           [row24-start] "psc psc psc psc psc psc psc psc psc car car car" 26.5mm [row24-end]
           [row25-start] "bot bot ... ... ... asa asa ... ... ... ... ..." 12mm [row25-end]
           [row26-start] "... ... ... ... ... ... ... ... ... ... ... ..." 0mm [row26-end];
-    grid-template-columns: repeat(12, 23mm);
+    grid-template-columns: repeat(12, 19mm);
 }
 .myheader{
     margin-top: 5px;
@@ -176,7 +175,7 @@ border-color: darkred;}
     height: 50px;
 }
 #anot textarea{
-    height: 50px;
+    height: 20pt;
 }
 #proposta input{
     width: 32%;
@@ -416,8 +415,8 @@ html, body{
 font-size: 1.1em;
 }
 #lab{
-    font-size: 13pt !important;
-    line-height: 13pt !important;
+    font-size: 12pt !important;
+    line-height: 12pt !important;
 }
 #exames{
     font-size: 14px !important;
@@ -471,8 +470,8 @@ html {
     font-size: 1.1em;
 }
 #lab{
-    font-size: 14pt !important;
-    line-height: 14pt !important;
+    font-size: 12pt !important;
+    line-height: 12pt !important;
 }
 #exames{
     font-size: 14px !important;
