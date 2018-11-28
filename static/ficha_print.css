@@ -1,5 +1,6 @@
 @page {
 size: A4;
+margin: 5mm;
 width: 210mm;
 height: 297mm;
 }
@@ -43,7 +44,7 @@ max-height: 100%;
           [row24-start] "psc psc psc psc psc psc psc psc psc car car car" 26.5mm [row24-end]
           [row25-start] "bot bot ... ... ... asa asa ... ... ... ... ..." 12mm [row25-end]
           [row26-start] "... ... ... ... ... ... ... ... ... ... ... ..." 0mm [row26-end];
-    grid-template-columns: repeat(12, 19mm);
+    grid-template-columns: repeat(12, 21mm);
 }
 .myheader{
     margin-top: 5px;
