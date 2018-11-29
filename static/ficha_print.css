@@ -1,6 +1,6 @@
 @page {
 size: A4;
-margin: 5mm 5mm 5mm 8mm;
+margin: 5mm 5mm 5mm 11mm;
 width: 210mm;
 height: 297mm;
 }
@@ -417,7 +417,7 @@ font-size: 1.1em;
 }
 #lab{
     font-size: 12pt !important;
-    line-height: 12pt !important;
+    line-height: 10pt !important;
 }
 #exames{
     font-size: 14px !important;
@@ -472,7 +472,7 @@ html {
 }
 #lab{
     font-size: 12pt !important;
-    line-height: 12pt !important;
+    line-height: 10pt !important;
 }
 #exames{
     font-size: 14px !important;
