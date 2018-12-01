@@ -383,7 +383,8 @@ img{
 @media print{
 html, body{
     margin: 0 !important;
-    -webkit-padding-start: 10px;
+    padding-left: 10px;
+    -webkit-padding-start: 0px;
     max-height: 1560px;
     padding-left: 15px;
     page-break-after: avoid;
@@ -417,7 +418,7 @@ font-size: 1.1em;
 }
 #lab{
     font-size: 12pt !important;
-    line-height: 15pt !important;
+    line-height: 13pt !important;
 
 }
 #exames{
