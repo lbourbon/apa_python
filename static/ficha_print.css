@@ -161,10 +161,10 @@ border-color: darkred;}
     line-height: 16pt;
 }
 #lab .col{
-    margin-bottom: 5px;
+    margin-bottom: 3mm;
 }
 #lab label{
-    margin: 5px;
+    margin: 2mm;
 }
 #exames{
     padding-left: 8pt;
@@ -415,8 +415,8 @@ html, body{
 font-size: 1.1em;
 }
 #lab{
-    font-size: 4mm !important;
-    line-height: 4mm !important;
+    font-size: 5mm !important;
+    line-height: 5mm !important;
 }
 #exames{
     font-size: 14px !important;
@@ -470,8 +470,8 @@ html {
     font-size: 1.1em;
 }
 #lab{
-    font-size: 4mm !important;
-    line-height: 4mm !important;
+    font-size: 5mm !important;
+    line-height: 5mm !important;
 }
 #exames{
     font-size: 14px !important;
