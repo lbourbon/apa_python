@@ -1,6 +1,6 @@
 @page {
 size: A4;
-margin: 5mm 5mm 5mm 17mm;
+margin: 5mm 5mm 5mm 10mm;
 width: 210mm;
 height: 297mm;
 }
@@ -383,8 +383,6 @@ img{
 @media print{
 html, body{
     margin: 0 !important;
-    padding-left: 0px;
-    -webkit-padding-start: 10px;
     max-height: 1560px;
     padding-left: 15px;
     page-break-after: avoid;
