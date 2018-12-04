@@ -160,12 +160,7 @@ border-color: darkred;}
     font-size: 13pt;
     line-height: 16pt;
 }
-#lab .col{
-    margin-bottom: 1mm;
-}
-#lab label{
-    margin: 2mm;
-}
+
 #exames{
     padding-left: 8pt;
 
@@ -415,8 +410,8 @@ html, body{
 font-size: 1.1em;
 }
 #lab{
-    font-size: 5mm !important;
-    line-height: 5mm !important;
+    font-size: 4mm !important;
+    line-height: 4mm !important;
 }
 #exames{
     font-size: 14px !important;
