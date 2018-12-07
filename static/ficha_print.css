@@ -452,6 +452,11 @@ html {
     transform: scale(0.32);
     transform-origin: 0 0;
 }
+.myheader{
+    margin-top: 5px;
+    margin-bottom: 5px;
+    font-size: 12pt;
+}
 #ident{
     font-size: 16px !important;
     line-height: 18px !important;
