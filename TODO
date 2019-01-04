@@ -7,7 +7,7 @@ heroku run python3 manage.py collectstatic
 lembrar:
 TODO:
 -->> para liberar:
-print mobile (trocar font-size em por pt)/ trocar px por mm
+
 deploy -> senha email, debug, secret key, ficha, print, mobile
 <<<-------
 
