@@ -1,0 +1,511 @@
+@page {
+size: A4;
+margin: 5mm 5mm 5mm 10mm;
+width: 210mm;
+height: 297mm;
+}
+
+@media screen, print{
+body {
+font: 12pt Georgia, "Times New Roman", Times, serif;
+background: transparent;
+margin: 0 10%;
+max-height: 100%;
+}
+.container{
+    background: transparent;
+    display: grid;
+    justify-items: stretch;
+    align-items: stretch;
+    grid-gap: 0.1mm;
+    grid: [row1-start]  "tit tit tit tit tit tit tit tit tit tit tit tit" 16mm [row1-end]
+          [row2-start]  "he1 he1 he1 he1 he1 he1 he1 he1 he1 he1 he1 he1" 5mm [row2-end]
+          [row3-start]  "ide ide ide ide ide ide ide ide ide ant ant ant" 26mm [row3-end]
+          [row4-start]  "he2 he2 he2 he2 he2 he2 he2 he2 he2 he2 he2 he2" 5mm [row4-end]
+          [row5-start]  "pre pre pre pre pre pre pre pre pre pre pre pre" 21.5mm [row5-end]
+          [row6-start]  "he3 he3 he3 he3 he3 he3 he3 he3 he3 he3 he3 he3" 5mm [row6-end]
+          [row7-start]  "cli cli cli cli cli cli cli cli cli cli cli cli" 25mm [row7-end]
+          [row8-start]  "he4 he4 he4 he4 he4 he4 he4 he4 he4 he4 he4 he4" 5mm [row8-end]
+          [row9-start]  "med med med med med med med med med med med med" 22mm [row9-end]
+          [row10-start] "he5 he5 he5 he5 he5 he5 he5 he5 he5 he5 he5 he5" 5mm [row10-end]
+          [row11-start] "ale ale ale ale ale ale ale ale ale ale ale ale" 13mm [row11-end]
+          [row12-start] "he6 he6 he6 he6 he6 he6 he6 he6 he6 he6 he6 he6" 5mm [row12-end]
+          [row13-start] "fis fis fis fis fis fis fis fis fis fis vit vit" 26.5mm [row13-end]
+          [row14-start] "he7 he7 he7 he7 he7 he7 he7 he7 he7 he7 he7 he7" 5mm [row14-end]
+          [row15-start] "via via via via via via via via via via via via" 29mm [row15-end]
+          [row16-start] "he8 he8 he8 he8 he8 he8 he8 he8 he8 he8 he8 he8" 5mm [row16-end]
+          [row17-start] "lab lab lab lab lab lab lab lab lab lab lab lab" 37mm [row17-end]
+          [row18-start] "he9 he9 he9 he9 he9 he9 he9 he9 he9 he9 he9 he9" 5mm [row18-end]
+          [row19-start] "exa exa exa exa exa exa exa exa exa exa exa exa" 42.5mm [row19-end]
+          [row20-start] "h10 h10 h10 h10 h10 h10 h10 h10 h10 h10 h10 h10" 5mm [row20-end]
+          [row21-start] "not not not not not not not not not not not not" 16mm [row21-end]
+          [row22-start] "pro pro pro pro pro pro pro pro pro pro pro pro" 13mm [row22-end]
+          [row23-start] "h11 h11 h11 h11 h11 h11 h11 h11 h11 h11 h11 h11" 5mm [row23-end]
+          [row24-start] "psc psc psc psc psc psc psc psc psc car car car" 26.5mm [row24-end]
+          [row25-start] "bot bot ... ... ... asa asa ... ... ... ... ..." 12mm [row25-end]
+          [row26-start] "... ... ... ... ... ... ... ... ... ... ... ..." 0mm [row26-end];
+    grid-template-columns: repeat(12, 22mm);
+}
+.myheader{
+    margin-top: 5px;
+}
+.pagina{
+    margin-top: 20pt;
+    padding: 25pt 0 0 50pt;
+    min-width: 820pt;
+    max-height: 1200pt;
+    border: 1px solid rgb(200, 200, 200);
+    box-shadow: 2px -2px 10px 5px rgba(0,0,0,0.2);
+}
+#cabecalho{
+    padding-top: 0;
+    margin-top: 0;
+    grid-area: tit;
+    display: grid;
+    grid-template-columns: 60px 1fr 150px;
+    justify-items: center;
+    align-items: start;
+}
+#sexo{
+    position: relative;
+    left: 30px;
+}
+.outros-pesos{
+    font-size: 11pt;
+    color: rgba(1, 1, 1, 0.7);
+}
+#logo{
+    min-width: 55px;
+    height: 55px;
+    }
+#versao{
+    font: 12pt Georgia, "Times New Roman", Times, serif;
+}
+
+#head1{grid-area: he1;}
+#head2{grid-area: he2;}
+#head3{grid-area: he3;}
+#head4{grid-area: he4;}
+#head5{grid-area: he5;}
+#head6{grid-area: he6;}
+#head7{grid-area: he7;}
+#head8{grid-area: he8;}
+#head9{grid-area: he9;}
+#head10{grid-area: h10;}
+#head11{grid-area: h11;}
+#ident{grid-area: ide;}
+#antrop{grid-area: ant;}
+#previas{grid-area: pre;}
+#comorbidades{grid-area: cli;}
+#medic{grid-area: med;}
+#alergia{grid-area: ale;
+border-color: darkred;}
+#fisico{grid-area: fis;}
+#sinais-vitais{grid-area: vit;}
+#va{grid-area: via;}
+#lab{grid-area: lab;}
+#exames{grid-area: exa;}
+#anot{grid-area: not;}
+#proposta{grid-area: pro;}
+#prescricao{grid-area: psc;}
+#carimbo{grid-area: car;}
+#asas{grid-area: asa;}
+#botoes{grid-area: bot;}
+#date{
+    font-size: 22pt;
+    justify-self: end;
+    border: 1px solid rgba(25, 0, 145, .5);
+    border-width: 0 0 1px 0;
+    width: 140px;
+}
+#ident{
+    font-size: 20px;
+    line-height: 26px;
+}
+#antrop{
+    padding-top: 10px;
+    font-size: 17px;
+    line-height: 22px;
+
+}
+#previas{
+    font-size: 16px;
+    line-height: 20px;
+}
+#comorbidades{
+    text-align: justify;
+}
+#medic{
+    padding: 2px;
+}
+#alergia input{
+    font-size: 15pt;
+    width: 99%;
+    margin-top: 2px;
+}
+#sinais-vitais{
+    font-size: 16pt;
+    text-decoration: underline;
+}
+#va{
+    display: grid;
+    grid-template-columns:repeat(3, 1fr);
+    grid-template-rows:repeat(2, 1fr);
+    justify-items: stretch;
+    align-items: stretch;
+    padding-left: 16pt;
+    grid-gap: 0.1mm;
+}
+#lab{
+    font-size: 13pt;
+    line-height: 16pt;
+}
+
+#exames{
+    padding-left: 8pt;
+
+}
+#exames textarea{
+    font-size: 12pt;
+    padding-left: 0;
+    height: 50px;
+}
+#anot textarea{
+    height: 20pt;
+}
+#proposta input{
+    width: 32%;
+    margin-top: 5px;
+}
+#prescricao{
+    font-size: 18px;
+    line-height: 20px;
+}
+#prescricao input{
+    width: 90%;
+    margin-top: 7px;
+}
+#asas{
+    padding: 5px 0 0 50px;}
+#asas input{
+    width: 40px;
+    font-size: 1.3em;
+}
+#carimbo{padding-left:25px;}
+.left{
+    float: left;
+}
+.right{
+    float: right;
+}
+.section{
+    border: 2px solid rgba(25, 25, 25, .8);
+    border-radius: 5px;
+    margin: 3px 0;
+    padding: 5px;
+}
+label{
+    white-space: nowrap;
+}
+::-webkit-input-placeholder {
+  color: transparent;
+}
+.inv{display:none;
+}
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type=text], input[type=number]{
+    background: transparent;
+    width: 80%;
+    padding-left: 5px;
+    border-width: 0 0 0 0;
+    font-size: .85em;
+    color: darkblue;
+    font-family: "Lucida Console";
+
+}
+textarea{
+    width: 99%;
+    height: 60px;
+    font-size: .85em;
+    padding: 5px;
+    border: 0;
+    overflow: hidden;
+    resize: none;
+        color: darkblue;
+    font-family: "Lucida Console";
+    background: transparent;
+}
+
+.sup{
+    color: black;
+    font-size: 10pt;
+    line-height: 10pt;
+    vertical-align: super;
+}
+
+img{
+    max-width: 30px;
+}
+#menu{
+    position: fixed;
+    top: 70px;
+    left: 25px;
+    background: transparent;
+}
+#menu a{
+    text-decoration: none;
+    border: 1px solid black;
+    padding: 2px 5px;
+    font-size: 1em;
+    border-radius: 5px;
+    background: rgb(218, 23, 23);;
+    max-height: 3px;
+    box-shadow: 2px 2px 10px 5px rgba(0,0,0,0.2);
+    color: black;
+
+}
+#menu input{
+    border: 1px solid black;
+    font-size: 1em;
+    background: rgb(218, 23, 23);;
+    border-radius: 5px;
+    box-shadow: 2px 2px 10px 5px rgba(0,0,0,0.2);
+
+}
+.row .col {
+  float: left;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 0 0.3rem;
+  min-height: 1px;
+}
+
+.row .col[class*="push-"], .row .col[class*="pull-"] {
+  position: relative;
+}
+
+.row .col.s1 {
+  width: 8.3333333333%;
+  margin-left: auto;
+  left: auto;
+  right: auto;
+}
+
+.row .col.s2 {
+  width: 16.6666666667%;
+  margin-left: auto;
+  left: auto;
+  right: auto;
+}
+
+.row .col.s3 {
+  width: 25%;
+  margin-left: auto;
+  left: auto;
+  right: auto;
+}
+
+.row .col.s4 {
+  width: 33.3333333333%;
+  margin-left: auto;
+  left: auto;
+  right: auto;
+}
+
+.row .col.s5 {
+  width: 41.6666666667%;
+  margin-left: auto;
+  left: auto;
+  right: auto;
+}
+
+.row .col.s6 {
+  width: 50%;
+  margin-left: auto;
+  left: auto;
+  right: auto;
+}
+
+.row .col.s7 {
+  width: 58.3333333333%;
+  margin-left: auto;
+  left: auto;
+  right: auto;
+}
+
+.row .col.s8 {
+  width: 66.6666666667%;
+  margin-left: auto;
+  left: auto;
+  right: auto;
+}
+
+.row .col.s9 {
+  width: 75%;
+  margin-left: auto;
+  left: auto;
+  right: auto;
+}
+
+.row .col.s10 {
+  width: 83.3333333333%;
+  margin-left: auto;
+  left: auto;
+  right: auto;
+}
+
+.row .col.s11 {
+  width: 91.6666666667%;
+  margin-left: auto;
+  left: auto;
+  right: auto;
+}
+
+.row .col.s12 {
+  width: 100%;
+  margin-left: auto;
+  left: auto;
+  right: auto;
+}
+
+}
+
+
+@media print{
+html, body{
+    margin: 0 !important;
+    max-height: 1560px;
+    padding-left: 15px;
+    page-break-after: avoid;
+    page-break-before: avoid;
+    page-break-inside: avoid;
+}
+.pagina{
+    margin: 0;
+    padding: 0;
+    border: 0;
+    box-shadow: 0 0 0 0;
+    max-height: 1550px;
+    page-break-after: avoid;
+    page-break-before: avoid;
+    page-break-inside: avoid;
+}
+
+.noprint{
+    display: none;
+}
+#ident{
+    font-size: 16px !important;
+    line-height: 18px !important;
+}
+#previas{
+    font-size: 14px !important;
+    line-height: 18px !important;
+}
+#sinais-vitais{
+font-size: 1.1em;
+}
+#lab{
+    font-size: 4mm !important;
+    line-height: 4mm !important;
+}
+#exames{
+    font-size: 14px !important;
+    line-height: 16px !important;
+}
+#prescricao{
+    font-size: 14px !important;
+    line-height: 16px !important;
+}
+#menu{
+    transform: scale(3);
+    transform-origin: 0 0;
+}
+#menu a{
+    text-decoration: none;
+    border: 1px solid black;
+    padding: 2px 5px;
+    font-size: 1em;
+    border-radius: 15px;
+    background: rgb(227, 184, 184);
+    max-height: 3px;
+    box-shadow: 2px 2px 10px 5px rgba(0,0,0,0.2);
+    color: black;
+
+}
+#menu input{
+    border: 1px solid black;
+    font-size: 1.05em;
+    background: rgb(227, 184, 184);
+    border-radius: 15px;
+    box-shadow: 2px 2px 10px 5px rgba(0,0,0,0.2);
+
+}
+}
+
+@media only screen and (max-width: 900px){
+html {
+    transform: scale(0.32);
+    transform-origin: 0 0;
+}
+.myheader{
+    margin-top: 5px;
+    margin-bottom: 5px;
+    font-size: 12pt;
+}
+#ident{
+    font-size: 16px !important;
+    line-height: 18px !important;
+}
+#previas{
+    font-size: 14px !important;
+    line-height: 18px !important;
+}
+#sinais-vitais{
+font-size: 1.1em;
+}
+#lab{
+    font-size: 14pt !important;
+    line-height: 14pt !important;
+}
+#exames{
+    font-size: 14px !important;
+    line-height: 16px !important;
+}
+#prescricao{
+    font-size: 14px !important;
+    line-height: 16px !important;
+}
+#menu{
+    transform: scale(3);
+    transform-origin: 0 0;
+}
+#menu a{
+    text-decoration: none;
+    border: 1px solid black;
+    padding: 2px 5px;
+    font-size: 1em;
+    border-radius: 15px;
+    background: rgb(227, 184, 184);
+    max-height: 3px;
+    box-shadow: 2px 2px 10px 5px rgba(0,0,0,0.2);
+    color: black;
+
+}
+#menu input{
+    border: 1px solid black;
+    font-size: 1.05em;
+    background: rgb(227, 184, 184);
+    border-radius: 15px;
+    box-shadow: 2px 2px 10px 5px rgba(0,0,0,0.2);
+
+}
+
+
+}
+
+

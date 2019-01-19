@@ -6,9 +6,9 @@ heroku run python3 manage.py collectstatic
 
 lembrar:
 TODO:
--->> para liberar:
+Cidade (termo e orçamento), vai ter que adicionar no cadastro
 
-deploy -> senha email, debug, secret key, ficha, print, mobile
+
 <<<-------
 
 - maxlength="15" (escolher tamanho máximo para campos)

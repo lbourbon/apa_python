@@ -77,7 +77,7 @@ class Profile(models.Model):
     telefone = models.CharField(max_length=15)
 
     def __str__(self):
-        return str(self.pk) + str(self.nome) + str(self.user.pk)
+        return str(self.pk) + str(self.nome)
 
     @receiver(post_save, sender=MyUser)
     def create_user_profile(sender, instance, created, **kwargs):
