@@ -43,6 +43,7 @@ class Ficha(models.Model):
     neuro_lme = models.BooleanField(default=False)
     neuro_out = models.BooleanField(default=False)
     resp_asm = models.BooleanField(default=False)
+    resp_apn = models.BooleanField(default=False)
     resp_dpo = models.BooleanField(default=False)
     resp_tbg = models.BooleanField(default=False)
     resp_iva = models.BooleanField(default=False)
