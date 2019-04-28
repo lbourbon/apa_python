@@ -62,7 +62,7 @@ max-height: 100%;
     margin-top: 0;
     grid-area: tit;
     display: grid;
-    grid-template-columns: 60px 1fr 150px;
+    grid-template-columns: 60px 1fr 170px;
     justify-items: center;
     align-items: start;
 }
@@ -112,11 +112,11 @@ border-color: darkred;}
 #asas{grid-area: asa;}
 #botoes{grid-area: bot;}
 #date{
-    font-size: 22pt;
-    justify-self: end;
+    font-size: 20pt;
+    justify-self: start;
     border: 1px solid rgba(25, 0, 145, .5);
     border-width: 0 0 1px 0;
-    width: 140px;
+    width: 130px;
 }
 #ident{
     font-size: 20px;

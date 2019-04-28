@@ -6,6 +6,15 @@ heroku run python3 manage.py collectstatic
 
 lembrar:
 TODO:
+CONSERTAR DATA
+1) Na identificação, colocar o campo "profissão"
+2) Ao lado do convênio, tipo de acomodação
+3) Nos dados vitais, incluir SpO2
+Incluir hábitos: alcoolismo, tbg, drogas
+5) Seria ter um campo para resultado da hemoglobina glicosilada e do valor da atividade de protrombina % (não é o tempo)
+6) Não consegui salvar o orçamento, apenas imprimir
+7) Na previsão de orçamento, o espaçamento para o texto do procedimento está curto, o que causa corte no texto, enquanto isso o campo de % está muito largo, vide foto abaixo. Daria para deixar mais caracteres para o texto do procedimento
+8) O espaço para assinatura do paciente está curto (vide foto)
 Cidade (termo e orçamento), vai ter que adicionar no cadastro
 
 
