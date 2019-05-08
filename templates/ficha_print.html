@@ -31,6 +31,7 @@
             </h2>
             <label id="date"><input id="data" name="data" type="text"
                                     value={{form.data.value|date:'d/m/Y'|default:""}}></label>
+
             <input type="hidden" id="referer" value="{{ request.META.HTTP_REFERER }}">
             <input type="hidden" id="myurl" value="{{ request.path }}">
             <form action="{% url 'ficha' %}" method="post">

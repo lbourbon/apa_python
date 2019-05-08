@@ -62,7 +62,7 @@ max-height: 100%;
     margin-top: 0;
     grid-area: tit;
     display: grid;
-    grid-template-columns: 60px 1fr 170px;
+    grid-template-columns: 60px 1fr 200px;
     justify-items: center;
     align-items: start;
 }
@@ -116,7 +116,6 @@ border-color: darkred;}
     justify-self: start;
     border: 1px solid rgba(25, 0, 145, .5);
     border-width: 0 0 1px 0;
-    width: 130px;
 }
 #ident{
     font-size: 20px;

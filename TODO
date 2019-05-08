@@ -1,5 +1,7 @@
 check-list deploy:
-
+git add .
+git commit -m 'nome do commit'
+git push heroku master
 heroku run python3 manage.py migrate
 heroku run python3 manage.py collectstatic
 
