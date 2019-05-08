@@ -8,7 +8,6 @@ heroku run python3 manage.py collectstatic
 
 lembrar:
 TODO:
-CONSERTAR DATA
 1) Na identificação, colocar o campo "profissão"
 2) Ao lado do convênio, tipo de acomodação
 3) Nos dados vitais, incluir SpO2
