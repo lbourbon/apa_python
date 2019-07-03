@@ -1,0 +1,95 @@
+{% extends "base.html" %}
+
+{% block title %} Preços - A.P.A. {% endblock%}
+
+{% block main %}
+<style>
+blockquote{
+    margin-top: 50px;
+    text-align: justify;
+}
+.transparent{
+    color: transparent;
+}
+
+@media only screen and (min-width: 768px) {
+.flow-text {
+    font-size: 1.3rem;
+}
+
+
+
+</style>
+{% include 'navbar.html' %}
+
+<div class="container">
+
+<br><br>
+    <p class="flow-text"> Todos os produtos e serviços fornecidos no site são gratuitos. Porém, existe
+        um custo fixo mensal para manter o site no ar: hospedagem, domínio, servidores, serviços de API, licenças de software,
+        suporte, manutenção, etc... </p>
+
+    <p class="flow-text"> Ajude a manter a plataforma no ar com uma doação mensal. Toda e qualquer ajuda é bem vinda.</p>
+    <p class="flow-text"> Escolha abaixo o plano que quiser. (Vamos lá, menos que uma consulta por mês não vai fazer falta! rsrsrs ;P)</p>
+    <p class="flow-text"> Desde já, agradeço a colaboração.</p>
+    <p class="flow-text"> Att, Lécio Bourbon Filho-  www.avaliacaopreanestesica.com</p>
+
+    <p class="flow-text transparent"> . </p>
+
+    <u>-> DOAÇÃO NÍVEL R1 R$9,90/mês</u>
+    <!-- INICIO FORMULARIO BOTAO PAGSEGURO: NAO EDITE OS COMANDOS DAS LINHAS ABAIXO -->
+    <form action="https://pagseguro.uol.com.br/pre-approvals/request.html" method="post">
+        <input type="hidden" name="code" value="020F6CB7A7A78BC334023F97AAD58CC1"/>
+        <input type="hidden" name="iot" value="button"/>
+        <input type="image"
+               src="https://stc.pagseguro.uol.com.br/public/img/botoes/assinaturas/120x53-assinar-laranja.gif"
+               name="submit" alt="Pague com PagSeguro - É rápido, grátis e seguro!" width="120" height="53"/>
+    </form>
+    <!-- FINAL FORMULARIO BOTAO PAGSEGURO -->
+<br>
+    <u>-> DOAÇÃO NÍVEL PLANTONISTA R$24,90/mês</u>
+    <!-- INICIO FORMULARIO BOTAO PAGSEGURO: NAO EDITE OS COMANDOS DAS LINHAS ABAIXO -->
+    <form action="https://pagseguro.uol.com.br/pre-approvals/request.html" method="post">
+        <input type="hidden" name="code" value="A8D7C38720209358849A3FAFB945E84B"/>
+        <input type="hidden" name="iot" value="button"/>
+        <input type="image" src="https://stc.pagseguro.uol.com.br/public/img/botoes/assinaturas/120x53-assinar.gif"
+               name="submit" alt="Pague com PagSeguro - É rápido, grátis e seguro!" width="120" height="53"/>
+    </form>
+    <!-- FINAL FORMULARIO BOTAO PAGSEGURO -->
+<br>
+    <u>-> DOAÇÃO NÍVEL ANESTESIOLOGISTA PROFISSIONAL R$49,90/mês</u>
+    <!-- INICIO FORMULARIO BOTAO PAGSEGURO: NAO EDITE OS COMANDOS DAS LINHAS ABAIXO -->
+    <form action="https://pagseguro.uol.com.br/pre-approvals/request.html" method="post">
+        <input type="hidden" name="code" value="E7DE65067474958444EB4F8AB6061E5C"/>
+        <input type="hidden" name="iot" value="button"/>
+        <input type="image"
+               src="https://stc.pagseguro.uol.com.br/public/img/botoes/assinaturas/120x53-assinar-cinza.gif"
+               name="submit" alt="Pague com PagSeguro - É rápido, grátis e seguro!" width="120" height="53"/>
+    </form>
+    <!-- FINAL FORMULARIO BOTAO PAGSEGURO -->
+<br>
+    <u>-> DOAÇÃO NÍVEL LARINGO DE OURO VIP R$99,90/mês</u>
+    <!-- INICIO FORMULARIO BOTAO PAGSEGURO: NAO EDITE OS COMANDOS DAS LINHAS ABAIXO -->
+    <form action="https://pagseguro.uol.com.br/pre-approvals/request.html" method="post">
+        <input type="hidden" name="code" value="E2D5F62BDFDF13ACC4E3BFA44A12C634"/>
+        <input type="hidden" name="iot" value="button"/>
+        <input type="image"
+               src="https://stc.pagseguro.uol.com.br/public/img/botoes/assinaturas/120x53-assinar-preto.gif"
+               name="submit" alt="Pague com PagSeguro - É rápido, grátis e seguro!" width="120" height="53"/>
+    </form>
+    <!-- FINAL FORMULARIO BOTAO PAGSEGURO -->
+
+
+</div>
+
+{% block js %}
+<script>
+$(document).ready(function(){
+    $('.sidenav').sidenav();
+  });
+
+
+
+</script>
+{% endblock%}
+{% endblock%}

@@ -8,6 +8,7 @@
             <li><a href="{% url 'saiba' %}">Saiba Mais</a></li>
             <li><a href="{% url 'teste' %}">Teste</a></li>
             <li><a href="{% url 'precos' %}">Preços</a></li>
+            <li><a href="{% url 'doacoes' %}" class="enfat">Doações</a></li>
             <!--<li><a href="{% url 'about' %}">Quem Somos</a></li>-->
             <li><a href="{% url 'contato' %}">Contato</a></li>
             <li><a href="{% url 'login' %}">Login</a></li>
@@ -21,6 +22,7 @@
     <li><a href="{% url 'saiba' %}">Saiba Mais</a></li>
     <li><a href="{% url 'teste' %}">Teste Grátis</a></li>
     <li><a href="{% url 'precos' %}">Preços</a></li>
+    <li><a href="{% url 'doacoes' %}" class="enfat">Doações</a></li>
     <!--<li><a href="{% url 'about' %}">Quem Somos</a></li>-->
     <li><a href="{% url 'contato' %}">Contato</a></li>
     <li><a href="{% url 'login' %}">Login</a></li>
@@ -40,5 +42,8 @@
     font-family: 'Kaushan Script', cursive;
     font-size:  1.9em;
 }
-
+.enfat{
+    color: darkblue;
+    font-weight: bold;
+}
 </style>

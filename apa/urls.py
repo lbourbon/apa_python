@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.urls import path, include
-from homepage.views import Home, Teste, Saiba, Precos, About, Contato, Restrita, Cadastro, Configuracoes, Ajuda, \
+from homepage.views import Home, Teste, Saiba, Precos, Doacoes, About, Contato, Restrita, Cadastro, Configuracoes, Ajuda, \
     Privacidade, Termos, ProfileUpdate, Espera
 from ficha.views import FichaNew, FichaUpdate, FichaPrint, FichaDelete, Tcle, Orcamento
 
@@ -13,6 +13,7 @@ urlpatterns = [
     path('saiba/', Saiba.as_view(), name='saiba'),
     path('teste/', Teste.as_view(), name='teste'),
     path('precos/', Precos.as_view(), name='precos'),
+    path('doacoes/', Doacoes.as_view(), name='doacoes'),
     path('about/', About.as_view(), name='about'),
     path('contato/', Contato.as_view(), name='contato'),
     path('restrita/', Restrita.as_view(), name='restrita'),

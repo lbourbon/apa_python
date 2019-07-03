@@ -43,6 +43,9 @@ class Teste(TemplateView):
 class Precos(TemplateView):
     template_name = 'precos.html'
 
+class Doacoes(TemplateView):
+    template_name = 'doacoes.html'
+
 
 class Saiba(TemplateView):
     template_name = 'saiba.html'

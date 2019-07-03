@@ -172,6 +172,19 @@ i {
     line-height: 2.5em;
     width: 150px;
 }
+#btn-doacao{
+    position: fixed;
+    top: 40vh;
+    left: 3vw;
+    padding-top: 1em;
+    border-radius: 30px;
+    color: black;
+    font-size: 1.2em;
+    font-family: sans-serif;
+    line-height: 1.4em;
+    width: 180px;
+    height: 180px;
+}
 .texto-paginador{
     position: relative;
     top: 8px;
